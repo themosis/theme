@@ -9,4 +9,4 @@ This the theme structure to use with the Themosis framework.
 
 Follow us [@Themosis](https://twitter.com/Themosis)
 
-Themosis framework created by (Julien Lambé)[http://www.themosis.com/]
+Themosis framework created by [Julien Lambé](http://www.themosis.com/)
