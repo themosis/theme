@@ -5,8 +5,8 @@ Themosis framework - Theme
 
 This the theme structure to use with the Themosis framework.
 
-> If you find any issues, please report them within the Github issue system of the (themosis/themosis)[https://github.com/themosis/themosis/issues?state=open] repository.
+> If you find any issues, please report them within the Github issue system of the [themosis/themosis](https://github.com/themosis/themosis/issues?state=open) repository.
 
-Follow us (@Themosis)[https://twitter.com/Themosis]
+Follow us [@Themosis](https://twitter.com/Themosis)
 
-Themosis framework created by [Julien Lambé](http://www.themosis.com/)
+Themosis framework created by (Julien Lambé)[http://www.themosis.com/]
