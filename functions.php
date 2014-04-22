@@ -10,7 +10,7 @@
 // Define some globals used along the theme.
 /*---------------------------------------------------*/
 // The directory separator
-defined('DS') ? DS : define('DS', '/');
+defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 
 // Asset directory path
 defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().DS.'app'.DS.'assets');

@@ -10,6 +10,11 @@
 */
 Route::is('home', function(){
 
-	return 'Congratulations! Your Themosis installation is running well!';
+    global $post;
+
+	return View::make('home', array(
+        'name'      => 'Julien',
+        'article'      => $post
+    ));
 
 });
