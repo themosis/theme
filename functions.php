@@ -72,6 +72,9 @@ if (!class_exists('THFWK_ThemosisTheme')) {
     	    $themosis = class_exists('THFWK_Themosis');
     	           	    
         	$this->pluginsAreLoaded = $themosis;
+
+            // Autoload theme classes.
+            require_once('vendor/autoload.php');
         	
         	// Display a message to the user in the admin panel when he's activating the theme.
         	if (!$themosis) {
@@ -196,7 +199,8 @@ function themosis_start_app(){
     	require themosis_path('app').'routes.php';
     
     	// Handle the output of each request
-    	do_action('themosis_render');   
+    	do_action('themosis_render');
+        
 	} else {
     	
         _e("The theme won't work correctly until you install the themosis plugin.", THEMOSISTHEME_TEXTDOMAIN);

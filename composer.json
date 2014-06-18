@@ -1,0 +1,16 @@
+{
+    "name": "themosis/theme",
+    "description": "The Themosis framework theme.",
+    "keywords": ["themosis", "framework", "WordPress", "theme"],
+    "license": "GPL-2.0+",
+    "authors":[
+        {
+            "name": "Julien Lambé",
+            "email": "julien@themosis.com",
+            "homepage": "http://www.themosis.com/"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "": "app/controllers" }
+    }
+}
