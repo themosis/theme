@@ -161,6 +161,21 @@ add_action('themosis_configurations', function(){
 });
 
 /*----------------------------------------------------
+| Register the theme view paths.
+|
+|
+|
+|
+|---------------------------------------------------*/
+add_filter('themosisViewPaths', function($paths){
+
+    $paths[] = themosis_path('app').'views'.DS;
+
+    return $paths;
+
+});
+
+/*----------------------------------------------------
 | Launch the application's theme
 |
 |
@@ -171,8 +186,6 @@ add_action('themosis_configurations', function(){
 function themosis_start_app(){
     
     if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded()) {
-        // Used by the view classes
-    	chdir(themosis_path('app').'views'.DS);
     
     	/**
     	* Parse the queries before any output. This is parsed

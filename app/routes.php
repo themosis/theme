@@ -10,6 +10,18 @@
  */
 Route::is('home', function(){
 
-    return "Congratulations! The Themosis framework is running!";
+    return View::make('pages.accueil')->with(array(
+        'name'  => 'Julien'
+    ));
 
-};
+});
+
+Route::only('page', 'sample-page', function(){
+
+    global $post;
+
+    return View::make('pages.sample', array(
+        'page'  => $post
+    ));
+
+});
