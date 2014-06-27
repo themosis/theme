@@ -4,8 +4,8 @@ return array(
 
 	/*
 	* Edit this file to add widget sidebars to your theme. 
-	* Place wordpress default settings for sidebars.
-	* Add as many as you want, watchout your commas!
+	* Place WordPress default settings for sidebars.
+	* Add as many as you want, watch-out your commas!
 	*/
 	array(
 
