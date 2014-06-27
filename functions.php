@@ -13,10 +13,10 @@
 defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 
 // Asset directory path
-defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().DS.'app'.DS.'assets');
+defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/app/assets');
 
 // Views directory path
-defined('THEMOSIS_VIEWS') ? THEMOSIS_VIEWS : define('THEMOSIS_VIEWS', get_template_directory_uri().DS.'app'.DS.'views');
+defined('THEMOSIS_VIEWS') ? THEMOSIS_VIEWS : define('THEMOSIS_VIEWS', get_template_directory_uri().'/app/views');
 
 // Textdomain
 defined('THEMOSISTHEME_TEXTDOMAIN') ? THEMOSISTHEME_TEXTDOMAIN : define('THEMOSISTHEME_TEXTDOMAIN', 'ThemosisTheme');
@@ -29,7 +29,8 @@ defined('THEMOSISTHEME_TEXTDOMAIN') ? THEMOSISTHEME_TEXTDOMAIN : define('THEMOSI
 |
 |
 |---------------------------------------------------*/
-if (!class_exists('THFWK_ThemosisTheme')) {
+if (!class_exists('THFWK_ThemosisTheme'))
+{
     class THFWK_ThemosisTheme
     {
         /**
@@ -133,7 +134,7 @@ add_filter('themosis_framework_paths', function($paths){
    $paths['base'] = realpath(__DIR__).DS;
    
    // Application path
-   $paths['app'] = realpath(__DIR__.DS.'app').DS;
+   $paths['app'] = realpath(__DIR__).DS.'app'.DS;
    
    return $paths;
     
@@ -204,18 +205,17 @@ add_filter('themosisAssetPaths', function($paths){
 |---------------------------------------------------*/
 function themosis_start_app(){
     
-    if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded()) {
-
+    if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded())
+    {
     	do_action('themosis_parse_query', $arg = '');
     
     	require themosis_path('app').'routes.php';
     
     	// Trigger output.
     	do_action('themosis_run');
-
-	} else {
-    	
+	}
+    else
+    {
         _e("The theme won't work correctly until you install the themosis plugin.", THEMOSISTHEME_TEXTDOMAIN);
-    	
 	}
 }
