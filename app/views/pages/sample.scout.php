@@ -2,6 +2,7 @@
 
 @section('content')
     <h2>{{ $page->post_title }}</h2>
+    {{ Input::get('custom', 'Nothing Prout') }}
 @stop
 
 @section('sidebar')

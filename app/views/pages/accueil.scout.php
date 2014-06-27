@@ -3,6 +3,7 @@
 @section('content')
 
 <h2>Main content: from the accueil scout view file.</h2>
+<p>{{ $name }}</p>
 
 <p>{{ Option::get('th-main-options', 'application-name') }}</p>
 <p>{{ Option::get('th-general', 'facebook') }}</p>

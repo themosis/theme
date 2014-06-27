@@ -1,10 +1,11 @@
 @include('header', array('prout' => 'Pschhhhit'))
 
     <h1>Hello {{ $name }}</h1>
+
     <p>Something new - {{ $var or 'Default value' }}</p>
-    @{{ This is a comment
+    {{-- This is a comment
 on multiple lines,
-I hope it works }}
+I hope it works --}}
     <p>{{ Meta::get(1, 'author') }}</p>
 
     @if(2 == 3)

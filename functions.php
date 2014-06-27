@@ -179,6 +179,22 @@ add_filter('themosisViewPaths', function($paths){
 });
 
 /*----------------------------------------------------
+| Register the theme asset paths.
+|
+|
+|
+|
+|---------------------------------------------------*/
+add_filter('themosisAssetPaths', function($paths){
+
+    $themeUrl = get_template_directory_uri().'/app/assets';
+    $paths[$themeUrl] = themosis_path('app').'assets';
+
+    return $paths;
+
+});
+
+/*----------------------------------------------------
 | Launch the application's theme
 |
 |
@@ -189,18 +205,14 @@ add_filter('themosisViewPaths', function($paths){
 function themosis_start_app(){
     
     if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded()) {
-    
-    	/**
-    	* Parse the queries before any output. This is parsed
-    	* by the ROUTE class.
-    	*/
+
     	do_action('themosis_parse_query', $arg = '');
     
     	require themosis_path('app').'routes.php';
     
-    	// Handle the output of each request
-    	do_action('themosis_render');
-        
+    	// Trigger output.
+    	do_action('themosis_run');
+
 	} else {
     	
         _e("The theme won't work correctly until you install the themosis plugin.", THEMOSISTHEME_TEXTDOMAIN);
