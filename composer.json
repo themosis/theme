@@ -10,6 +10,10 @@
             "homepage": "http://www.themosis.com/"
         }
     ],
+    "type": "wordpress-theme",
+    "require": {
+        "composer/installers" : "~1.0"
+    },
     "autoload": {
         "psr-4": { "": "app/controllers" }
     }
