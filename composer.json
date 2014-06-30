@@ -12,6 +12,7 @@
     ],
     "type": "wordpress-theme",
     "require": {
+        "symfony/class-loader": "v2.5.0",
         "composer/installers" : "~1.0"
     },
     "autoload": {
