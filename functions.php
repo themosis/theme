@@ -21,8 +21,6 @@ defined('THEMOSIS_VIEWS') ? THEMOSIS_VIEWS : define('THEMOSIS_VIEWS', get_templa
 // Textdomain
 defined('THEMOSISTHEME_TEXTDOMAIN') ? THEMOSISTHEME_TEXTDOMAIN : define('THEMOSISTHEME_TEXTDOMAIN', 'ThemosisTheme');
 
-// Implement user warning for missing class...
-if(!class_exists('Symfony\Component\ClassLoader\Psr4ClassLoader')) return;
 /*----------------------------------------------------
 | Themosis Theme class
 |
@@ -69,24 +67,38 @@ if (!class_exists('THFWK_ThemosisTheme'))
          * Trigger by the action hook 'after_switch_theme'.
          * Check if themosis data plugins is loaded.
          * If not, tell the user...
+         *
+         * @return void
     	*/
     	public function check()
-    	{   
+    	{
+            $symfony = class_exists('Symfony\Component\ClassLoader\ClassLoader');
     	    $themosis = class_exists('THFWK_Themosis');
-    	           	    
-        	$this->pluginsAreLoaded = $themosis;
+
+            // Symfony dependency and Themosis plugin classes are available.
+            if($symfony && $themosis)
+            {
+                $this->pluginsAreLoaded = $themosis;
+            }
+        	
+        	// Display a message to the user in the admin panel when he's activating the theme.
+        	if (!$themosis)
+            {
+            	add_action('admin_notices', array($this, 'displayMessage'));
+                return;
+        	}
+
+            // Display a message if Symfony Class Loader component is not available.
+            if (!$symfony)
+            {
+                add_action('admin_notices', array($this, 'displayNotice'));
+                return;
+            }
 
             // Autoload theme classes.
             $loader = new Symfony\Component\ClassLoader\Psr4ClassLoader();
-
             $loader->addPrefix('', 'app/controllers');
-
             $loader->register();
-        	
-        	// Display a message to the user in the admin panel when he's activating the theme.
-        	if (!$themosis) {
-            	add_action('admin_notices', array(&$this, 'displayMessage'));
-        	}
     	}
     	
     	/**
@@ -102,6 +114,15 @@ if (!class_exists('THFWK_ThemosisTheme'))
                 </div>
     		<?php
     	}
+
+        public function displayNotice()
+        {
+        ?>
+            <div id="message" class="error">
+                <p><?php _e(sprintf('<b>Themosis theme:</b> %s', "Symfony Class Loader component not found. Make sure to include it before proceeding."), THEMOSISTHEME_TEXTDOMAIN); ?></p>
+            </div>
+        <?php
+        }
     	
     	/**
          * Getter - Get the value of the property
@@ -222,6 +243,6 @@ function themosis_start_app(){
 	}
     else
     {
-        _e("The theme won't work correctly until you install the themosis plugin.", THEMOSISTHEME_TEXTDOMAIN);
+        _e("The theme won't work until you install the Themosis framework plugin correctly.", THEMOSISTHEME_TEXTDOMAIN);
 	}
 }
