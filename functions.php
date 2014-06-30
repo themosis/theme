@@ -21,6 +21,8 @@ defined('THEMOSIS_VIEWS') ? THEMOSIS_VIEWS : define('THEMOSIS_VIEWS', get_templa
 // Textdomain
 defined('THEMOSISTHEME_TEXTDOMAIN') ? THEMOSISTHEME_TEXTDOMAIN : define('THEMOSISTHEME_TEXTDOMAIN', 'ThemosisTheme');
 
+// Implement user warning for missing class...
+if(!class_exists('Symfony\Component\ClassLoader\Psr4ClassLoader')) return;
 /*----------------------------------------------------
 | Themosis Theme class
 |
@@ -75,7 +77,11 @@ if (!class_exists('THFWK_ThemosisTheme'))
         	$this->pluginsAreLoaded = $themosis;
 
             // Autoload theme classes.
-            require_once('vendor/autoload.php');
+            $loader = new Symfony\Component\ClassLoader\Psr4ClassLoader();
+
+            $loader->addPrefix('', 'app/controllers');
+
+            $loader->register();
         	
         	// Display a message to the user in the admin panel when he's activating the theme.
         	if (!$themosis) {
