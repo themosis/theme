@@ -1,6 +1,6 @@
 <?php
 /*
- * Themosis - A PHP framework for WordPress developers.
+ * Themosis - A framework for WordPress developers.
  * Based on php 5.3.3 features and above.
  *
  * @author  Julien Lambé <julien@jlambe.be>
@@ -9,20 +9,20 @@
 /*----------------------------------------------------*/
 // Define some globals used along the theme.
 /*---------------------------------------------------*/
-// The directory separator
+// The directory separator.
 defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 
-// Asset directory path
+// Asset directory path.
 defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/app/assets');
 
-// Views directory path
+// Views directory path.
 defined('THEMOSIS_VIEWS') ? THEMOSIS_VIEWS : define('THEMOSIS_VIEWS', get_template_directory_uri().'/app/views');
 
-// Textdomain
-defined('THEMOSISTHEME_TEXTDOMAIN') ? THEMOSISTHEME_TEXTDOMAIN : define('THEMOSISTHEME_TEXTDOMAIN', 'ThemosisTheme');
+// Textdomain.
+defined('THEMOSISTHEME_TEXTDOMAIN') ? THEMOSISTHEME_TEXTDOMAIN : define('THEMOSISTHEME_TEXTDOMAIN', 'themosis-theme');
 
 /*----------------------------------------------------
-| Themosis Theme class
+| Themosis Theme class.
 |
 | Check if plugins are loaded. If not, warn the user
 | to activate them before continuing using this theme.
@@ -54,6 +54,8 @@ if (!class_exists('THFWK_ThemosisTheme'))
         
         /**
     	 * Init the datas class.
+         *
+         * @return \THFWK_ThemosisTheme
     	*/
     	public static function getInstance()
     	{
@@ -105,6 +107,8 @@ if (!class_exists('THFWK_ThemosisTheme'))
          * Display a message to the user to explain him/her
          * to activate the core and datas plugins that come
          * in the framework.
+         *
+         * @return void
     	*/
     	public function displayMessage()
     	{
@@ -115,6 +119,12 @@ if (!class_exists('THFWK_ThemosisTheme'))
     		<?php
     	}
 
+        /**
+         * Display a notice to administrators when the
+         * Symfony Class Loader component is missing.
+         *
+         * @return void
+         */
         public function displayNotice()
         {
         ?>
@@ -126,7 +136,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
     	
     	/**
          * Getter - Get the value of the property
-         * pluginsAreLoaded
+         * pluginsAreLoaded.
          *
          * @return boolean
     	*/
@@ -138,7 +148,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
 }
 
 /*----------------------------------------------------
-| Instantiate the theme class
+| Instantiate the theme class.
 |
 |
 |
@@ -223,7 +233,7 @@ add_filter('themosisAssetPaths', function($paths){
 });
 
 /*----------------------------------------------------
-| Launch the application's theme
+| Launch the application's theme.
 |
 |
 |

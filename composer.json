@@ -14,8 +14,5 @@
     "require": {
         "symfony/class-loader": "v2.5.0",
         "composer/installers" : "~1.0"
-    },
-    "autoload": {
-        "psr-4": { "": "app/controllers" }
     }
 }
