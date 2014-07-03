@@ -15,11 +15,8 @@ defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 // Asset directory path.
 defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/app/assets');
 
-// Views directory path.
-defined('THEMOSIS_VIEWS') ? THEMOSIS_VIEWS : define('THEMOSIS_VIEWS', get_template_directory_uri().'/app/views');
-
 // Textdomain.
-defined('THEMOSISTHEME_TEXTDOMAIN') ? THEMOSISTHEME_TEXTDOMAIN : define('THEMOSISTHEME_TEXTDOMAIN', 'themosis-theme');
+defined('THEMOSIS_THEME_TEXTDOMAIN') ? THEMOSIS_THEME_TEXTDOMAIN : define('THEMOSIS_THEME_TEXTDOMAIN', 'themosis-theme');
 
 /*----------------------------------------------------
 | Themosis Theme class.
@@ -114,7 +111,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
     	{
     		?>
     		    <div id="message" class="error">
-                    <p><?php _e("You first need to activate the <b>Themosis</b> plugin in order to use this theme.", THEMOSISTHEME_TEXTDOMAIN); ?></p>
+                    <p><?php _e("You first need to activate the <b>Themosis</b> plugin in order to use this theme.", THEMOSIS_THEME_TEXTDOMAIN); ?></p>
                 </div>
     		<?php
     	}
@@ -129,7 +126,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
         {
         ?>
             <div id="message" class="error">
-                <p><?php _e(sprintf('<b>Themosis theme:</b> %s', "Symfony Class Loader component not found. Make sure to include it before proceeding."), THEMOSISTHEME_TEXTDOMAIN); ?></p>
+                <p><?php _e(sprintf('<b>Themosis theme:</b> %s', "Symfony Class Loader component not found. Make sure to include it before proceeding."), THEMOSIS_THEME_TEXTDOMAIN); ?></p>
             </div>
         <?php
         }
@@ -253,6 +250,6 @@ function themosis_start_app(){
 	}
     else
     {
-        _e("The theme won't work until you install the Themosis framework plugin correctly.", THEMOSISTHEME_TEXTDOMAIN);
+        _e("The theme won't work until you install the Themosis framework plugin correctly.", THEMOSIS_THEME_TEXTDOMAIN);
 	}
 }
