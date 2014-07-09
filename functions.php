@@ -94,9 +94,9 @@ if (!class_exists('THFWK_ThemosisTheme'))
                 return;
             }
 
-            // Autoload theme classes.
+            // Autoload PSR-4 classes.
             $loader = new Symfony\Component\ClassLoader\Psr4ClassLoader();
-            $loader->addPrefix('', 'app/controllers');
+            $loader->addPrefix('', __DIR__.DS.'app'.DS.'controllers');
             $loader->register();
     	}
     	

@@ -8,8 +8,10 @@
  * http://codex.wordpress.org/Conditional_Tags
  *
  */
-Route::get('home', function(){
+/*Route::get('home', function(){
 
     return sprintf('<h1>%s</h1>', "Congratulations! You're running the Themosis framework.");
 
-});
+});*/
+
+Route::get('home', 'HomeController@index');
