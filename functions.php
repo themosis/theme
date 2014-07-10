@@ -80,7 +80,8 @@ if (!class_exists('THFWK_ThemosisTheme'))
                 $this->pluginsAreLoaded = $themosis;
             }
 
-        	// Display a message to the user in the admin panel when he's activating the theme.
+        	// Display a message to the user in the admin panel when he's activating the theme
+            // if the plugin is not available.
         	if (!$themosis)
             {
             	add_action('admin_notices', array($this, 'displayMessage'));
@@ -121,7 +122,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
         {
         ?>
             <div id="message" class="error">
-                <p><?php _e(sprintf('<b>Themosis theme:</b> %s', "Symfony Class Loader component not found. Make sure to include it before proceeding."), THEMOSIS_THEME_TEXTDOMAIN); ?></p>
+                <p><?php _e(sprintf('<b>Themosis theme:</b> %s', "Symfony Class Loader component not found. Make sure the Themosis plugin includes it before proceeding."), THEMOSIS_THEME_TEXTDOMAIN); ?></p>
             </div>
         <?php
         }
