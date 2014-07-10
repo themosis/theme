@@ -164,7 +164,7 @@ add_filter('themosis_framework_paths', function($paths){
    $paths['base'] = realpath(__DIR__).DS;
    
    // Application path
-   $paths['app'] = realpath(__DIR__).DS.'app'.DS;
+   $paths['theme'] = realpath(__DIR__).DS.'app'.DS;
    
    return $paths;
     
@@ -172,7 +172,7 @@ add_filter('themosis_framework_paths', function($paths){
 
 /*----------------------------------------------------
 | Set the theme's configuration files.
-| 'app' key is set to define the framework path.
+| 'theme' key is set to define the framework path.
 |
 |
 |
@@ -181,7 +181,7 @@ add_filter('themosis_framework_paths', function($paths){
 add_action('themosis_configurations', function(){
    
    $themeConfigs = array(
-       'app'    => array(
+       'theme'    => array(
            'controllers',
            'menus',
            'sidebars',
@@ -204,7 +204,7 @@ add_action('themosis_configurations', function(){
 |---------------------------------------------------*/
 add_filter('themosisViewPaths', function($paths){
 
-    $paths[] = themosis_path('app').'views'.DS;
+    $paths[] = themosis_path('theme').'views'.DS;
 
     return $paths;
 
@@ -220,7 +220,7 @@ add_filter('themosisViewPaths', function($paths){
 add_filter('themosisAssetPaths', function($paths){
 
     $themeUrl = get_template_directory_uri().'/app/assets';
-    $paths[$themeUrl] = themosis_path('app').'assets';
+    $paths[$themeUrl] = themosis_path('theme').'assets';
 
     return $paths;
 
@@ -240,7 +240,7 @@ function themosis_start_app(){
     {
     	do_action('themosis_parse_query', $arg = '');
     
-    	require themosis_path('app').'routes.php';
+    	require themosis_path('theme').'routes.php';
     
     	// Trigger output.
     	do_action('themosis_run');
