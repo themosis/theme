@@ -79,7 +79,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
             {
                 $this->pluginsAreLoaded = $themosis;
             }
-        	
+
         	// Display a message to the user in the admin panel when he's activating the theme.
         	if (!$themosis)
             {
@@ -93,11 +93,6 @@ if (!class_exists('THFWK_ThemosisTheme'))
                 add_action('admin_notices', array($this, 'displayNotice'));
                 return;
             }
-
-            // Autoload PSR-4 classes.
-            $loader = new Symfony\Component\ClassLoader\Psr4ClassLoader();
-            $loader->addPrefix('', __DIR__.DS.'app'.DS.'controllers');
-            $loader->register();
     	}
     	
     	/**
@@ -186,6 +181,7 @@ add_action('themosis_configurations', function(){
    
    $themeConfigs = array(
        'app'    => array(
+           'controllers',
            'menus',
            'sidebars',
            'supports',
