@@ -10,6 +10,7 @@
 </head>
 <body>
 <h1>Themosis - Home</h1>
+<p>{{ THEMOSIS_ASSETS }}</p>
 @foreach($posts as $post)
 
 <h3>{{ $post->post_title }}</h3>

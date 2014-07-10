@@ -12,10 +12,10 @@
 // The directory separator.
 defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 
-// Asset directory path.
+// Asset directory URL.
 defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/app/assets');
 
-// Textdomain.
+// Theme Textdomain.
 defined('THEMOSIS_THEME_TEXTDOMAIN') ? THEMOSIS_THEME_TEXTDOMAIN : define('THEMOSIS_THEME_TEXTDOMAIN', 'themosis-theme');
 
 /*----------------------------------------------------
