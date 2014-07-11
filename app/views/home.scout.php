@@ -16,6 +16,12 @@
 <h3>{{ $post->post_title }}</h3>
 
 @endforeach
+
+@loop(array('post_type' => 'post', 'posts_per_page' => -1, 'post_status' => 'publish'))
+
+    <h3>Second loop: {{ Loop::title() }}</h3>
+
+@endloop
 <?php wp_footer(); ?>
 </body>
 </html>
