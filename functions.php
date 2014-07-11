@@ -46,7 +46,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
         private function __construct()
         {
         	// Check if plugins are loaded
-        	add_action('after_setup_theme', array(&$this, 'check'));
+        	add_action('after_setup_theme', array($this, 'check'));
         }
         
         /**
