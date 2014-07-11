@@ -8,24 +8,8 @@
  * http://codex.wordpress.org/Conditional_Tags
  *
  */
-/*Route::get('home', function(){
+Route::get('home', function(){
 
-    tp(get_declared_classes());
+    return sprintf('<h1>%s</h1>', "Congratulations! The Themosis framework is running.");
 
-    return sprintf('<h1>%s</h1>', "Congratulations! You're running the Themosis framework.");
-
-});*/
-
-/*Route::get('home', function(){
-
-    return View::make('home', array(
-
-        'posts' => Post::all()
-
-    ));
-
-});*/
-
-Route::get('home', 'HomeController@index');
-
-Route::get('page', array('sample-page', 'uses' => 'SampleController@index'));
+});

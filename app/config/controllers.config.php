@@ -9,10 +9,6 @@ return array(
      *
      * By default, autoload the BaseController.
      */
-    'BaseController' => themosis_path('theme').'controllers'.DS.'BaseController.php',
-
-    'HomeController' => themosis_path('theme').'controllers'.DS.'HomeController.php',
-
-    'SampleController'  => themosis_path('theme').'controllers'.DS.'SampleController.php'
+    'BaseController' => themosis_path('theme').'controllers'.DS.'BaseController.php'
 
 );

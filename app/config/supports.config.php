@@ -1,4 +1,4 @@
-<?php defined('DS') or die('No direct script access.');
+<?php
 
 return array(
 
@@ -58,5 +58,3 @@ return array(
 	//),
 
 );
-
-?>
