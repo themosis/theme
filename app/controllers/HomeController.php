@@ -2,7 +2,7 @@
 
 class HomeController extends BaseController {
 
-    public function index()
+    public function index($post, $query)
     {
         return View::make('home', array(
 

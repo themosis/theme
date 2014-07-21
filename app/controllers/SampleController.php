@@ -7,7 +7,7 @@ class SampleController extends BaseController
         Asset::add('jl-color', 'css/color.css', array(), '1.0', 'all');
     }
 
-    public function index()
+    public function index($post, $query)
     {
         return View::make('pages.sample');
     }

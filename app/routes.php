@@ -16,16 +16,19 @@
 
 });*/
 
-/*Route::get('home', function(){
+Route::get('home', function(){
 
-    return View::make('home', array(
+    return View::make('home');
 
-        'posts' => Post::all()
+});
 
+//Route::get('home', 'HomeController@index');
+
+Route::get('front', function($post)
+{
+    return View::make('pages.front', array(
+        'page'  => $post
     ));
-
-});*/
-
-Route::get('home', 'HomeController@index');
+});
 
 Route::get('page', array('sample-page', 'uses' => 'SampleController@index'));
