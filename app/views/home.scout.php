@@ -11,21 +11,18 @@
 <body>
 <h1>Themosis - Home</h1>
 
-@if(have_posts())
-    @while(have_posts())
-        <?php the_post(); ?>
-        <h3>{{ Loop::title() }}</h3>
-        {{ Loop::content() }}
-    @endwhile
-@endif
+@loop
+    <h3>{{ Loop::title() }}</h3>
+    {{ Loop::content() }}
+@endloop
 
-<p>{{ THEMOSIS_ASSETS }}</p>
+<p>{{ themosis_assets() }}</p>
 
-@loop(array('post_type' => 'post', 'posts_per_page' => -1, 'post_status' => 'publish'))
+@query(array('post_type' => 'post', 'posts_per_page' => -1, 'post_status' => 'publish'))
 
     <h3>Second loop: {{ Loop::title() }}</h3>
 
-@endloop
+@endquery
 <?php wp_footer(); ?>
 </body>
 </html>

@@ -9,19 +9,16 @@
     <?php wp_head(); ?>
 </head>
 <body>
-@if(have_posts())
-    @while(have_posts())
-        <?php the_post(); ?>
-        <h1>{{ Loop::title() }}</h1>
-        {{ the_content() }}
-    @endwhile
-@endif
+@loop
+    <h1>{{ Loop::title() }}</h1>
+    {{ the_content() }}
+@endloop
 
-@loop(array('post_type' => 'post', 'posts_per_page' => -1, 'post_status' => 'publish'))
+@query(array('post_type' => 'post', 'posts_per_page' => -1, 'post_status' => 'publish'))
 
 <h3>Second loop: {{ Loop::title() }}</h3>
 
-@endloop
+@endquery
 <?php wp_footer(); ?>
 </body>
 </html>
