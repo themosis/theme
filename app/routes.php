@@ -31,4 +31,4 @@ Route::get('front', function($post)
     ));
 });
 
-Route::get('page', array('sample-page', 'uses' => 'SampleController@index'));
+Route::any('page', array('sample-page', 'uses' => 'SampleController@index'));

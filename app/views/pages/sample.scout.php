@@ -11,6 +11,21 @@
 <body>
 <h1>Sample Page</h1>
 <p>Hello World!</p>
+
+<div class="form">
+    <h2>Basic form</h2>
+    {{ Form::open() }}
+
+    <p>{{ Form::label('acteur', 'Acteur:') }}</p>
+    <p>{{ Form::text('acteur', $inputs['acteur'], array('id' => 'acteur')) }}</p>
+    <p>{{ Form::label('director', 'Director email:') }}</p>
+    <p>{{ Form::text('director', $inputs['director'], array('id' => 'director')) }}</p>
+
+    <p>{{ Form::submit('submit', 'Submit') }}</p>
+
+    {{ Form::close() }}
+</div>
+
 <?php wp_footer(); ?>
 </body>
 </html>
