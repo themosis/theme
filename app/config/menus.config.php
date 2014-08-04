@@ -1,4 +1,4 @@
-<?php defined('DS') or die('No direct script access.');
+<?php
 
 return array(
 
@@ -9,8 +9,6 @@ return array(
 	* http://codex.wordpress.org/Function_Reference/register_nav_menus
 	* 
 	*/
-	'header-nav'	=> 'Header navigation'
+	'header-nav'	=> __('Header navigation', THEMOSIS_THEME_TEXTDOMAIN)
 
 );
-
-?>

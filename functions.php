@@ -107,7 +107,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
     	{
     		?>
     		    <div id="message" class="error">
-                    <p><?php _e("You first need to activate the <b>Themosis</b> plugin in order to use this theme.", THEMOSIS_THEME_TEXTDOMAIN); ?></p>
+                    <p><?php _e("You first need to activate the <b>Themosis framework</b> in order to use this theme.", THEMOSIS_THEME_TEXTDOMAIN); ?></p>
                 </div>
     		<?php
     	}
@@ -160,30 +160,41 @@ THFWK_ThemosisTheme::getInstance();
 |---------------------------------------------------*/
 add_filter('themosis_framework_paths', function($paths){
    
-   // Theme base path
-   $paths['base'] = realpath(__DIR__).DS;
-   
-   // Application path
-   $paths['theme'] = realpath(__DIR__).DS.'app'.DS;
-   
-   return $paths;
+    // Theme base path.
+    $paths['base'] = realpath(__DIR__).DS;
+
+    // Application path
+    $paths['app'] = realpath(__DIR__).DS.'app'.DS;
+
+    // Application admin folder
+    $paths['admin'] = realpath(__DIR__).DS.'app'.DS.'admin'.DS;
+
+    // Application storage directory
+    $paths['storage'] = realpath(__DIR__).DS.'app'.DS.'storage'.DS;
+
+    return $paths;
     
 });
 
 /*----------------------------------------------------
 | Set the theme's configuration files.
-| 'theme' key is set to define the framework path.
+| 'app' key is set to define the framework path.
 |
 |
 |
 |
 |---------------------------------------------------*/
 add_action('themosis_configurations', function(){
-   
+
    $themeConfigs = array(
-       'theme'    => array(
+       'app'    => array(
+           'application',
+           'constants',
            'controllers',
+           'errors',
+           'images',
            'menus',
+           'models',
            'sidebars',
            'supports',
            'templates'
@@ -204,7 +215,7 @@ add_action('themosis_configurations', function(){
 |---------------------------------------------------*/
 add_filter('themosisViewPaths', function($paths){
 
-    $paths[] = themosis_path('theme').'views'.DS;
+    $paths[] = themosis_path('app').'views'.DS;
 
     return $paths;
 
@@ -220,14 +231,116 @@ add_filter('themosisViewPaths', function($paths){
 add_filter('themosisAssetPaths', function($paths){
 
     $themeUrl = get_template_directory_uri().'/app/assets';
-    $paths[$themeUrl] = themosis_path('theme').'assets';
+    $paths[$themeUrl] = themosis_path('app').'assets';
 
     return $paths;
 
 });
 
 /*----------------------------------------------------
-| Launch the application's theme.
+| Bootstrap theme.
+|
+|
+|
+|
+|---------------------------------------------------*/
+add_action('themosis_bootstrap', function(){
+
+    /*----------------------------------------------------
+    | Handle all errors, warnings, exceptions
+    |
+    |---------------------------------------------------*/
+    set_exception_handler(function($e)
+    {
+        Themosis\Error\Error::exception($e);
+    });
+
+    set_error_handler(function($code, $error, $file, $line)
+    {
+        // Check if the class exists
+        // Otherwise WP can't find it when
+        // constructing its "Menus" page
+        // under appearance in administration.
+        if (class_exists('Themosis\Error\Error')) {
+            Themosis\Error\Error::native($code, $error, $file, $line);
+        }
+    });
+
+    if (Themosis\Configuration\Error::get('shutdown')) {
+        register_shutdown_function(function()
+        {
+            Themosis\Error\Error::shutdown();
+        });
+    }
+
+    // Passing in the value -1 will show every
+    // possible error, even when new levels and
+    // constants are added in future PHP versions.
+    error_reporting(Themosis\Configuration\Error::get('report'));
+
+    /*----------------------------------------------------
+    | Set application classes' alias
+    |
+    |---------------------------------------------------*/
+    foreach (Themosis\Configuration\Application::get('aliases') as $namespace => $className){
+        class_alias($namespace, $className);
+    }
+
+    /*----------------------------------------------------
+    | Themosis textdomain
+    |
+    |---------------------------------------------------*/
+    defined('THEMOSIS_TEXTDOMAIN') ? THEMOSIS_TEXTDOMAIN : define('THEMOSIS_TEXTDOMAIN', Themosis\Configuration\Application::get('textdomain'));
+
+    /*----------------------------------------------------
+    | Run framework default configuration.
+    |
+    |---------------------------------------------------*/
+    Themosis\Configuration\Configuration::make();
+
+    /*----------------------------------------------------
+    | Application constants
+    |
+    |---------------------------------------------------*/
+    Themosis\Configuration\Constant::load();
+
+    /*----------------------------------------------------
+    | Themosis Page Templates.
+    |
+    |---------------------------------------------------*/
+    Themosis\Configuration\Template::init();
+
+    /*----------------------------------------------------
+    | Register image sizes.
+    |
+    |---------------------------------------------------*/
+    Themosis\Configuration\Images::install();
+
+    /*----------------------------------------------------
+    | Parse application files and include them.
+    | Extends the 'functions.php' file by loading
+    | files located under the 'admin' folder.
+    |
+    |---------------------------------------------------*/
+    Themosis\Core\AdminLoader::add();
+    Themosis\Core\WidgetLoader::add();
+
+    /*----------------------------------------------------
+    | Load custom widgets
+    |
+    |---------------------------------------------------*/
+    Themosis\Core\WidgetLoader::load();
+
+    /*----------------------------------------------------
+    | Install global JS variables
+    |
+    |---------------------------------------------------*/
+    Themosis\Ajax\Ajax::set();
+
+});
+
+/*----------------------------------------------------
+| Trigger the application's theme output.
 |
 |
 |
@@ -240,7 +353,7 @@ function themosis_start_app(){
     {
     	do_action('themosis_parse_query', $arg = '');
     
-    	require themosis_path('theme').'routes.php';
+    	require themosis_path('app').'routes.php';
     
     	// Trigger output.
     	do_action('themosis_run');

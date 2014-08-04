@@ -1,4 +1,4 @@
-<?php defined('DS') or die('No direct script access.');
+<?php
 
 return array(
 
@@ -9,9 +9,9 @@ return array(
 	*/
 	array(
 
-		'name'			=> 'First sidebar',
+		'name'			=> __('First sidebar', THEMOSIS_THEME_TEXTDOMAIN),
 		'id'			=> 'first-sidebar',
-		'description'	=> 'Area of first sidebar',
+		'description'	=> __('Area of first sidebar', THEMOSIS_THEME_TEXTDOMAIN),
 		'before_widget'	=> '<div>',
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',
@@ -20,5 +20,3 @@ return array(
 	)
 
 );
-
-?>
