@@ -12,8 +12,4 @@ Route::get('home', function(){
 
     return sprintf('<h1>%s</h1>', "Congratulations! The Themosis framework is running.");
 
-<<<<<<< HEAD
 });
-=======
-Route::any('page', array('sample-page', 'uses' => 'SampleController@index'));
->>>>>>> refs/heads/dev
