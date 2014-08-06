@@ -10,6 +10,6 @@
  */
 Route::get('home', function(){
 
-    return sprintf('<h1>%s</h1>', "Congratulations! The Themosis framework is running.");
+    return View::make('welcome');
 
 });
