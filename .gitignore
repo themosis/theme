@@ -1,5 +1,8 @@
-/vendor
+# Miscellaneous
 .DS_Store
 Thumbs.db
+.idea/
+
+# Theme
+vendor/
 composer.lock
-/.idea
