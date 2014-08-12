@@ -303,17 +303,17 @@ function themosis_start_app(){
     
     if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded())
     {
-    	do_action('themosis_parse_query', $arg = '');
+        do_action('themosis_parse_query', $arg = '');
 
         /*----------------------------------------------------*/
         // Application routes.
         /*----------------------------------------------------*/
-    	require themosis_path('app').'routes.php';
+        require themosis_path('app').'routes.php';
 
         /*----------------------------------------------------*/
         // Run application and return a response.
         /*----------------------------------------------------*/
-    	do_action('themosis_run');
+        do_action('themosis_run');
 	}
     else
     {
