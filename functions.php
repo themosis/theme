@@ -174,7 +174,6 @@ add_action('themosis_configurations', function(){
            'application',
            'constants',
            'controllers',
-           'errors',
            'images',
            'menus',
            'models',
@@ -234,7 +233,7 @@ add_action('themosis_bootstrap', function(){
         }
     });
 
-    if (Themosis\Configuration\Error::get('shutdown')) {
+    if (defined('THEMOSIS_ERROR_SHUTDOWN') && THEMOSIS_ERROR_SHUTDOWN) {
         register_shutdown_function(function()
         {
             Themosis\Error\Error::shutdown();
@@ -242,7 +241,8 @@ add_action('themosis_bootstrap', function(){
     }
 
     // Passing in the value -1 will show every errors.
-    error_reporting(Themosis\Configuration\Error::get('report'));
+    $report = defined('THEMOSIS_ERROR_REPORT') ? THEMOSIS_ERROR_REPORT : 0;
+    error_reporting($report);
 
     /*----------------------------------------------------*/
     // Set class aliases.
@@ -303,17 +303,17 @@ function themosis_start_app(){
     
     if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded())
     {
-    	do_action('themosis_parse_query', $arg = '');
+        do_action('themosis_parse_query', $arg = '');
 
         /*----------------------------------------------------*/
         // Application routes.
         /*----------------------------------------------------*/
-    	require themosis_path('app').'routes.php';
+        require themosis_path('app').'routes.php';
 
         /*----------------------------------------------------*/
         // Run application and return a response.
         /*----------------------------------------------------*/
-    	do_action('themosis_run');
+        do_action('themosis_run');
 	}
     else
     {
