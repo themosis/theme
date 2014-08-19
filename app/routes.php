@@ -29,6 +29,12 @@ Route::get('front', function($post)
     ));
 });
 
+Route::get('page', array(array('welcome', 101), function($post){
+
+    return "Welcome everyone to the Themosis Magic Land!";
+
+}));
+
 Route::any('page', array('sample-page', 'uses' => 'SampleController@index'));
 
 /*Route::get('404', function(){
