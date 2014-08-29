@@ -31,6 +31,7 @@ PostType::make('jl_books', 'Books', 'Book')->set();
 Metabox::make('Details', 'jl_books')->set(array(
     Field::media('cover', array('type' => 'image')),
     Field::infinite('gallery', array(
-        Field::media('gallery_item')
+        Field::media('gallery_item'),
+        Field::text('subtitle')
     ))
 ));
