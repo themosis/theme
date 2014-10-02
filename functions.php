@@ -3,8 +3,8 @@
  * Themosis - A framework for WordPress developers.
  * Based on php 5.3.3 features and above.
  *
- * @author  Julien Lambé <julien@jlambe.be>
- * @link 	http://www.jlambe.be/
+ * @author  Julien Lambé <julien@themosis.com>
+ * @link 	http://www.themosis.com/
  */
 
 /*----------------------------------------------------*/
