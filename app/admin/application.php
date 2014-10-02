@@ -15,6 +15,10 @@ $metabox = Metabox::make('Link', 'post')->set(array(
     Field::text('actor'),
     Field::infinite('things', array(
         Field::text('sock')
+    )),
+    Field::infinite('stuffs', array(
+        Field::text('stuff'),
+        Field::media('image')
     ))
 
 ));
