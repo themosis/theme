@@ -172,7 +172,7 @@
                 <div class="container">
                     <h2>{{ __('Get started:', THEMOSIS_TEXTDOMAIN) }}</h2>
                     <p>{{ __('Check the documentation and build your next WordPress website/application.', THEMOSIS_TEXTDOMAIN) }}</p>
-                    <a href="http://framework.themosis.com/documentation/" target="_blank" title="{{ __('Themosis framework documentation', THEMOSIS_TEXTDOMAIN) }}">{{ __('View documentation', THEMOSIS_TEXTDOMAIN) }}</a>
+                    <a href="http://framework.themosis.com/docs/" target="_blank" title="{{ __('Themosis framework documentation', THEMOSIS_TEXTDOMAIN) }}">{{ __('View documentation', THEMOSIS_TEXTDOMAIN) }}</a>
                 </div>
             </div>
             <div id="links">
