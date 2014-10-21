@@ -13,12 +13,14 @@ $metabox = Metabox::make('Link', 'post')->set(array(
 
     Field::select('related', array($posts), false, array('title' => 'Related post')),
     Field::text('actor'),
+    Field::password('secret', array('title' => 'Mot secret')),
     Field::infinite('things', array(
         Field::text('sock')
     )),
     Field::infinite('stuffs', array(
         Field::text('stuff'),
-        Field::media('image')
+        Field::media('image'),
+        Field::password('key')
     ))
 
 ));
