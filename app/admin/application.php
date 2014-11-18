@@ -11,26 +11,58 @@ foreach(PostModel::all() as $post)
 
 $metabox = Metabox::make('Link', 'post')->set(array(
 
-    Field::select('related', array($posts), false, array('title' => 'Related post')),
-    Field::text('actor'),
-    Field::password('secret', array('title' => 'Mot secret')),
+    Field::text('uh'),
+    Field::textarea('story', array('default' => 'A long time ago..........')),
+    Field::media('cover', array('default' => '166')),
+    Field::editor('biography', array(), array('default' => 'Some default text for your biography.')),
+    Field::checkbox('toggle', array('default' => false)),
+    Field::checkboxes('colors', array('red', 'green', 'blue'), array('default' => 'green')),
+    Field::checkboxes('couleurs', array('rouge', 'vert', 'bleu'), array('default' => array('vert', 'bleu'))),
+    Field::checkboxes('farben', array('rose', 'pink', 'jaune')),
+    Field::radio('size', array('small', 'medium', 'large'), array('default' => 'large')),
+    Field::radio('length', array('tiny', 'normal', 'huge'), array('default' => array('tiny'))),
+    Field::radio('gender', array('woman', 'man')),
+    Field::select('related', array($posts), false, array('title' => 'Related post', 'default' => 115)),
+    Field::select('country', array(
+        array(
+            'belgium',
+            'france',
+            'portugal'
+        )
+    ), false, array('default' => 2)),
+    Field::select('countries', array(
+        array(
+            'belgium',
+            'france',
+            'portugal'
+        )
+    ), true, array('default' => array(1,2))),
+    Field::select('area', array(
+        array(
+            'be' => 'Belgium',
+            'fr' => 'France',
+            'pt' => 'Portugal'
+        )
+    ), false, array('default' => 'pt')),
+    Field::text('actor', array('default' => 'Marcel')),
+    Field::password('secret', array('title' => 'Mot secret', 'default' => 'passworddd')),
     Field::infinite('things', array(
-        Field::text('sock')
+        Field::text('sock', array('default' => 'Super chaussette'))
     )),
     Field::infinite('stuffs', array(
-        Field::text('stuff'),
-        Field::media('image'),
-        Field::password('key')
+        Field::text('stuff', array('default' => 'Un truc')),
+        Field::media('image', array('default' => 166)),
+        Field::password('key', array('default' => 'secret'))
     ))
 
 ));
 
-$metabox->validate(array(
+/*$metabox->validate(array(
     'actor'     => array('textfield', 'min:5'),
     'things'    => array(
         'sock'  => array('num')
     )
-));
+));*/
 
 PostType::make('jl_books', 'Books', 'Book')->set();
 
@@ -41,3 +73,6 @@ Metabox::make('Details', 'jl_books')->set(array(
         Field::text('subtitle')
     ))
 ));
+
+Taxonomy::make('publisher', 'jl_books', 'Publishers', 'Publisher')->set()->bind();
+Taxonomy::make('author', array('jl_books', 'post'), 'Authors', 'Author')->set()->bind();
