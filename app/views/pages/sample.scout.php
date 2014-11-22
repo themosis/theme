@@ -12,6 +12,8 @@
 <h1>Sample Page</h1>
 <p>Hello World!</p>
 
+<p>{{ $prout }}</p>
+
 <div class="form">
     <h2>Basic form</h2>
     {{ Form::open() }}

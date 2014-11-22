@@ -8,9 +8,12 @@
  * http://codex.wordpress.org/Conditional_Tags
  *
  */
+
+View::share('prout', 'some data');
+
 Route::get('home', function(){
 
-    return View::make('welcome');
+    return View::make('home');
 
 });
 

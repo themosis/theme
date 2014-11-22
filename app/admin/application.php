@@ -57,12 +57,12 @@ $metabox = Metabox::make('Link', 'post')->set(array(
 
 ));
 
-/*$metabox->validate(array(
+$metabox->validate(array(
     'actor'     => array('textfield', 'min:5'),
     'things'    => array(
         'sock'  => array('num')
     )
-));*/
+));
 
 PostType::make('jl_books', 'Books', 'Book')->set();
 

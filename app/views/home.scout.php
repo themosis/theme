@@ -9,7 +9,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
-<h1>Themosis - Home</h1>
+<h1>Themosis - Home - {{ $prout }}</h1>
 
 @loop
     <h3>{{ Loop::title() }}</h3>
