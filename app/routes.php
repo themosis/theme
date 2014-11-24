@@ -16,3 +16,15 @@ Route::get('home', function(){
     return View::make('home');
 
 });
+
+Route::any('page', array('sample-page', function()
+{
+    $inputs = Input::all();
+
+    $values = Validator::multiple($inputs, array(
+        'acteur'    => array('min:5'),
+        'director'  => array('email')
+    ));
+
+    return View::make('pages.sample', array('inputs' => $values));
+}));

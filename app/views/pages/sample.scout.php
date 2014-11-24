@@ -13,6 +13,11 @@
 <p>Hello World!</p>
 
 <p>{{ $prout }}</p>
+<ul>
+    @foreach($shared as $letter)
+        <li>{{ $letter }}</li>
+    @endforeach
+</ul>
 
 <div class="form">
     <h2>Basic form</h2>

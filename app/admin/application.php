@@ -14,7 +14,7 @@ $metabox = Metabox::make('Link', 'post')->set(array(
     Field::text('uh'),
     Field::textarea('story', array('default' => 'A long time ago..........')),
     Field::media('cover', array('default' => '166')),
-    Field::editor('biography', array(), array('default' => 'Some default text for your biography.')),
+    //Field::editor('biography', array(), array('default' => 'Some default text for your biography.')),
     Field::checkbox('toggle', array('default' => false)),
     Field::checkboxes('colors', array('red', 'green', 'blue'), array('default' => 'green')),
     Field::checkboxes('couleurs', array('rouge', 'vert', 'bleu'), array('default' => array('vert', 'bleu'))),
@@ -76,3 +76,5 @@ Metabox::make('Details', 'jl_books')->set(array(
 
 Taxonomy::make('publisher', 'jl_books', 'Publishers', 'Publisher')->set()->bind();
 Taxonomy::make('author', array('jl_books', 'post'), 'Authors', 'Author')->set()->bind();
+
+View::share('shared', array('a', 'b', 'c'));

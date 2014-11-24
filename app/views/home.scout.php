@@ -18,7 +18,7 @@
 
 <p>{{ themosis_assets() }}</p>
 
-@query(array('post_type' => 'post', 'posts_per_page' => -1, 'post_status' => 'publish'))
+@query(array('post_type' => 'post', 'posts_per_page' => 3, 'post_status' => 'publish'))
 
     <h3>Second loop: {{ Loop::title() }}</h3>
 
