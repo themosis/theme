@@ -197,7 +197,7 @@ add_action('themosis_configurations', function(){
 /*----------------------------------------------------*/
 add_filter('themosisViewPaths', function($paths){
 
-    $paths[] = themosis_path('app').DS.'views'.DS;
+    $paths[] = themosis_path('app').'views'.DS;
 
     return $paths;
 
@@ -208,7 +208,7 @@ add_filter('themosisViewPaths', function($paths){
 /*----------------------------------------------------*/
 add_filter('themosisAssetPaths', function($paths){
 
-    $paths[THEMOSIS_ASSETS] = themosis_path('app').DS.'assets';
+    $paths[THEMOSIS_ASSETS] = themosis_path('app').'assets';
 
     return $paths;
 
@@ -315,7 +315,7 @@ function themosis_start_app(){
         /*----------------------------------------------------*/
         // Application routes.
         /*----------------------------------------------------*/
-        require themosis_path('app').DS.'routes.php';
+        require themosis_path('app').'routes.php';
 
         /*----------------------------------------------------*/
         // Run application and return a response.
