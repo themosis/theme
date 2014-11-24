@@ -146,29 +146,34 @@ THFWK_ThemosisTheme::getInstance();
 /*----------------------------------------------------*/
 // Set theme's paths.
 /*----------------------------------------------------*/
-add_filter('themosis_framework_paths', function($paths){
-   
-    // Theme base path.
-    $paths['base'] = realpath(__DIR__).DS;
+add_filter('themosis_framework_paths', 'themosis_setApplicationPaths');
+add_filter('themosis_application_paths', 'themosis_setApplicationPaths');
 
-    // Application path.
-    $paths['app'] = realpath(__DIR__).DS.'app'.DS;
+if (!function_exists('themosis_setApplicationPaths'))
+{
+    function themosis_setApplicationPaths($paths)
+    {
+        // Theme base path.
+        $paths['base'] = __DIR__.DS;
 
-    // Application admin directory.
-    $paths['admin'] = realpath(__DIR__).DS.'app'.DS.'admin'.DS;
+        // Application path.
+        $paths['app'] = __DIR__.DS.'app'.DS;
 
-    // Application storage directory.
-    $paths['storage'] = realpath(__DIR__).DS.'app'.DS.'storage'.DS;
+        // Application admin directory.
+        $paths['admin'] = __DIR__.DS.'app'.DS.'admin'.DS;
 
-    return $paths;
-    
-});
+        // Application storage directory.
+        $paths['storage'] = __DIR__.DS.'app'.DS.'storage'.DS;
+
+        return $paths;
+    }
+}
 
 /*----------------------------------------------------*/
 // Set theme's configurations.
 /*----------------------------------------------------*/
 add_action('themosis_configurations', function(){
-   
+
    Themosis\Configuration\Config::make(array(
        'app'    => array(
            'application',
@@ -184,7 +189,7 @@ add_action('themosis_configurations', function(){
    ));
 
    Themosis\Configuration\Config::set();
-   
+
 });
 
 /*----------------------------------------------------*/
@@ -192,7 +197,7 @@ add_action('themosis_configurations', function(){
 /*----------------------------------------------------*/
 add_filter('themosisViewPaths', function($paths){
 
-    $paths[] = themosis_path('app').'views'.DS;
+    $paths[] = themosis_path('app').DS.'views'.DS;
 
     return $paths;
 
@@ -203,7 +208,7 @@ add_filter('themosisViewPaths', function($paths){
 /*----------------------------------------------------*/
 add_filter('themosisAssetPaths', function($paths){
 
-    $paths[THEMOSIS_ASSETS] = themosis_path('app').'assets';
+    $paths[THEMOSIS_ASSETS] = themosis_path('app').DS.'assets';
 
     return $paths;
 
@@ -247,7 +252,9 @@ add_action('themosis_bootstrap', function(){
     /*----------------------------------------------------*/
     // Set class aliases.
     /*----------------------------------------------------*/
-    foreach (Themosis\Configuration\Application::get('aliases') as $namespace => $className){
+    $aliases = Themosis\Configuration\Application::get('aliases');
+
+    foreach ($aliases as $namespace => $className){
         class_alias($namespace, $className);
     }
 
@@ -300,7 +307,7 @@ add_action('themosis_bootstrap', function(){
 // Handle application requests/responses.
 /*----------------------------------------------------*/
 function themosis_start_app(){
-    
+
     if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded())
     {
         do_action('themosis_parse_query', $arg = '');
@@ -308,7 +315,7 @@ function themosis_start_app(){
         /*----------------------------------------------------*/
         // Application routes.
         /*----------------------------------------------------*/
-        require themosis_path('app').'routes.php';
+        require themosis_path('app').DS.'routes.php';
 
         /*----------------------------------------------------*/
         // Run application and return a response.
