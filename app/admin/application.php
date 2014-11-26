@@ -11,8 +11,11 @@ foreach(PostModel::all() as $post)
 
 $metabox = Metabox::make('Link', 'post')->set(array(
 
-    Field::text('uh'),
-    Field::textarea('story', array('default' => 'A long time ago..........')),
+    Field::media('pic', array('type' => 'application')),
+    Field::text('uh', array('class' => 'uh-custom-class')),
+    Field::text('doh'),
+    Field::text('douh', array('title' => 'Weird Title')),
+    Field::textarea('story', array('class' => 'textarea-class', 'default' => 'A long time ago..........')),
     Field::media('cover', array('default' => '166')),
     //Field::editor('biography', array(), array('default' => 'Some default text for your biography.')),
     Field::checkbox('toggle', array('default' => false)),
@@ -36,7 +39,7 @@ $metabox = Metabox::make('Link', 'post')->set(array(
             'france',
             'portugal'
         )
-    ), true, array('default' => array(1,2))),
+    ), true, array('class' => 'custom-select-class', 'default' => array(1,2))),
     Field::select('area', array(
         array(
             'be' => 'Belgium',
@@ -45,7 +48,7 @@ $metabox = Metabox::make('Link', 'post')->set(array(
         )
     ), false, array('default' => 'pt')),
     Field::text('actor', array('default' => 'Marcel')),
-    Field::password('secret', array('title' => 'Mot secret', 'default' => 'passworddd')),
+    Field::password('secret', array('title' => 'Mot secret', 'default' => 'passworddd', 'class' => 'passme')),
     Field::infinite('things', array(
         Field::text('sock', array('default' => 'Super chaussette'))
     )),
