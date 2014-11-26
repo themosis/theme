@@ -12,7 +12,8 @@ foreach(PostModel::all() as $post)
 $metabox = Metabox::make('Link', 'post')->set(array(
 
     Field::media('pic', array('type' => 'application')),
-    Field::text('uh', array('class' => 'uh-custom-class')),
+    Field::collection('gallery', array('info' => 'Some help text.')),
+    Field::text('uh', array('class' => 'uh-custom-class', 'info' => 'Some help here.')),
     Field::text('doh'),
     Field::text('douh', array('title' => 'Weird Title')),
     Field::textarea('story', array('class' => 'textarea-class', 'default' => 'A long time ago..........')),
