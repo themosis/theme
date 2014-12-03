@@ -172,16 +172,15 @@ if (!function_exists('themosis_setApplicationPaths'))
 /*----------------------------------------------------*/
 // Set theme's configurations.
 /*----------------------------------------------------*/
-add_action('themosis_configurations', function(){
-
+add_action('themosis_configurations', function()
+{
    Themosis\Configuration\Config::make(array(
        'app'    => array(
            'application',
            'constants',
-           'controllers',
            'images',
+           'loading',
            'menus',
-           'models',
            'sidebars',
            'supports',
            'templates'
@@ -189,36 +188,31 @@ add_action('themosis_configurations', function(){
    ));
 
    Themosis\Configuration\Config::set();
-
 });
 
 /*----------------------------------------------------*/
 // Register theme view paths.
 /*----------------------------------------------------*/
-add_filter('themosisViewPaths', function($paths){
-
-    $paths[] = themosis_path('app').DS.'views'.DS;
-
+add_filter('themosisViewPaths', function($paths)
+{
+    $paths[] = themosis_path('app').'views'.DS;
     return $paths;
-
 });
 
 /*----------------------------------------------------*/
 // Register theme asset paths.
 /*----------------------------------------------------*/
-add_filter('themosisAssetPaths', function($paths){
-
-    $paths[THEMOSIS_ASSETS] = themosis_path('app').DS.'assets';
-
+add_filter('themosisAssetPaths', function($paths)
+{
+    $paths[THEMOSIS_ASSETS] = themosis_path('app').'assets';
     return $paths;
-
 });
 
 /*----------------------------------------------------*/
 // Bootstrap theme.
 /*----------------------------------------------------*/
-add_action('themosis_bootstrap', function(){
-
+add_action('themosis_bootstrap', function()
+{
     /*----------------------------------------------------*/
     // Handle errors, warnings, exceptions.
     /*----------------------------------------------------*/
@@ -233,12 +227,14 @@ add_action('themosis_bootstrap', function(){
         // Otherwise WP can't find it when
         // constructing its "Menus" page
         // under appearance in administration.
-        if (class_exists('Themosis\Error\Error')) {
+        if (class_exists('Themosis\Error\Error'))
+        {
             Themosis\Error\Error::native($code, $error, $file, $line);
         }
     });
 
-    if (defined('THEMOSIS_ERROR_SHUTDOWN') && THEMOSIS_ERROR_SHUTDOWN) {
+    if (defined('THEMOSIS_ERROR_SHUTDOWN') && THEMOSIS_ERROR_SHUTDOWN)
+    {
         register_shutdown_function(function()
         {
             Themosis\Error\Error::shutdown();
@@ -254,7 +250,8 @@ add_action('themosis_bootstrap', function(){
     /*----------------------------------------------------*/
     $aliases = Themosis\Configuration\Application::get('aliases');
 
-    foreach ($aliases as $namespace => $className){
+    foreach ($aliases as $namespace => $className)
+    {
         class_alias($namespace, $className);
     }
 
@@ -300,14 +297,13 @@ add_action('themosis_bootstrap', function(){
     // Application global JS object.
     /*----------------------------------------------------*/
     Themosis\Ajax\Ajax::set();
-
 });
 
 /*----------------------------------------------------*/
 // Handle application requests/responses.
 /*----------------------------------------------------*/
-function themosis_start_app(){
-
+function themosis_start_app()
+{
     if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded())
     {
         do_action('themosis_parse_query', $arg = '');
@@ -315,7 +311,7 @@ function themosis_start_app(){
         /*----------------------------------------------------*/
         // Application routes.
         /*----------------------------------------------------*/
-        require themosis_path('app').DS.'routes.php';
+        require themosis_path('app').'routes.php';
 
         /*----------------------------------------------------*/
         // Run application and return a response.

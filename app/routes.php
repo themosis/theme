@@ -1,4 +1,4 @@
-<?php defined('DS') or die('No direct script access.');
+<?php
 
 /*
  * Define your routes and which views to display
@@ -8,6 +8,7 @@
  * http://codex.wordpress.org/Conditional_Tags
  *
  */
+
 Route::get('home', function(){
 
     return View::make('welcome');
