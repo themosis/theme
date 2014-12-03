@@ -178,10 +178,9 @@ add_action('themosis_configurations', function(){
        'app'    => array(
            'application',
            'constants',
-           'controllers',
            'images',
+           'loading',
            'menus',
-           'models',
            'sidebars',
            'supports',
            'templates'
