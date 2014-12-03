@@ -9,7 +9,12 @@ $page->addSections(array(
 
 $page->addSettings(array(
     'th-general' => array(
+        Field::collection('website-pics'),
         Field::text('website-name', array('title' => 'Website Name', 'default' => 'My Website', 'class' => 'simple-text')),
+        Field::infinite('website-infinite', array(
+            Field::media('thumbnail'),
+            Field::collection('pics')
+        )),
         Field::textarea('website-excerpt', array('title' => 'Excerpt', 'default' => 'An awesome website for great and nice people.')),
         Field::password('website-password', array('default' => 'super')),
         Field::editor('website-description', array(), array('default' => 'Explain your website in 160 characters.')),

@@ -11,6 +11,14 @@
 <body>
 <h1>Themosis - Home - {{ $prout }}</h1>
 
+<p>{{ $composed or 'Composer not yet available' }}</p>
+
+<p>{{ $classCompose or 'Class composer not yet available' }}</p>
+
+<p>{{ $common or 'Common data from composer' }}</p>
+
+<p>{{ $special or 'Multiple composers not yet available' }}</p>
+
 @loop
     <h3>{{ Loop::title() }}</h3>
     {{ Loop::content() }}

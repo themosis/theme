@@ -9,10 +9,15 @@ foreach(PostModel::all() as $post)
     $posts[$post->ID] = $post->post_title;
 }
 
+//$postModel = new PostModel();
+//add_action('wp_footer', array($postModel, 'special'));
+
 $metabox = Metabox::make('Link', 'post')->set(array(
 
     Field::media('pic', array('type' => 'application')),
-    Field::collection('gallery', array('info' => 'Some help text.')),
+    Field::media('pho', array('title' => 'Photo')),
+    Field::collection('photo-list', array('info' => 'Some help text.')),
+    Field::collection('file-list', array('title' => 'Liste fichiers', 'info' => 'Une aide pour les utilisateurs.', 'type' => 'application')),
     Field::text('uh', array('class' => 'uh-custom-class', 'info' => 'Some help here.')),
     Field::text('doh'),
     Field::text('douh', array('title' => 'Weird Title')),
@@ -51,7 +56,8 @@ $metabox = Metabox::make('Link', 'post')->set(array(
     Field::text('actor', array('default' => 'Marcel')),
     Field::password('secret', array('title' => 'Mot secret', 'default' => 'passworddd', 'class' => 'passme')),
     Field::infinite('things', array(
-        Field::text('sock', array('default' => 'Super chaussette'))
+        Field::text('sock', array('default' => 'Super chaussette')),
+        Field::collection('sock-gallery')
     )),
     Field::infinite('stuffs', array(
         Field::text('stuff', array('default' => 'Un truc')),

@@ -13,6 +13,8 @@
 <p>Hello World!</p>
 
 <p>{{ $prout }}</p>
+<p>{{ $common or 'Composer view not available' }}</p>
+<p>{{ $special or 'Multiple composers not available' }}</p>
 <ul>
     @foreach($shared as $letter)
         <li>{{ $letter }}</li>
