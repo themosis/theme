@@ -13,8 +13,9 @@ return array(
     'BaseController'        => themosis_path('app').'controllers'.DS.'BaseController.php',
 
     // Models
-    'PostModel'             => themosis_path('app').'models'.DS.'PostModel.php'
+    'PostModel'             => themosis_path('app').'models'.DS.'PostModel.php',
 
     // Miscellaneous
+    'HomeComposer'          => themosis_path('app').'admin'.DS.'composers'.DS.'HomeComposer.php'
 
 );
