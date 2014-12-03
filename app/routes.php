@@ -1,4 +1,4 @@
-<?php defined('DS') or die('No direct script access.');
+<?php
 
 /*
  * Define your routes and which views to display
@@ -9,22 +9,8 @@
  *
  */
 
-View::share('prout', 'some data');
-
 Route::get('home', function(){
 
-    return View::make('home');
+    return View::make('welcome');
 
 });
-
-Route::any('page', array('sample-page', function()
-{
-    $inputs = Input::all();
-
-    $values = Validator::multiple($inputs, array(
-        'acteur'    => array('min:5'),
-        'director'  => array('email')
-    ));
-
-    return View::make('pages.sample', array('inputs' => $values));
-}));

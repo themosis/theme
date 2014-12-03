@@ -16,6 +16,5 @@ return array(
     'PostModel'             => themosis_path('app').'models'.DS.'PostModel.php',
 
     // Miscellaneous
-    'HomeComposer'          => themosis_path('app').'admin'.DS.'composers'.DS.'HomeComposer.php'
 
 );
