@@ -14,3 +14,9 @@ Route::get('home', function(){
     return View::make('welcome');
 
 });
+
+Route::get('front', function(){
+
+    return View::make('welcome');
+
+});
