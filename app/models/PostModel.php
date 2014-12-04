@@ -1,7 +1,9 @@
 <?php
 
-class PostModel {
+namespace ThemosisTheme;
 
+class PostModel
+{
     /**
      * Return a list of all published posts.
      *
@@ -17,5 +19,4 @@ class PostModel {
 
         return $query->get_posts();
     }
-
-} 
+}
