@@ -1,5 +1,4 @@
 <?php
-namespace ThemosisTheme;
 
 /*
  * Themosis - A framework for WordPress developers.
