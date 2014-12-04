@@ -10,5 +10,6 @@ return array(
     */
 
     //'custom-template'
+    'home'
 
 );

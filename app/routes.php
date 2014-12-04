@@ -9,14 +9,6 @@
  *
  */
 
-Route::get('home', function(){
-
-    return View::make('welcome');
-
-});
-
-Route::get('front', function(){
-
-    return View::make('welcome');
-
-});
+Route::any('home', 'ThemosisTheme\HomeController@index');
+Route::any('front', 'ThemosisTheme\HomeController@index');
+Route::any('template', array('home', 'uses' => 'ThemosisTheme\HomeController@index'));

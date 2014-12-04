@@ -1,6 +1,8 @@
 <?php
 namespace ThemosisTheme;
 
+use WP_Query;
+
 class PostModel
 {
     /**
