@@ -1,9 +1,9 @@
 <?php
-namespace ThemosisTheme;
+namespace MVPDesign\ThemosisTheme\Models;
 
 use WP_Query;
 
-class PostModel
+class WPPost
 {
     /**
      * Return a list of all published posts.

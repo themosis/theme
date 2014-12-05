@@ -1,5 +1,5 @@
 <?php
-namespace ThemosisTheme;
+namespace MVPDesign\ThemosisTheme\Controllers;
 
 use Controller;
 

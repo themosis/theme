@@ -1,8 +1,8 @@
 <?php
-namespace ThemosisTheme;
+namespace MVPDesign\ThemosisTheme\Controllers;
 
 use View;
-use ThemosisTheme\BaseController;
+use MVPDesign\ThemosisTheme\Controllers\BaseController;
 
 class HomeController extends BaseController
 {
