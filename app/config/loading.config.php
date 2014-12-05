@@ -14,7 +14,9 @@ return array(
     'MVPDesign\ThemosisTheme\Controllers\HomeController' => themosis_path('app').'controllers'.DS.'HomeController.php',
 
     // Models
-    'MVPDesign\ThemosisTheme\Models\WPPost' => themosis_path('app').'models'.DS.'PostModel.php',
+    'MVPDesign\ThemosisTheme\Models\ThemosisTheme' => themosis_path('app').'models'.DS.'ThemosisTheme.php',
+    'MVPDesign\ThemosisTheme\Models\WPGeneral' => themosis_path('app').'models'.DS.'WPGeneral.php',
+    'MVPDesign\ThemosisTheme\Models\WPPost' => themosis_path('app').'models'.DS.'WPPost.php',
 
     // Miscellaneous
 
