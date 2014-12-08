@@ -171,18 +171,18 @@ if (!function_exists('themosis_setApplicationPaths')) {
 // Set theme's configurations.
 /*----------------------------------------------------*/
 add_action('themosis_configurations', function() {
-   Themosis\Configuration\Config::make(array(
-       'app'    => array(
-           'application',
-           'constants',
-           'images',
-           'loading',
-           'menus',
-           'sidebars',
-           'supports',
-           'templates'
-       )
-   ));
+    Themosis\Configuration\Config::make(array(
+        'app'    => array(
+            'application',
+            'constants',
+            'images',
+            'loading',
+            'menus',
+            'sidebars',
+            'supports',
+            'templates'
+        )
+    ));
 
    Themosis\Configuration\Config::set();
 });
