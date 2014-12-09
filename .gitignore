@@ -1,8 +1,19 @@
-# Miscellaneous
+### Miscellaneous
 .DS_Store
 Thumbs.db
+
+### Composer
+composer.lock
+/vendor/
+
+### Node
+node_modules
+
+### Bower
+bower_components
+
+### IDE
 .idea/
 
-# Theme
-vendor/
-composer.lock
+### Assets
+app/assets/dist
