@@ -1,0 +1,27 @@
+{
+  "name": "MVP Theme",
+  "version": "0.1",
+  "homepage": "https://github.com/mvpdesign/themosis-theme",
+  "authors": [
+    "Chris Wilson <chrisw@mvpdesign.com>"
+  ],
+  "description": "MVP default theme built with Themosis",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.12.1",
+    "coffeescript": "~1.8.0",
+    "normalize.css": "~3.0.2",
+    "picturefill": "~2.2.0",
+    "inuit-clearfix": "~0.2.1",
+    "select2": "~3.5.2",
+    "breakpoint-sass": "~2.5.0"
+  }
+}
