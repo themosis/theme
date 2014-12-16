@@ -1,12 +1,11 @@
 // Clean css task requirements
-var config = require('../config');
-var gulp   = require('gulp');
-var clean  = require('gulp-clean');
+var config     = require('../config');
+var gulp       = require('gulp');
+var del        = require('del');
+var vinylPaths = require('vinyl-paths');
 
 // Clean css task
 gulp.task('cleanCSS', function() {
     return gulp.src(config.paths.dist.css)
-        .pipe(clean({
-            read: false
-        }));
+        .pipe(vinylPaths(del));
 });
