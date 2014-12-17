@@ -21,7 +21,7 @@ module.exports = {
             },
             scripts: {
                 all: ASSETS_SRC_PATH+'scripts/**/*',
-                js: ASSETS_SRC_PATH+'scripts/**/*.{js}'
+                js: ASSETS_SRC_PATH+'scripts/js/**/main.js'
             },
             images: {
                 all: ASSETS_SRC_PATH+'images/**/*'
