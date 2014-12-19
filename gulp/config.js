@@ -75,6 +75,9 @@ module.exports = {
     // https://www.npmjs.com/package/gulp-minify-css
     minifyCSS: {
     },
+    // https://www.npmjs.com/package/gulp-uglify
+    uglify: {
+    },
     // https://www.npmjs.com/package/gulp-imagemin
     imagemin: {
         progressive: true,

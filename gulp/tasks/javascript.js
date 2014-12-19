@@ -2,14 +2,20 @@
 var config        = require('../config');
 var handleSuccess = require('../util/handleSuccess');
 var gulp          = require('gulp');
-var changed       = require('gulp-changed');
-var uglify        = require('gulp-uglify');
+var browserify    = require('browserify');
+var transform     = require('vinyl-transform');
+var reactify      = require('reactify');
+var debowerify    = require('debowerify');
 
 // Javascript task
 gulp.task('javascript', function() {
-    return gulp.src(config.paths.src.scripts.js)
-        .pipe(changed(config.paths.dist.js))
-        .pipe(uglify())
-        .pipe(gulp.dest(config.paths.dist.js))
+    var browserified = transform(function(filename) {
+        var b = browserify(filename).transform(debowerify).transform(reactify);
+        return b.bundle();
+    });
+
+    return gulp.src(config.paths.src.scripts.main)
+        .pipe(browserified)
+        .pipe(gulp.dest(config.paths.dist.js.path))
         .pipe(handleSuccess(config.notify.messages.js));
 });
