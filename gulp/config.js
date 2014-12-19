@@ -52,6 +52,9 @@ module.exports = {
     deploy: {
         environments: ENVIRONMENTS
     },
+    // https://www.npmjs.com/package/browser-sync
+    browserSync: {
+    },
     // https://www.npmjs.org/package/gulp-notify
     notify: {
         titles: {

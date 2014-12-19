@@ -17,7 +17,6 @@ gulp.task('styles', function() {
     runSequence(
         'clean-css',
         'sass',
-        'scripts',
         function() {
             return gulp.src([config.paths.dist.css.main])
                 .pipe(gulpif(config.environment === 'local', sourcemaps.init()))
