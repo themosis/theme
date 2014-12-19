@@ -17,11 +17,11 @@ module.exports = {
         src: {
             styles: {
                 all: ASSETS_SRC_PATH+'styles/**/*',
-                main: ASSETS_SRC_PATH+'styles/sass/**/main.{sass,scss}',
+                main: ASSETS_SRC_PATH+'styles/sass/main.{sass,scss}',
             },
             scripts: {
                 all: ASSETS_SRC_PATH+'scripts/**/*',
-                main: ASSETS_SRC_PATH+'scripts/js/**/main.js'
+                main: ASSETS_SRC_PATH+'scripts/js/main.js'
             },
             images: {
                 all: ASSETS_SRC_PATH+'images/**/*'
@@ -73,9 +73,7 @@ module.exports = {
             images: 'Images task completed',
             // fonts
             cleanFonts: 'Clean fonts task completed',
-            fonts: 'Fonts task completed',
-            // watch
-            watch: 'Started watching files'
+            fonts: 'Fonts task completed'
         }
     },
     // https://www.npmjs.org/package/gulp-sass

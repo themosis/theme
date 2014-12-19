@@ -1,6 +1,6 @@
 // Watch styles task requirements
-var config      = require('../config');
-var gulp        = require('gulp');
+var config = require('../config');
+var gulp   = require('gulp');
 
 // Watch styles task
 gulp.task('watch-styles', function() {
