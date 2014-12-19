@@ -17,11 +17,11 @@ module.exports = {
         src: {
             styles: {
                 all: ASSETS_SRC_PATH+'styles/**/*',
-                sass: ASSETS_SRC_PATH+'styles/sass/**/main.{sass,scss}'
+                main: ASSETS_SRC_PATH+'styles/sass/**/main.{sass,scss}',
             },
             scripts: {
                 all: ASSETS_SRC_PATH+'scripts/**/*',
-                js: ASSETS_SRC_PATH+'scripts/js/**/main.js'
+                main: ASSETS_SRC_PATH+'scripts/js/**/main.js'
             },
             images: {
                 all: ASSETS_SRC_PATH+'images/**/*'
@@ -31,11 +31,22 @@ module.exports = {
             }
         },
         dist: {
-            all: ASSSETS_DIST_PATH,
-            css: ASSSETS_DIST_PATH+'css/',
-            js: ASSSETS_DIST_PATH+'js/',
-            images: ASSSETS_DIST_PATH+'images/',
-            fonts: ASSSETS_DIST_PATH+'fonts/'
+            path: ASSSETS_DIST_PATH,
+            css: {
+                path: ASSSETS_DIST_PATH+'css/',
+                main: ASSSETS_DIST_PATH+'css/main.css'
+            },
+            js: {
+                path: ASSSETS_DIST_PATH+'js/',
+                main: ASSSETS_DIST_PATH+'js/main.js',
+                modernizr: ASSSETS_DIST_PATH+'js/modernizr.js'
+            },
+            images: {
+                path: ASSSETS_DIST_PATH+'images/'
+            },
+            fonts: {
+                path: ASSSETS_DIST_PATH+'fonts/'
+            }
         }
     },
     deploy: {
@@ -48,10 +59,22 @@ module.exports = {
             error: 'Compile Error'
         },
         messages: {
+            // styles
+            cleanCSS: 'Clean css task completed',
             sass: 'Sass task completed',
+            styles: 'Styles task completed',
+            // javascript
+            cleanJS: 'Clean js task completed',
+            modernizr: 'Modernizr task completed',
             js: 'JS task completed',
+            scripts: 'Scripts task completed',
+            // images
+            cleanImages: 'Clean images task completed',
             images: 'Images task completed',
+            // fonts
+            cleanFonts: 'Clean fonts task completed',
             fonts: 'Fonts task completed',
+            // watch
             watch: 'Started watching files'
         }
     },
@@ -75,8 +98,16 @@ module.exports = {
     // https://www.npmjs.com/package/gulp-minify-css
     minifyCSS: {
     },
+    // https://github.com/doctyper/gulp-modernizr
+    modernizr: {
+    },
     // https://www.npmjs.com/package/gulp-uglify
     uglify: {
+    },
+    // https://www.npmjs.com/package/gulp-concat
+    concat: {
+        css: 'app.min.css',
+        js: 'app.min.js'
     },
     // https://www.npmjs.com/package/gulp-imagemin
     imagemin: {
@@ -86,5 +117,14 @@ module.exports = {
             removeViewBox: false
         }],
         use: [pngquant()]
-    }
+    },
+    // https://www.npmjs.com/package/gulp-header
+    header: '/*\n' +
+        ' * <%= package.name %>\n' +
+        ' * <%= package.description %>\n' +
+        ' * <%= package.url %>\n' +
+        ' * @author <%= package.author %>\n' +
+        ' * @version <%= package.version %>\n' +
+        ' * Copyright ' + new Date().getFullYear() + '\n' +
+        ' */\n'
 };

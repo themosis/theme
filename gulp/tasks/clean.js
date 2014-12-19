@@ -6,6 +6,6 @@ var vinylPaths = require('vinyl-paths');
 
 // Clean task
 gulp.task('clean', function() {
-    return gulp.src(config.paths.dist.all)
+    return gulp.src(config.paths.dist.path)
         .pipe(vinylPaths(del));
 });

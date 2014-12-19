@@ -14,8 +14,8 @@ class BaseController extends Controller
      */
     public function __construct()
     {
-        Asset::add('app-css', 'dist/css/main.css', false, '1.0.0', 'all');
-        Asset::add('app-js', 'dist/js/main.js', false, '1.0.0', true);
+        Asset::add('app-css', 'dist/css/app.min.css', false, '1.0.0', 'all');
+        Asset::add('app-js', 'dist/js/app.min.js', false, '1.0.0', true);
     }
 
     /**
