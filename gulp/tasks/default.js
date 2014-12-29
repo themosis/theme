@@ -6,6 +6,6 @@ var runSequence = require('run-sequence');
 gulp.task('default', function() {
     runSequence(
         'clean',
-        ['styles', 'images', 'fonts']
+        ['styles', 'scripts', 'images', 'fonts']
     );
 });
