@@ -1,10 +1,11 @@
 <?php
+
 /*
  * Themosis - A framework for WordPress developers.
  * Based on php 5.4 features and above.
  *
  * @author  Julien Lambé <julien@themosis.com>
- * @link 	http://www.themosis.com/
+ * @link    http://www.themosis.com/
  */
 
 /*----------------------------------------------------*/
@@ -27,8 +28,7 @@ defined('THEMOSIS_THEME_TEXTDOMAIN') ? THEMOSIS_THEME_TEXTDOMAIN : define('THEMO
 // Check if the framework is loaded. If not, warn the user
 // to activate it before continuing using the theme.
 /*----------------------------------------------------*/
-if (!class_exists('THFWK_ThemosisTheme'))
-{
+if (!class_exists('THFWK_ThemosisTheme')) {
     class THFWK_ThemosisTheme
     {
         /**
@@ -37,7 +37,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
          * @var \THFWK_ThemosisTheme
          */
         private static $instance = null;
-        
+
         /**
          * Switch that tell if core and datas plugins are loaded.
          *
@@ -47,70 +47,69 @@ if (!class_exists('THFWK_ThemosisTheme'))
 
         private function __construct()
         {
-        	// Check if framework is loaded.
-        	add_action('after_setup_theme', array($this, 'check'));
+            // Check if framework is loaded.
+            add_action('after_setup_theme', array($this, 'check'));
         }
-        
+
         /**
-    	 * Init the class.
+         * Init the class.
          *
          * @return \THFWK_ThemosisTheme
-    	 */
-    	public static function getInstance()
-    	{
-    		if (is_null(static::$instance))
-            {
-    	    	static::$instance = new static();  
-    	    }
-    	 	return static::$instance;
-    	}
-    	
-    	/**
+         */
+        public static function getInstance()
+        {
+            if (is_null(static::$instance)) {
+                static::$instance = new static();
+            }
+
+            return static::$instance;
+        }
+
+        /**
          * Trigger by the action hook 'after_switch_theme'.
          * Check if the framework and dependencies are loaded.
          *
          * @return void
-    	 */
-    	public function check()
-    	{
+         */
+        public function check()
+        {
             $symfony = class_exists('Symfony\Component\ClassLoader\ClassLoader');
-    	    $themosis = class_exists('THFWK_Themosis');
+            $themosis = class_exists('THFWK_Themosis');
 
             // Symfony dependency and Themosis plugin classes are available.
-            if ($symfony && $themosis)
-            {
+            if ($symfony && $themosis) {
                 $this->pluginsAreLoaded = $themosis;
             }
 
-        	// Display a message to the user in the admin panel when he's activating the theme
+            // Display a message to the user in the admin panel when he's activating the theme
             // if the plugin is not available.
-        	if (!$themosis)
-            {
-            	add_action('admin_notices', array($this, 'displayMessage'));
-                return;
-        	}
+            if (!$themosis) {
+                add_action('admin_notices', array($this, 'displayMessage'));
 
-            // Display a message if Symfony Class Loader component is not available.
-            if (!$symfony)
-            {
-                add_action('admin_notices', array($this, 'displayNotice'));
                 return;
             }
-    	}
-    	
-    	/**
+
+            // Display a message if Symfony Class Loader component is not available.
+            if (!$symfony) {
+                add_action('admin_notices', array($this, 'displayNotice'));
+
+                return;
+            }
+        }
+
+        /**
          * Display a notice to the user if framework is not loaded.
          *
          * @return void
-    	 */
-    	public function displayMessage()
-    	{
-    		?>
-    		    <div id="message" class="error">
+         */
+        public function displayMessage()
+        {
+            ?>
+                <div id="message" class="error">
                     <p><?php _e("You first need to activate the <b>Themosis framework</b> in order to use this theme.", THEMOSIS_THEME_TEXTDOMAIN); ?></p>
                 </div>
-    		<?php
-    	}
+            <?php
+        }
 
         /**
          * Display a notice to the user if the Symfony class loaded is not available.
@@ -125,16 +124,16 @@ if (!class_exists('THFWK_ThemosisTheme'))
             </div>
         <?php
         }
-    	
-    	/**
+
+        /**
          * Return true if framework is loaded.
          *
          * @return boolean
-    	 */
-    	public function isPluginLoaded()
-    	{
-    		return $this->pluginsAreLoaded;
-    	}
+         */
+        public function isPluginLoaded()
+        {
+            return $this->pluginsAreLoaded;
+        }
     }
 }
 
@@ -149,8 +148,7 @@ THFWK_ThemosisTheme::getInstance();
 add_filter('themosis_framework_paths', 'themosis_setApplicationPaths');
 add_filter('themosis_application_paths', 'themosis_setApplicationPaths');
 
-if (!function_exists('themosis_setApplicationPaths'))
-{
+if (!function_exists('themosis_setApplicationPaths')) {
     function themosis_setApplicationPaths($paths)
     {
         // Theme base path.
@@ -172,8 +170,7 @@ if (!function_exists('themosis_setApplicationPaths'))
 /*----------------------------------------------------*/
 // Set theme's configurations.
 /*----------------------------------------------------*/
-add_action('themosis_configurations', function()
-{
+add_action('themosis_configurations', function() {
     Themosis\Configuration\Config::make(array(
         'app'    => array(
             'application',
@@ -193,50 +190,44 @@ add_action('themosis_configurations', function()
 /*----------------------------------------------------*/
 // Register theme view paths.
 /*----------------------------------------------------*/
-add_filter('themosisViewPaths', function($paths)
-{
+add_filter('themosisViewPaths', function($paths) {
     $paths[] = themosis_path('app').'views'.DS;
+
     return $paths;
 });
 
 /*----------------------------------------------------*/
 // Register theme asset paths.
 /*----------------------------------------------------*/
-add_filter('themosisAssetPaths', function($paths)
-{
+add_filter('themosisAssetPaths', function ($paths) {
     $paths[THEMOSIS_ASSETS] = themosis_path('app').'assets';
+
     return $paths;
 });
 
 /*----------------------------------------------------*/
 // Bootstrap theme.
 /*----------------------------------------------------*/
-add_action('themosis_bootstrap', function()
-{
+add_action('themosis_bootstrap', function () {
     /*----------------------------------------------------*/
     // Handle errors, warnings, exceptions.
     /*----------------------------------------------------*/
-    set_exception_handler(function($e)
-    {
+    set_exception_handler(function ($e) {
         Themosis\Error\Error::exception($e);
     });
 
-    set_error_handler(function($code, $error, $file, $line)
-    {
+    set_error_handler(function ($code, $error, $file, $line) {
         // Check if the class exists
         // Otherwise WP can't find it when
         // constructing its "Menus" page
         // under appearance in administration.
-        if (class_exists('Themosis\Error\Error'))
-        {
+        if (class_exists('Themosis\Error\Error')) {
             Themosis\Error\Error::native($code, $error, $file, $line);
         }
     });
 
-    if (defined('THEMOSIS_ERROR_SHUTDOWN') && THEMOSIS_ERROR_SHUTDOWN)
-    {
-        register_shutdown_function(function()
-        {
+    if (defined('THEMOSIS_ERROR_SHUTDOWN') && THEMOSIS_ERROR_SHUTDOWN) {
+        register_shutdown_function(function () {
             Themosis\Error\Error::shutdown();
         });
     }
@@ -250,8 +241,7 @@ add_action('themosis_bootstrap', function()
     /*----------------------------------------------------*/
     $aliases = Themosis\Configuration\Application::get('aliases');
 
-    foreach ($aliases as $namespace => $className)
-    {
+    foreach ($aliases as $namespace => $className) {
         class_alias($namespace, $className);
     }
 
@@ -304,8 +294,7 @@ add_action('themosis_bootstrap', function()
 /*----------------------------------------------------*/
 function themosis_start_app()
 {
-    if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded())
-    {
+    if (THFWK_ThemosisTheme::getInstance()->isPluginLoaded()) {
         do_action('themosis_parse_query', $arg = '');
 
         /*----------------------------------------------------*/
@@ -317,9 +306,7 @@ function themosis_start_app()
         // Run application and return a response.
         /*----------------------------------------------------*/
         do_action('themosis_run');
-	}
-    else
-    {
+    } else {
         _e("The theme won't work until you install the Themosis framework plugin correctly.", THEMOSIS_THEME_TEXTDOMAIN);
-	}
+    }
 }

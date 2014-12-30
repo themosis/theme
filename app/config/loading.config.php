@@ -10,10 +10,14 @@ return array(
      * Watch your commas...
      */
     // Controllers
-    'BaseController'        => themosis_path('app').'controllers'.DS.'BaseController.php',
+    'MVPDesign\ThemosisTheme\Controllers\BaseController' => themosis_path('app').'controllers'.DS.'BaseController.php',
+    'MVPDesign\ThemosisTheme\Controllers\HomeController' => themosis_path('app').'controllers'.DS.'HomeController.php',
 
     // Models
-    'PostModel'             => themosis_path('app').'models'.DS.'PostModel.php',
+    'MVPDesign\ThemosisTheme\Models\ThemosisAssets' => themosis_path('app').'models'.DS.'ThemosisAssets.php',
+    'MVPDesign\ThemosisTheme\Models\ThemosisTheme' => themosis_path('app').'models'.DS.'ThemosisTheme.php',
+    'MVPDesign\ThemosisTheme\Models\WPGeneral' => themosis_path('app').'models'.DS.'WPGeneral.php',
+    'MVPDesign\ThemosisTheme\Models\WPPost' => themosis_path('app').'models'.DS.'WPPost.php',
 
     // Miscellaneous
 

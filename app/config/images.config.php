@@ -13,6 +13,6 @@ return array(
      * @param bool|array $crop Crop option. Since 3.9, define a crop position with an array.
      * @param bool $media Add to media selection dropdown. Make it also available to media custom field.
      */
-    'themosis' => array(200, 150, true, true)
+    //'themosis' => array(200, 150, true, true)
 
 );

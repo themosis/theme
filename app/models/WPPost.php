@@ -1,7 +1,10 @@
 <?php
+namespace MVPDesign\ThemosisTheme\Models;
 
-class PostModel {
+use WP_Query;
 
+class WPPost
+{
     /**
      * Return a list of all published posts.
      *
@@ -17,5 +20,4 @@ class PostModel {
 
         return $query->get_posts();
     }
-
-} 
+}

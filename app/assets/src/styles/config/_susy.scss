@@ -1,0 +1,15 @@
+// susy config
+$susy-columns: 12;
+$susy-gutters: 2/5;
+$susy-container: 75rem;
+$susy: (
+    columns: $susy-columns,
+    gutters: $susy-gutters,
+    gutter-position: inside,
+    global-box-sizing: border-box
+);
+
+// susy placeholders
+%SusyGrid {
+    @include container($susy-container); // establish a layout context
+}
