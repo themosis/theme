@@ -21,7 +21,7 @@ module.exports = {
             },
             scripts: {
                 all: ASSETS_SRC_PATH+'scripts/**/*',
-                main: ASSETS_SRC_PATH+'scripts/js/main.js'
+                main: ASSETS_SRC_PATH+'scripts/main.{js,coffee}'
             },
             images: {
                 all: ASSETS_SRC_PATH+'images/**/*'
@@ -39,6 +39,7 @@ module.exports = {
             js: {
                 path: ASSSETS_DIST_PATH+'js/',
                 main: ASSSETS_DIST_PATH+'js/main.js',
+                coffee: ASSSETS_DIST_PATH+'js/main.coffee',
                 modernizr: ASSSETS_DIST_PATH+'js/modernizr.js'
             },
             images: {

@@ -19,7 +19,7 @@ gulp.task('scripts', function() {
         'clean-js',
         'modernizr',
         function() {
-            gulp.src([config.paths.dist.js.modernizr, config.paths.dist.js.main])
+            gulp.src([config.paths.dist.js.modernizr, config.paths.dist.js.main, config.paths.dist.js.coffee])
                 .pipe(gulpif(config.environment === 'local', sourcemaps.init()))
                 .pipe(concat(config.concat.js))
                 .pipe(uglify(config.uglify))

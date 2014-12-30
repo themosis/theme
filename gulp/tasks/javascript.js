@@ -3,6 +3,7 @@ var config        = require('../config');
 var handleSuccess = require('../util/handleSuccess');
 var gulp          = require('gulp');
 var browserify    = require('browserify');
+var coffeeify     = require('coffeeify');
 var transform     = require('vinyl-transform');
 var reactify      = require('reactify');
 var debowerify    = require('debowerify');
@@ -10,7 +11,10 @@ var debowerify    = require('debowerify');
 // Javascript task
 gulp.task('javascript', function() {
     var browserified = transform(function(filename) {
-        var b = browserify(filename).transform(debowerify).transform(reactify);
+        var b = browserify(filename)
+            .transform(coffeeify)
+            .transform(debowerify)
+            .transform(reactify);
         return b.bundle();
     });
 
