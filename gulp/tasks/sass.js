@@ -10,10 +10,10 @@ var sass          = require('gulp-sass');
 // Sass task
 gulp.task('sass', function() {
     return gulp.src(config.paths.src.styles.main)
-        .pipe(gulpif(config.environment === 'local', sourcemaps.init()))
+        .pipe(gulpif(config.environment === 'local', sourcemaps.init(config.sourcemaps.styles.init)))
         .pipe(sass(config.sass))
         .on('error', handleErrors)
-        .pipe(gulpif(config.environment === 'local', sourcemaps.write()))
+        .pipe(gulpif(config.environment === 'local', sourcemaps.write(config.sourcemaps.styles.write)))
         .pipe(gulp.dest(config.paths.dist.css.path))
         .pipe(handleSuccess(config.notify.messages.sass));
 });

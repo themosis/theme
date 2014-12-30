@@ -20,11 +20,11 @@ gulp.task('scripts', function() {
         'modernizr',
         function() {
             gulp.src([config.paths.dist.js.modernizr, config.paths.dist.js.main, config.paths.dist.js.coffee])
-                .pipe(gulpif(config.environment === 'local', sourcemaps.init()))
+                .pipe(gulpif(config.environment === 'local', sourcemaps.init(config.sourcemaps.scripts.init)))
                 .pipe(concat(config.concat.js))
-                .pipe(uglify(config.uglify))
-                .pipe(header(config.header, { package: package }))
-                .pipe(gulpif(config.environment === 'local', sourcemaps.write()))
+                .pipe(gulpif(config.environment !== 'local', uglify(config.uglify)))
+                .pipe(gulpif(config.environment !== 'local', header(config.header, { package: package })))
+                .pipe(gulpif(config.environment === 'local', sourcemaps.write(config.sourcemaps.scripts.write)))
                 .pipe(gulp.dest(config.paths.dist.js.path))
                 .pipe(handleSuccess(config.notify.messages.scripts));
             deferred.resolve();

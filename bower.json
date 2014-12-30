@@ -9,10 +9,9 @@
     "tests"
   ],
   "dependencies": {
+    "susy": "2.2.0.beta.3",
     "react": "~0.12.1",
-    "coffeescript": "~1.8.0",
-    "normalize.css": "~3.0.2",
-    "picturefill": "~2.2.0",
+    "normalize-scss": "~3.0.2",
     "inuit-clearfix": "~0.2.1",
     "select2": "~3.5.2",
     "breakpoint-sass": "~2.5.0",

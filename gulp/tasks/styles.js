@@ -19,13 +19,13 @@ gulp.task('styles', function() {
         'sass',
         function() {
             return gulp.src([config.paths.dist.css.main])
-                .pipe(gulpif(config.environment === 'local', sourcemaps.init()))
+                .pipe(gulpif(config.environment === 'local', sourcemaps.init(config.sourcemaps.styles.init)))
                 .pipe(concat(config.concat.css))
                 .pipe(autoprefixer(config.autoprefixer))
-                .pipe(minifyCSS(config.minifyCSS))
-                .pipe(cssshrink())
-                .pipe(header(config.header, { package: package }))
-                .pipe(gulpif(config.environment === 'local', sourcemaps.write()))
+                .pipe(gulpif(config.environment !== 'local', minifyCSS(config.minifyCSS)))
+                .pipe(gulpif(config.environment !== 'local', cssshrink()))
+                .pipe(gulpif(config.environment !== 'local', header(config.header, { package: package })))
+                .pipe(gulpif(config.environment === 'local', sourcemaps.write(config.sourcemaps.styles.write)))
                 .pipe(gulp.dest(config.paths.dist.css.path))
                 .pipe(handleSuccess(config.notify.messages.styles));
         }

@@ -17,7 +17,7 @@ module.exports = {
         src: {
             styles: {
                 all: ASSETS_SRC_PATH+'styles/**/*',
-                main: ASSETS_SRC_PATH+'styles/sass/main.{sass,scss}',
+                main: ASSETS_SRC_PATH+'styles/main.{sass,scss}',
             },
             scripts: {
                 all: ASSETS_SRC_PATH+'scripts/**/*',
@@ -84,6 +84,27 @@ module.exports = {
     sass: {
         errLogToConsole: true
     },
+    // https://www.npmjs.org/package/gulp-sourcemaps
+    sourcemaps: {
+        styles: {
+            init: {
+                loadMaps: true
+            },
+            write: {
+                includeContent: true,
+                sourceRoot: '../../src/styles'
+            }
+        },
+        scripts: {
+            init: {
+                loadMaps: true
+            },
+            write: {
+                includeContent: true,
+                sourceRoot: '../../../../'
+            }
+        }
+    },
     // https://www.npmjs.org/package/gulp-autoprefixer
     autoprefixer: {
         browsers: [
@@ -95,7 +116,7 @@ module.exports = {
             'Android 4'
         ],
         cascade: true,
-        remove: false
+        remove: true
     },
     // https://www.npmjs.com/package/gulp-minify-css
     minifyCSS: {

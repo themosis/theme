@@ -1,0 +1,51 @@
+/*  ==========================================================================
+    The master stylesheet that compiles everything together into one css file
+    ========================================================================== */
+
+    // Make sure the charset is set appropriately
+    @charset "UTF-8";
+
+/*  ==========================================================================
+    Bower Components
+
+    These are 3rd party scss files that we want to use.
+    They are located in the "../../../bower_components" folder.
+    ========================================================================== */
+
+    @import "../../../../bower_components/susy/sass/susy"; // susy
+    @import "../../../../bower_components/normalize-scss/normalize"; // normalize
+    @import "../../../../bower_components/inuit-clearfix/trumps.clearfix"; // clearfix
+    @import "../../../../bower_components/breakpoint-sass/stylesheets/breakpoint"; // breakpoint
+
+/*  ==========================================================================
+    Mixins
+
+    These are globally available functions
+    They are located in the "mixins" folder.
+    ========================================================================== */
+
+    @import "mixins/placeholder";
+    @import "mixins/background-2x";
+    @import "mixins/background-resize";
+
+/*  ==========================================================================
+    Config
+
+    These are commonly used variables & placeholders
+    They are located in the "config" directory.
+    ========================================================================== */
+
+    @import "config/color";
+    @import "config/font";
+    @import "config/susy";
+
+/*  ==========================================================================
+    Modules
+
+    These are files that are unique to the application.
+    They are located in the "modules" directory.
+    ========================================================================== */
+
+    @import "modules/base";
+    @import "modules/typography";
+    @import "modules/container";
