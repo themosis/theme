@@ -20,8 +20,11 @@
 <p>{{ $special or 'Multiple composers not yet available' }}</p>
 
 @loop
-    <h3>{{ Loop::title() }}</h3>
-    {{ Loop::content() }}
+    <article {{ Loop::postClass() }}>
+        <h3>{{ Loop::title() }}</h3>
+        {{ Loop::content() }}
+        <p>ID: {{ Loop::id() }}</p>
+    </article>
 @endloop
 
 <p>{{ themosis_assets() }}</p>

@@ -18,11 +18,11 @@ $page->addSettings(array(
         Field::textarea('website-excerpt', array('title' => 'Excerpt', 'default' => 'An awesome website for great and nice people.')),
         Field::password('website-password', array('default' => 'super')),
         Field::editor('website-description', array(), array('default' => 'Explain your website in 160 characters.')),
-        Field::checkbox('website-online', array('default' => true)),
-        Field::checkbox('website-maintenance', array('title' => 'Maintenance')),
-        Field::checkboxes('website-groups', array('abc', 'def', 'ghi')),
-        Field::checkboxes('website-companies', array('google', 'apple', 'microsoft'), array('default' => 'apple')),
-        Field::checkboxes('website-dbs', array('mysql', 'mariadb', 'redis'), array('default' => array('mariadb'))),
+        Field::checkbox('website-online', 'online'),
+        Field::checkbox('website-maintenance', 'maintain', array('title' => 'Maintenance')),
+        Field::checkbox('website-groups', array('abc', 'def', 'ghi')),
+        Field::checkbox('website-companies', array('google', 'apple', 'microsoft'), array('default' => 'apple')),
+        Field::checkbox('website-dbs', array('mysql', 'mariadb', 'redis'), array('default' => array('mariadb'))),
         Field::radio('website-sidebar', array('none', 'left', 'right'), array('default' => 'right')),
         Field::radio('website-theme', array('blue', 'orange', 'pink'), array('default' => array('orange'))),
         Field::select('website-area', array(
@@ -51,7 +51,7 @@ $page->addSettings(array(
     'th-secondary' => array(
         Field::infinite('website-xyz', array(
             Field::text('beverage', array('default' => 'Cola')),
-            Field::checkbox('toggle'),
+            Field::checkbox('toggle', 'show'),
             Field::select('shipping', array(
                 array('Air', 'Teleportation', 'Sea')
             ), false, array('default' => 1))
