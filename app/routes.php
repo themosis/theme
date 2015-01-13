@@ -28,3 +28,7 @@ Route::any('page', array('sample-page', function()
 
     return View::make('pages.sample', array('inputs' => $values));
 }));
+
+Route::get('page', [['about'], 'uses' => 'PagesController@about']);
+
+Route::get('page', [['vision'], 'uses' => 'PagesController@vision']);
