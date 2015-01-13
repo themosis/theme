@@ -17,7 +17,7 @@ Route::get('home', function(){
 
 });
 
-Route::any('page', array('sample-page', function()
+/*Route::any('page', array('sample-page', function()
 {
     $inputs = Input::all();
 
@@ -27,8 +27,10 @@ Route::any('page', array('sample-page', function()
     ));
 
     return View::make('pages.sample', array('inputs' => $values));
-}));
+}));*/
 
-Route::get('page', [['about'], 'uses' => 'PagesController@about']);
+Route::get('page', ['sample-page', 'uses' => 'PagesController@sample']);
+
+Route::get('page', [['about', 295], 'uses' => 'PagesController@about']);
 
 Route::get('page', [['vision'], 'uses' => 'PagesController@vision']);
