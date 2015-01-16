@@ -11,11 +11,13 @@
 
 View::share('prout', 'some data');
 
-Route::get('home', function(){
+/*Route::get('home', function(){
 
     return View::make('home');
 
-});
+});*/
+
+Route::get('home', 'PagesController@home');
 
 /*Route::any('page', array('sample-page', function()
 {
