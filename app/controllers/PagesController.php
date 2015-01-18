@@ -9,7 +9,9 @@ class PagesController extends BaseController
 
     public function sample()
     {
-        return 'Sample';
+        return View::make('pages.sample', array(
+            'inputs' => Input::all()
+        ));
     }
 
     public function about()
