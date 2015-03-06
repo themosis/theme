@@ -14,6 +14,10 @@ foreach(PostModel::all() as $post)
 
 $metabox = Metabox::make('Link', 'post')->set(array(
 
+    Field::text('hero'),
+    Field::number('invites'),
+    Field::number('tickets', array('info' => 'Define the number of tickets to sell.')),
+    Field::date('when', array('title' => 'Date de sortie')),
     Field::media('pic', array('type' => 'application')),
     Field::media('pho', array('title' => 'Photo')),
     Field::collection('photo-list', array('info' => 'Some help text.')),
@@ -68,6 +72,7 @@ $metabox = Metabox::make('Link', 'post')->set(array(
 ));
 
 $metabox->validate(array(
+    'hero'      => array('required'),
     'actor'     => array('textfield', 'min:5'),
     'things'    => array(
         'sock'  => array('num')
