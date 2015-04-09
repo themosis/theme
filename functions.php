@@ -77,7 +77,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
     	    $themosis = class_exists('THFWK_Themosis');
 
             // Symfony dependency and Themosis plugin classes are available.
-            if($symfony && $themosis)
+            if ($symfony && $themosis)
             {
                 $this->pluginsAreLoaded = $themosis;
             }
@@ -174,18 +174,18 @@ if (!function_exists('themosis_setApplicationPaths'))
 /*----------------------------------------------------*/
 add_action('themosis_configurations', function()
 {
-   Themosis\Configuration\Config::make(array(
-       'app'    => array(
-           'application',
-           'constants',
-           'images',
-           'loading',
-           'menus',
-           'sidebars',
-           'supports',
-           'templates'
-       )
-   ));
+    Themosis\Configuration\Config::make(array(
+        'app'    => array(
+            'application',
+            'constants',
+            'images',
+            'loading',
+            'menus',
+            'sidebars',
+            'supports',
+            'templates'
+        )
+    ));
 
    Themosis\Configuration\Config::set();
 });

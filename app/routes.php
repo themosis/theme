@@ -1,4 +1,4 @@
-<?php defined('DS') or die('No direct script access.');
+<?php
 
 /*
  * Define your routes and which views to display
@@ -9,12 +9,17 @@
  *
  */
 
+<<<<<<< HEAD
 View::share('prout', 'some data');
 
 /*Route::get('home', function(){
+=======
+Route::get('home', function(){
+>>>>>>> release
 
-    return View::make('home');
+    return View::make('welcome');
 
+<<<<<<< HEAD
 });*/
 
 Route::get('home', 'PagesController@home');
@@ -36,3 +41,6 @@ Route::get('page', ['sample-page', 'uses' => 'PagesController@sample']);
 Route::get('page', [['about', 295], 'uses' => 'PagesController@about']);
 
 Route::get('page', [['vision'], 'uses' => 'PagesController@vision']);
+=======
+});
+>>>>>>> release

@@ -18,9 +18,4 @@ class PostModel {
         return $query->get_posts();
     }
 
-    public function special()
-    {
-        echo('Footer Composer');
-    }
-
 } 
