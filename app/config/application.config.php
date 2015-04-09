@@ -54,6 +54,7 @@ return array(
 	// Application classes' alias
 	/* --------------------------------------------------------------- */
 	'aliases'	    => array(
+        'Themosis\\Facades\\Action'                 => 'Action',
 		'Themosis\\Ajax\\Ajax'						=> 'Ajax',
 		'Themosis\\Facades\\Asset'					=> 'Asset',
 		'Themosis\\Configuration\\Application'		=> 'Application',

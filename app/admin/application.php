@@ -3,7 +3,6 @@
 /**
  * application.php - Write your custom code below.
  */
-<<<<<<< HEAD
 $posts = array();
 foreach(PostModel::all() as $post)
 {
@@ -94,5 +93,3 @@ Taxonomy::make('publisher', 'jl_books', 'Publishers', 'Publisher')->set()->bind(
 Taxonomy::make('author', array('jl_books', 'post'), 'Authors', 'Author')->set()->bind();
 
 View::share('shared', array('a', 'b', 'c'));
-=======
->>>>>>> release

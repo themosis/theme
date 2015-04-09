@@ -9,17 +9,14 @@
  *
  */
 
-<<<<<<< HEAD
 View::share('prout', 'some data');
 
 /*Route::get('home', function(){
-=======
+
 Route::get('home', function(){
->>>>>>> release
 
     return View::make('welcome');
 
-<<<<<<< HEAD
 });*/
 
 Route::get('home', 'PagesController@home');
@@ -41,6 +38,3 @@ Route::get('page', ['sample-page', 'uses' => 'PagesController@sample']);
 Route::get('page', [['about', 295], 'uses' => 'PagesController@about']);
 
 Route::get('page', [['vision'], 'uses' => 'PagesController@vision']);
-=======
-});
->>>>>>> release
