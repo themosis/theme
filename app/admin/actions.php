@@ -9,5 +9,7 @@
  */
 Action::add('init', function()
 {
-    echo('Init action called by a closure...nothing new.');
+    //echo('Init hook called by anonymous function.');
 });
+
+Action::add('init', 'PagesController');

@@ -79,9 +79,9 @@ $metabox->validate(array(
     )
 ));
 
-PostType::make('jl_books', 'Books', 'Book')->set();
+$books = PostType::make('jl_books', 'Books', 'Book')->set();
 
-Metabox::make('Details', 'jl_books')->set(array(
+Metabox::make('Details', 'jl_books', array('id' => 'details-ID'))->set(array(
     Field::media('cover', array('type' => 'image')),
     Field::infinite('gallery', array(
         Field::media('gallery_item'),
@@ -93,3 +93,9 @@ Taxonomy::make('publisher', 'jl_books', 'Publishers', 'Publisher')->set()->bind(
 Taxonomy::make('author', array('jl_books', 'post'), 'Authors', 'Author')->set()->bind();
 
 View::share('shared', array('a', 'b', 'c'));
+
+$cars = PostType::make('jl_cars', 'Cars', 'Car')->set();
+
+Metabox::make('Info', $cars->get('name'))->set(array(
+    Field::text('serial')
+));

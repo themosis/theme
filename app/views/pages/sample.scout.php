@@ -11,7 +11,7 @@
 <body>
 <h1>Sample Page</h1>
 <p>Hello World!</p>
-
+<p>{{ $someData or 'Aucunes données' }}</p>
 <p>{{ $prout }}</p>
 <p>{{ $common or 'Composer view not available' }}</p>
 <p>{{ $special or 'Multiple composers not available' }}</p>

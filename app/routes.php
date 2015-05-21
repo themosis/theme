@@ -11,6 +11,11 @@
 
 View::share('prout', 'some data');
 
+View::composer('pages.sample', function($view)
+{
+    $view->with('someData', 'A data value');
+});
+
 /*Route::get('home', function(){
 
 Route::get('home', function(){

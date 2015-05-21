@@ -23,4 +23,12 @@ class PagesController extends BaseController
     {
         return 'Vision';
     }
+
+    /**
+     * Called by hook "init".
+     */
+    public function init()
+    {
+        //echo('Init hook called by controller method.');
+    }
 }
