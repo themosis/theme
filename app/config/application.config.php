@@ -55,7 +55,7 @@ return array(
 	/* --------------------------------------------------------------- */
 	'aliases'	    => array(
         'Themosis\\Facades\\Action'                 => 'Action',
-		'Themosis\\Ajax\\Ajax'						=> 'Ajax',
+		'Themosis\\Facades\\Ajax'					=> 'Ajax',
 		'Themosis\\Facades\\Asset'					=> 'Asset',
 		'Themosis\\Configuration\\Application'		=> 'Application',
 		'Themosis\\Route\\Controller'               => 'Controller',
