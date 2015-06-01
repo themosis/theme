@@ -10,6 +10,11 @@
             "homepage": "http://www.themosis.com/"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "": ["resources/controllers/", "resources/models"]
+        }
+    },
     "type": "wordpress-theme",
     "require": {
         "php": ">=5.4",

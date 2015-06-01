@@ -15,7 +15,7 @@ defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 /*----------------------------------------------------*/
 // Asset directory URL.
 /*----------------------------------------------------*/
-defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/app/assets');
+defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/resources/assets');
 
 /*----------------------------------------------------*/
 // Theme Textdomain.
@@ -47,8 +47,17 @@ if (!class_exists('THFWK_ThemosisTheme'))
 
         protected function __construct()
         {
+            // Default path to Composer autoload file.
+            $autoload = __DIR__.DS.'vendor'.DS.'autoload.php';
+
+            // Check for autoload file in dev mode (vendor loaded into the theme)
+            if (file_exists($autoload))
+            {
+                require($autoload);
+            }
+
         	// Check if framework is loaded.
-        	add_action('after_setup_theme', array($this, 'check'));
+        	add_action('after_setup_theme', [$this, 'check']);
         }
         
         /**
@@ -73,29 +82,23 @@ if (!class_exists('THFWK_ThemosisTheme'))
     	 */
     	public function check()
     	{
-            $symfony = class_exists('Symfony\Component\ClassLoader\ClassLoader');
-    	    $themosis = class_exists('THFWK_Themosis');
-
-            // Symfony dependency and Themosis plugin classes are available.
-            if ($symfony && $themosis)
+            // Check if core application class is loaded...
+            if (!class_exists('Themosis\Core\Application'))
             {
-                $this->pluginsAreLoaded = $themosis;
-            }
+                // Message for the back-end
+                add_action('admin_notices', [$this, 'displayMessage']);
 
-        	// Display a message to the user in the admin panel when he's activating the theme
-            // if the plugin is not available.
-        	if (!$themosis)
-            {
-            	add_action('admin_notices', array($this, 'displayMessage'));
-                return;
-        	}
+                // Message for the front-end
+                if (!is_admin())
+                {
+                    wp_die(__("The <strong>Themosis theme</strong> can't work properly. Please make sure the Themosis framework plugin is installed. Check also your <strong>composer.json</strong> autoloading configuration.", THEMOSIS_THEME_TEXTDOMAIN));
+                }
 
-            // Display a message if Symfony Class Loader component is not available.
-            if (!$symfony)
-            {
-                add_action('admin_notices', array($this, 'displayNotice'));
                 return;
             }
+
+            // The main plugin is available.
+            $this->pluginsAreLoaded = true;
     	}
     	
     	/**
@@ -111,20 +114,6 @@ if (!class_exists('THFWK_ThemosisTheme'))
                 </div>
     		<?php
     	}
-
-        /**
-         * Display a notice to the user if the Symfony class loaded is not available.
-         *
-         * @return void
-         */
-        public function displayNotice()
-        {
-        ?>
-            <div id="message" class="error">
-                <p><?php _e(sprintf('<b>Themosis theme:</b> %s', "Symfony Class Loader component not found. Make sure the Themosis plugin includes it before proceeding."), THEMOSIS_THEME_TEXTDOMAIN); ?></p>
-            </div>
-        <?php
-        }
     	
     	/**
          * Return true if framework is loaded.
@@ -157,13 +146,13 @@ if (!function_exists('themosis_setApplicationPaths'))
         $paths['base'] = __DIR__.DS;
 
         // Application path.
-        $paths['app'] = __DIR__.DS.'app'.DS;
+        $paths['theme'] = __DIR__.DS.'resources'.DS;
 
         // Application admin directory.
-        $paths['admin'] = __DIR__.DS.'app'.DS.'admin'.DS;
+        $paths['admin'] = __DIR__.DS.'resources'.DS.'admin'.DS;
 
         // Application storage directory.
-        $paths['storage'] = __DIR__.DS.'app'.DS.'storage'.DS;
+        $paths['storage'] = __DIR__.DS.'resources'.DS.'storage'.DS;
 
         return $paths;
     }
@@ -177,26 +166,9 @@ add_action('themosis_configuration', function()
     // Load the theme configuration files.
     add_filter('themosisConfigPaths', function($paths)
     {
-        $paths[] = themosis_path('app').'config'.DS;
-
+        $paths[] = themosis_path('theme').'config'.DS;
         return $paths;
     });
-
-    // @TODO Remove old configuration code...
-    Themosis\Configuration\Config::make(array(
-        'app'    => array(
-            'application',
-            'constants',
-            'images',
-            'loading',
-            'menus',
-            'sidebars',
-            'supports',
-            'templates'
-        )
-    ));
-
-   Themosis\Configuration\Config::set();
 });
 
 /*----------------------------------------------------*/
@@ -204,7 +176,7 @@ add_action('themosis_configuration', function()
 /*----------------------------------------------------*/
 add_filter('themosisViewPaths', function($paths)
 {
-    $paths[] = themosis_path('app').'views'.DS;
+    $paths[] = themosis_path('theme').'views'.DS;
     return $paths;
 });
 
@@ -213,7 +185,7 @@ add_filter('themosisViewPaths', function($paths)
 /*----------------------------------------------------*/
 add_filter('themosisAssetPaths', function($paths)
 {
-    $paths[THEMOSIS_ASSETS] = themosis_path('app').'assets';
+    $paths[THEMOSIS_ASSETS] = themosis_path('theme').'assets';
     return $paths;
 });
 
@@ -267,27 +239,27 @@ add_action('themosis_bootstrap', function()
     /*----------------------------------------------------*/
     // Application textdomain.
     /*----------------------------------------------------*/
-    defined('THEMOSIS_TEXTDOMAIN') ? THEMOSIS_TEXTDOMAIN : define('THEMOSIS_TEXTDOMAIN', Themosis\Configuration\Application::get('textdomain'));
+    defined('THEMOSIS_TEXTDOMAIN') ? THEMOSIS_TEXTDOMAIN : define('THEMOSIS_TEXTDOMAIN', Themosis\Facades\Config::get('application.textdomain'));
 
     /*----------------------------------------------------*/
     // Trigger framework default configuration.
     /*----------------------------------------------------*/
-    Themosis\Configuration\Configuration::make();
+    //Themosis\Configuration\Configuration::make();
 
     /*----------------------------------------------------*/
     // Application constants.
     /*----------------------------------------------------*/
-    Themosis\Configuration\Constant::load();
+    //Themosis\Configuration\Constant::load();
 
     /*----------------------------------------------------*/
     // Application page templates.
     /*----------------------------------------------------*/
-    Themosis\Configuration\Template::init();
+    //Themosis\Configuration\Template::init();
 
     /*----------------------------------------------------*/
     // Application image sizes.
     /*----------------------------------------------------*/
-    Themosis\Configuration\Images::install();
+    //Themosis\Configuration\Images::install();
 
     /*----------------------------------------------------*/
     // Parse application files and include them.
@@ -320,7 +292,7 @@ function themosis_start_app()
         /*----------------------------------------------------*/
         // Application routes.
         /*----------------------------------------------------*/
-        require themosis_path('app').'routes.php';
+        require themosis_path('theme').'routes.php';
 
         /*----------------------------------------------------*/
         // Run application and return a response.
