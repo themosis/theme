@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
 	/*
 	* Edit this file in order to configure your application
@@ -42,22 +42,23 @@ return array(
 	// 'contributor' and 'subscriber' to access the ADMIN area.
 	// Edit this configuration in order to limit access.
 	/* --------------------------------------------------------------- */
-	'access'	    => array(
+	'access'	    => [
 		'administrator',
 		'editor',
 		'author',
 		'contributor',
 		'subscriber'
-	),
+    ],
 
 	/* --------------------------------------------------------------- */
 	// Application classes' alias
 	/* --------------------------------------------------------------- */
-	'aliases'	    => array(
+	'aliases'	    => [
         'Themosis\\Facades\\Action'                 => 'Action',
 		'Themosis\\Facades\\Ajax'					=> 'Ajax',
 		'Themosis\\Facades\\Asset'					=> 'Asset',
 		'Themosis\\Configuration\\Application'		=> 'Application',
+        'Themosis\\Facades\\Config'                 => 'Config',
 		'Themosis\\Route\\Controller'               => 'Controller',
 		'Themosis\\Facades\\Field'					=> 'Field',
 		'Themosis\\Facades\\Form'					=> 'Form',
@@ -78,6 +79,6 @@ return array(
 		'Themosis\\Facades\\Validator'              => 'Validator',
 		'Themosis\\Facades\\Loop'					=> 'Loop',
 		'Themosis\\Facades\\View'					=> 'View'
-	)
+    ]
 
-);
+];

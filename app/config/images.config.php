@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /**
      * Edit this file in order to configure the additional
@@ -15,4 +15,4 @@ return array(
      */
     'themosis' => array(200, 150, true, true)
 
-);
+];

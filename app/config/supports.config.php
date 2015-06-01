@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
 	/*
 	* Edit this file to add features to your theme.
@@ -11,12 +11,12 @@ return array(
 	/* --------------------------------------------------------------- */
 	// Enable post thumbnails
 	/* --------------------------------------------------------------- */
-	'post-thumbnails' => array('post'),
+	'post-thumbnails' => ['post'],
 
 	/* --------------------------------------------------------------- */
 	// Enable post formats (aside, gallery, link, image, ...)
 	/* --------------------------------------------------------------- */
-	'post-formats' => array(),
+	'post-formats' => [],
 
 	/* --------------------------------------------------------------- */
 	// Enable title tag
@@ -26,7 +26,7 @@ return array(
 	/* --------------------------------------------------------------- */
 	// Enable HTML5 features
 	/* --------------------------------------------------------------- */
-	'html5' => array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'),
+	'html5' => ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption'],
 
 	/* --------------------------------------------------------------- */
 	// Enable feed links in head
@@ -36,18 +36,18 @@ return array(
 	/* --------------------------------------------------------------- */
 	// Enable custom background (since WP 3.4)
 	/* --------------------------------------------------------------- */
-	//'custom-background'	=> array(
+	//'custom-background'	=> [
 	//	'default-color'          => '',
 	//	'default-image'          => '',
 	//	'wp-head-callback'       => '_custom_background_cb',
 	//	'admin-head-callback'    => '',
 	//	'admin-preview-callback' => ''
-	//),
+	//],
 
 	/* --------------------------------------------------------------- */
 	// Enable custom header (not compatible for versions < WP 3.4)
 	/* --------------------------------------------------------------- */
-	//'custom-header'	=>	array(
+	//'custom-header'	=>	[
 	//	'default-image'          => '',
 	//	'random-default'         => false,
 	//	'width'                  => 0,
@@ -60,6 +60,6 @@ return array(
 	//	'wp-head-callback'       => '',
 	//	'admin-head-callback'    => '',
 	//	'admin-preview-callback' => '',
-	//)
+	//]
 
-);
+];

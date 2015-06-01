@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
 	/*
 	* Edit this file in order to configure your application's
@@ -11,4 +11,4 @@ return array(
 	*/
 	'APPVERSION'	=> '1.0'
 
-);
+];

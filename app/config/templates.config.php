@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
 	/*
 	* Edit this file in order to configure your page
@@ -11,4 +11,4 @@ return array(
 	*/
 	'custom-template'
 
-);
+];

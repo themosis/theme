@@ -36,16 +36,16 @@ if (!class_exists('THFWK_ThemosisTheme'))
          *
          * @var \THFWK_ThemosisTheme
          */
-        private static $instance = null;
+        protected static $instance = null;
         
         /**
          * Switch that tell if core and datas plugins are loaded.
          *
          * @var bool
          */
-        private $pluginsAreLoaded = false;
+        protected $pluginsAreLoaded = false;
 
-        private function __construct()
+        protected function __construct()
         {
         	// Check if framework is loaded.
         	add_action('after_setup_theme', array($this, 'check'));
@@ -172,8 +172,17 @@ if (!function_exists('themosis_setApplicationPaths'))
 /*----------------------------------------------------*/
 // Set theme's configurations.
 /*----------------------------------------------------*/
-add_action('themosis_configurations', function()
+add_action('themosis_configuration', function()
 {
+    // Load the theme configuration files.
+    add_filter('themosisConfigPaths', function($paths)
+    {
+        $paths[] = themosis_path('app').'config'.DS;
+
+        return $paths;
+    });
+
+    // @TODO Remove old configuration code...
     Themosis\Configuration\Config::make(array(
         'app'    => array(
             'application',
@@ -248,7 +257,7 @@ add_action('themosis_bootstrap', function()
     /*----------------------------------------------------*/
     // Set class aliases.
     /*----------------------------------------------------*/
-    $aliases = Themosis\Configuration\Application::get('aliases');
+    $aliases = Themosis\Facades\Config::get('application.aliases');
 
     foreach ($aliases as $namespace => $className)
     {

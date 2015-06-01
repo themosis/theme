@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
 	/*
 	* Edit this file to add navigation menus. 
@@ -11,4 +11,4 @@ return array(
 	*/
 	'header-nav'	=> __('Header navigation', THEMOSIS_THEME_TEXTDOMAIN)
 
-);
+];

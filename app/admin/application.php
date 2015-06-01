@@ -3,7 +3,7 @@
 /**
  * application.php - Write your custom code below.
  */
-$posts = array();
+$posts = [];
 foreach(PostModel::all() as $post)
 {
     $posts[$post->ID] = $post->post_title;
