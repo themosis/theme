@@ -35,6 +35,9 @@
                     </ul>
                 </div>
             </div>
+            @loop
+                {{ Meta::get(Loop::id(), 'types') }}
+            @endloop
         </div>
     </div>
 </div>

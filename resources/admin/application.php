@@ -14,6 +14,11 @@ foreach(PostModel::all() as $post)
 
 $metabox = Metabox::make('Link', 'post')->set(array(
 
+    Field::select('types', [
+        [
+            'flat' => 'Flat'
+        ]
+    ]),
     Field::text('hero'),
     Field::number('invites'),
     Field::number('tickets', array('info' => 'Define the number of tickets to sell.')),
