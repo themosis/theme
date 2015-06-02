@@ -152,7 +152,7 @@ if (!function_exists('themosis_setApplicationPaths'))
         $paths['admin'] = __DIR__.DS.'resources'.DS.'admin'.DS;
 
         // Application storage directory.
-        $paths['storage'] = __DIR__.DS.'resources'.DS.'storage'.DS;
+        $paths['storage'] = __DIR__.DS.'storage'.DS;
 
         return $paths;
     }
