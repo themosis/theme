@@ -38,6 +38,7 @@
             @loop
                 {{ Meta::get(Loop::id(), 'types') }}
             @endloop
+            {{ APPVERSION }}
         </div>
     </div>
 </div>

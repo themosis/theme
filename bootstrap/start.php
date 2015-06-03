@@ -58,7 +58,7 @@ add_action('themosis_bootstrap', function()
     /*----------------------------------------------------*/
     // Theme cleanup.
     /*----------------------------------------------------*/
-    if (Config::get('application.cleanup'))
+    if (Themosis\Facades\Config::get('application.cleanup'))
     {
         add_action('init', 'themosisThemeCleanup');
     }
@@ -66,7 +66,7 @@ add_action('themosis_bootstrap', function()
     /*----------------------------------------------------*/
     // Theme restriction. Block wp-admin access.
     /*----------------------------------------------------*/
-    $access = Config::get('application.access');
+    $access = Themosis\Facades\Config::get('application.access');
 
     if (!empty($access) && is_array($access))
     {
@@ -74,9 +74,11 @@ add_action('themosis_bootstrap', function()
     }
 
     /*----------------------------------------------------*/
-    // Application constants.
+    // Theme constants.
     /*----------------------------------------------------*/
-    //Themosis\Configuration\Constant::load();
+    $constants = Themosis\Facades\Config::get('constants');
+    $constant = new Themosis\Configuration\Constant($constants);
+    $constant->make();
 
     /*----------------------------------------------------*/
     // Application page templates.
@@ -133,7 +135,7 @@ function themosisThemeCleanup()
 /*----------------------------------------------------*/
 function themosisThemeRestrict()
 {
-    $access = Config::get('application.access');
+    $access = Themosis\Facades\Config::get('application.access');
 
     if (is_admin())
     {
