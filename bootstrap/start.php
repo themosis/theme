@@ -81,9 +81,11 @@ add_action('themosis_bootstrap', function()
     $constant->make();
 
     /*----------------------------------------------------*/
-    // Application page templates.
+    // Theme page templates.
     /*----------------------------------------------------*/
-    //Themosis\Configuration\Template::init();
+    $templates = Themosis\Facades\Config::get('templates');
+    $tpl = new Themosis\Configuration\Template($templates);
+    $tpl->make();
 
     /*----------------------------------------------------*/
     // Application image sizes.
