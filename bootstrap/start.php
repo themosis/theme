@@ -27,8 +27,22 @@ add_filter('themosisViewPaths', function($paths)
 /*----------------------------------------------------*/
 add_filter('themosisAssetPaths', function($paths)
 {
+    // @TODO check assets URL issue #137
     $paths[THEMOSIS_ASSETS] = themosis_path('theme').'assets';
     return $paths;
+});
+
+/*----------------------------------------------------*/
+// Theme class aliases.
+/*----------------------------------------------------*/
+add_filter('themosisClassAliases', function($aliases)
+{
+    // application.config.php aliases
+    $themeAliases = Themosis\Facades\Config::get('application.aliases');
+
+    // Allow developer to overwrite an existing alias
+    $aliases = array_merge($aliases, $themeAliases);
+    return $aliases;
 });
 
 /*----------------------------------------------------*/
@@ -36,48 +50,6 @@ add_filter('themosisAssetPaths', function($paths)
 /*----------------------------------------------------*/
 add_action('themosis_bootstrap', function()
 {
-    /*----------------------------------------------------*/
-    // Handle errors, warnings, exceptions.
-    /*----------------------------------------------------*/
-    set_exception_handler(function($e)
-    {
-        Themosis\Error\Error::exception($e);
-    });
-
-    set_error_handler(function($code, $error, $file, $line)
-    {
-        // Check if the class exists
-        // Otherwise WP can't find it when
-        // constructing its "Menus" page
-        // under appearance in administration.
-        if (class_exists('Themosis\Error\Error'))
-        {
-            Themosis\Error\Error::native($code, $error, $file, $line);
-        }
-    });
-
-    if (defined('THEMOSIS_ERROR_SHUTDOWN') && THEMOSIS_ERROR_SHUTDOWN)
-    {
-        register_shutdown_function(function()
-        {
-            Themosis\Error\Error::shutdown();
-        });
-    }
-
-    // Passing in the value -1 will show every errors.
-    $report = defined('THEMOSIS_ERROR_REPORT') ? THEMOSIS_ERROR_REPORT : 0;
-    error_reporting($report);
-
-    /*----------------------------------------------------*/
-    // Set class aliases.
-    /*----------------------------------------------------*/
-    $aliases = Themosis\Facades\Config::get('application.aliases');
-
-    foreach ($aliases as $namespace => $className)
-    {
-        class_alias($namespace, $className);
-    }
-
     /*----------------------------------------------------*/
     // Application textdomain.
     /*----------------------------------------------------*/

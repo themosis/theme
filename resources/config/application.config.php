@@ -51,34 +51,8 @@ return [
     ],
 
 	/* --------------------------------------------------------------- */
-	// Application classes' alias
+	// Theme class aliases
 	/* --------------------------------------------------------------- */
-	'aliases'	    => [
-        'Themosis\\Facades\\Action'                 => 'Action',
-		'Themosis\\Facades\\Ajax'					=> 'Ajax',
-		'Themosis\\Facades\\Asset'					=> 'Asset',
-		'Themosis\\Configuration\\Application'		=> 'Application',
-        'Themosis\\Facades\\Config'                 => 'Config',
-		'Themosis\\Route\\Controller'               => 'Controller',
-		'Themosis\\Facades\\Field'					=> 'Field',
-		'Themosis\\Facades\\Form'					=> 'Form',
-		'Themosis\\Facades\\Html'                   => 'Html',
-		'Themosis\\Facades\\Input'                  => 'Input',
-		'Themosis\\Metabox\\Meta'					=> 'Meta',
-		'Themosis\\Facades\\Metabox'				=> 'Metabox',
-		'Themosis\\Page\\Option'					=> 'Option',
-		'Themosis\\Facades\\Page'					=> 'Page',
-		'Themosis\\Facades\\PostType'				=> 'PostType',
-		'Themosis\\Facades\\Route'					=> 'Route',
-		'Themosis\\Facades\\Section'                => 'Section',
-		'Themosis\\Session\\Session'				=> 'Session',
-		'Themosis\\Taxonomy\\TaxField'              => 'TaxField',
-		'Themosis\\Taxonomy\\TaxMeta'               => 'TaxMeta',
-		'Themosis\\Facades\\Taxonomy'				=> 'Taxonomy',
-		'Themosis\\Facades\\User'					=> 'User',
-		'Themosis\\Facades\\Validator'              => 'Validator',
-		'Themosis\\Facades\\Loop'					=> 'Loop',
-		'Themosis\\Facades\\View'					=> 'View'
-    ]
+	'aliases'	    => []
 
 ];
