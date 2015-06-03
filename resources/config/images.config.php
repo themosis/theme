@@ -11,7 +11,7 @@ return [
      * @param int $width The image width.
      * @param int $height The image height.
      * @param bool|array $crop Crop option. Since 3.9, define a crop position with an array.
-     * @param bool $media Add to media selection dropdown. Make it also available to media custom field.
+     * @param bool|string $media Add to media selection dropdown. Make it also available to media custom field. If string, used as display name ;)
      */
     'themosis' => array(200, 150, true, true)
 

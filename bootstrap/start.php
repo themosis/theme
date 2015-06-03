@@ -51,7 +51,7 @@ add_filter('themosisClassAliases', function($aliases)
 add_action('themosis_bootstrap', function()
 {
     /*----------------------------------------------------*/
-    // Application textdomain.
+    // Theme textdomain.
     /*----------------------------------------------------*/
     defined('THEMOSIS_TEXTDOMAIN') ? THEMOSIS_TEXTDOMAIN : define('THEMOSIS_TEXTDOMAIN', Themosis\Facades\Config::get('application.textdomain'));
 
@@ -88,9 +88,11 @@ add_action('themosis_bootstrap', function()
     $tpl->make();
 
     /*----------------------------------------------------*/
-    // Application image sizes.
+    // Theme image sizes.
     /*----------------------------------------------------*/
-    //Themosis\Configuration\Images::install();
+    $sizes = Themosis\Facades\Config::get('images');
+    $images = new Themosis\Configuration\Images($sizes);
+    $images->make();
 
     /*----------------------------------------------------*/
     // Parse application files and include them.
