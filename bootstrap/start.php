@@ -56,9 +56,22 @@ add_action('themosis_bootstrap', function()
     defined('THEMOSIS_TEXTDOMAIN') ? THEMOSIS_TEXTDOMAIN : define('THEMOSIS_TEXTDOMAIN', Themosis\Facades\Config::get('application.textdomain'));
 
     /*----------------------------------------------------*/
-    // Trigger framework default configuration.
+    // Theme cleanup.
     /*----------------------------------------------------*/
-    //Themosis\Configuration\Configuration::make();
+    if (Config::get('application.cleanup'))
+    {
+        add_action('init', 'themosisThemeCleanup');
+    }
+
+    /*----------------------------------------------------*/
+    // Theme restriction. Block wp-admin access.
+    /*----------------------------------------------------*/
+    $access = Config::get('application.access');
+
+    if (!empty($access) && is_array($access))
+    {
+        add_action('init', 'themosisThemeRestrict');
+    }
 
     /*----------------------------------------------------*/
     // Application constants.
@@ -93,6 +106,48 @@ add_action('themosis_bootstrap', function()
     /*----------------------------------------------------*/
     Themosis\Ajax\Ajax::set();
 });
+
+/*----------------------------------------------------*/
+// Theme cleanup.
+/*----------------------------------------------------*/
+function themosisThemeCleanup()
+{
+    global $wp_widget_factory;
+
+    remove_action('wp_head', 'rsd_link');
+    remove_action('wp_head', 'wlwmanifest_link');
+    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+    remove_action('wp_head', 'wp_generator');
+    remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+
+    if (array_key_exists('WP_Widget_Recent_Comments', $wp_widget_factory->widgets))
+    {
+        remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
+    }
+
+    add_filter('use_default_gallery_style', '__return_null');
+}
+
+/*----------------------------------------------------*/
+// Theme restriction.
+/*----------------------------------------------------*/
+function themosisThemeRestrict()
+{
+    $access = Config::get('application.access');
+
+    if (is_admin())
+    {
+        $user = wp_get_current_user();
+        $role = $user->roles;
+        $role = (count($role) > 0) ? $role[0] : '';
+
+        if (!in_array($role, $access) && !(defined('DOING_AJAX') && DOING_AJAX)  && !(defined('WP_CLI') && WP_CLI))
+        {
+            wp_redirect(home_url());
+            exit;
+        }
+    }
+}
 
 /*----------------------------------------------------*/
 // Handle application requests/responses.
