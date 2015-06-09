@@ -107,6 +107,12 @@ add_action('themosis_bootstrap', function()
     new Themosis\Configuration\Sidebar($bars);
 
     /*----------------------------------------------------*/
+    // Theme supports.
+    /*----------------------------------------------------*/
+    $supports = Themosis\Facades\Config::get('supports');
+    new Themosis\Configuration\Support($supports);
+
+    /*----------------------------------------------------*/
     // Parse application files and include them.
     // Extends the 'functions.php' file by loading
     // files located under the 'admin' folder.
@@ -120,9 +126,9 @@ add_action('themosis_bootstrap', function()
     Themosis\Core\WidgetLoader::load();
 
     /*----------------------------------------------------*/
-    // Application global JS object.
+    // Theme global JS object.
     /*----------------------------------------------------*/
-    Themosis\Ajax\Ajax::set();
+    add_action('wp_head', 'themosisInstallThemeGlobalObject');
 });
 
 /*----------------------------------------------------*/
@@ -165,6 +171,37 @@ function themosisThemeRestrict()
             exit;
         }
     }
+}
+
+/*----------------------------------------------------*/
+// Theme JS global object.
+/*----------------------------------------------------*/
+function themosisInstallThemeGlobalObject()
+{
+    $namespace = Themosis\Facades\Config::get('application.namespace');
+    $url = admin_url().Themosis\Facades\Config::get('application.ajaxurl').'.php';
+
+    $datas = apply_filters('themosisGlobalObject', []);
+
+    $output = "<script type=\"text/javascript\">\n\r";
+    $output.= "//<![CDATA[\n\r";
+    $output.= "var ".$namespace." = {\n\r";
+    $output.= "ajaxurl: '".$url."',\n\r";
+
+    if (!empty($datas))
+    {
+        foreach ($datas as $key => $value)
+        {
+            $output.= $key.": ".json_encode($value).",\n\r";
+        }
+    }
+
+    $output.= "};\n\r";
+    $output.= "//]]>\n\r";
+    $output.= "</script>";
+
+    // Output the datas.
+    echo($output);
 }
 
 /*----------------------------------------------------*/
