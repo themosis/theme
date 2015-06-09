@@ -98,7 +98,13 @@ add_action('themosis_bootstrap', function()
     // Theme menus.
     /*----------------------------------------------------*/
     $menus = Themosis\Facades\Config::get('menus');
-    $menu = new Themosis\Configuration\Menu($menus);
+    new Themosis\Configuration\Menu($menus);
+
+    /*----------------------------------------------------*/
+    // Theme sidebars.
+    /*----------------------------------------------------*/
+    $bars = Themosis\Facades\Config::get('sidebars');
+    new Themosis\Configuration\Sidebar($bars);
 
     /*----------------------------------------------------*/
     // Parse application files and include them.
