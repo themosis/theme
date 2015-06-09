@@ -117,13 +117,14 @@ add_action('themosis_bootstrap', function()
     // Extends the 'functions.php' file by loading
     // files located under the 'admin' folder.
     /*----------------------------------------------------*/
-    Themosis\Core\AdminLoader::add();
-    Themosis\Core\WidgetLoader::add();
+    $adminPath = themosis_path('admin');
+    new Themosis\Core\AdminLoader($adminPath);
 
     /*----------------------------------------------------*/
-    // Application widgets.
+    // Theme widgets.
     /*----------------------------------------------------*/
-    Themosis\Core\WidgetLoader::load();
+    $widgetPath = themosis_path('theme').'widgets'.DS;
+    new Themosis\Core\WidgetLoader($widgetPath);
 
     /*----------------------------------------------------*/
     // Theme global JS object.
