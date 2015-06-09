@@ -95,6 +95,12 @@ add_action('themosis_bootstrap', function()
     $images->make();
 
     /*----------------------------------------------------*/
+    // Theme menus.
+    /*----------------------------------------------------*/
+    $menus = Themosis\Facades\Config::get('menus');
+    $menu = new Themosis\Configuration\Menu($menus);
+
+    /*----------------------------------------------------*/
     // Parse application files and include them.
     // Extends the 'functions.php' file by loading
     // files located under the 'admin' folder.
