@@ -48,7 +48,7 @@ add_filter('themosisClassAliases', function($aliases)
 /*----------------------------------------------------*/
 // Bootstrap the theme.
 /*----------------------------------------------------*/
-add_action('themosis_bootstrap', function()
+add_action('themosis_bootstrap_theme', function($app)
 {
     /*----------------------------------------------------*/
     // Theme textdomain.
