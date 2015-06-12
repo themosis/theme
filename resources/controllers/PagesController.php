@@ -12,7 +12,12 @@ class PagesController extends BaseController
 
         Asset::add('ajax', 'js/ajax.js', array('jquery'), '1.0.0', true);
 
-        return View::make('pages.home');
+        $q = new WP_Query([
+            'post_type' => 'post',
+            'posts_per_page'    => '5'
+        ]);
+
+        return View::make('pages.home')->with('query', $q);
     }
 
     public function sample()

@@ -35,10 +35,19 @@
                     </ul>
                 </div>
             </div>
-            @loop
+            @query(['post_type' => 'post', 'posts_per_page' => -1])
                 {{ Meta::get(Loop::id(), 'types') }}
-            @endloop
+                @if(has_post_thumbnail())
+                    <!-- <img src="{{ Loop::thumbnailUrl() }}" alt="Image"/> -->
+                @endif
+            @endquery
             {{ APPVERSION }}
+
+            <h1>Enhanced Query</h1>
+            @query($query)
+                <h3>{{ Loop::title() }}</h3>
+                <p>{{ Loop::date('d/m/Y') }}</p>
+            @endquery
         </div>
     </div>
 </div>
