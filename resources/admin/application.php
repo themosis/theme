@@ -41,23 +41,32 @@ $metabox = Metabox::make('Link', 'post')->set(array(
     Field::radio('length', array('tiny', 'normal', 'huge'), array('default' => array('tiny'))),
     Field::radio('gender', array('woman', 'man')),
     Field::select('related', array($posts), false, array('title' => 'Related post', 'default' => 115)),
-    Field::select('country', array(
-        array(
-            'belgium',
+    Field::select('country', [
+        [
+            [
+                'text'  => 'belgium',
+                'atts'  => ['id' => 'belgium-option']
+            ],
             'france',
             'portugal'
-        )
-    ), false, array('default' => 2)),
+        ]
+    ], false, ['default' => 2]),
     Field::select('countries', array(
         array(
-            'belgium',
+            [
+                'text'  => 'belgium',
+                'atts'  => ['data-publish' => 'Set to Belgium']
+            ],
             'france',
             'portugal'
         )
     ), true, array('class' => 'custom-select-class', 'default' => array(1,2))),
     Field::select('area', array(
         array(
-            'be' => 'Belgium',
+            'be' => [
+                'text'  => 'Belgium',
+                'atts'  => ['data-publish' => 'Custom Belgium']
+            ],
             'fr' => 'France',
             'pt' => 'Portugal'
         )

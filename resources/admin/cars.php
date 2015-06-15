@@ -7,12 +7,14 @@ Metabox::make('Info', $cars->get('name'))->set(array(
 ));
 
 // Post statuses
-$cars->status(['rent', 'sold']);
-/*$cars->status([
+//$cars->status(['rent', 'sold']);
+$cars->status([
     'rent' => [
-        'label' => 'Rental'
+        'label' => 'Rental',
+        'publish_text'  => 'Rent'
     ],
     'sold' => [
-        'label' => 'To Sell'
+        'label' => 'To Sell',
+        'publish_text'  => 'Sell it damn\'it'
     ]
-]);*/
+]);
