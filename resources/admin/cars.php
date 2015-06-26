@@ -1,6 +1,10 @@
 <?php
 
-$cars = PostType::make('jl_cars', 'Cars', 'Car')->set();
+$cars = PostType::make('jl_cars', 'Cars', 'Car')->set([
+    'rewrite'   => [
+        'slug'  => 'cars'
+    ]
+]);
 
 Metabox::make('Info', $cars->get('name'))->set(array(
     Field::text('serial')
