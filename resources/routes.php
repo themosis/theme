@@ -43,3 +43,25 @@ Route::get('page', ['sample-page', 'uses' => 'PagesController@sample']);
 Route::get('page', [['about', 295], 'uses' => 'PagesController@about']);
 
 Route::get('page', [['vision'], 'uses' => 'PagesController@vision']);
+
+/*Route::get('shop', function()
+{
+    return 'Shop from routes.php';
+});
+
+Route::get('product', function()
+{
+    return 'One product';
+});
+*/
+
+Route::get('category', [function($post, $query)
+{
+    $queries  = $query->tax_query->queries;
+    if ($queries[0]['include_children'])
+    {
+        return View::make('parentView');
+    }
+
+    return View::make('childView');
+}]);

@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 Action::add('user_new_form', 'UserController@display');
 // When editing another user profile.
@@ -32,7 +31,8 @@ $user->addFields([
 
 $user2 = User::addFields([
     Field::text('twitter'),
-    Field::number('year_of_experience', ['title' => 'Years of experience'])
+    Field::number('year_of_experience', ['title' => 'Years of experience']),
+    Field::color('color_pref', ['title' => 'Color Preference'])
 ]);
 
 $user2->validate([

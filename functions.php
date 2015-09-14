@@ -12,10 +12,33 @@
 /*----------------------------------------------------*/
 defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 
+/**
+ * Helper function to setup assets URL
+ */
+if (!function_exists('themosis_theme_assets'))
+{
+    /**
+     * Return the application theme assets directory URL.
+     *
+     * @return string
+     */
+    function themosis_theme_assets()
+    {
+        if (defined('THEMOSIS') && THEMOSIS)
+        {
+            $segments = explode('themes', get_template_directory_uri());
+            $theme = (strpos($segments[1], DS) !== false) ? substr($segments[1], 1) : $segments[1];
+            return get_site_url().'/'.CONTENT_DIR.'/themes/'.$theme.'/resources/assets';
+        }
+
+        return get_template_directory_uri().'/resources/assets';
+    }
+}
+
 /*----------------------------------------------------*/
 // Asset directory URL.
 /*----------------------------------------------------*/
-defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/resources/assets');
+defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', themosis_theme_assets());
 
 /*----------------------------------------------------*/
 // Theme Textdomain.

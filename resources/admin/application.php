@@ -12,8 +12,10 @@ foreach(PostModel::all() as $post)
 //$postModel = new PostModel();
 //add_action('wp_footer', array($postModel, 'special'));
 
-$metabox = Metabox::make('Link', 'post')->set(array(
+$metabox = Metabox::make('Link', 'post')->set([
 
+    Field::color('theme-color'),
+    Field::color('menu-color', ['title' => 'Menu Color']),
     Field::select('types', [
         [
             'flat' => 'Flat'
@@ -25,7 +27,7 @@ $metabox = Metabox::make('Link', 'post')->set(array(
     Field::date('when', array('title' => 'Date de sortie')),
     Field::media('pic', array('type' => 'application')),
     Field::media('pho', array('title' => 'Photo')),
-    Field::collection('photo-list', array('info' => 'Some help text.')),
+    Field::collection('photo-list', array('info' => 'Some help text.', 'limit' => 2)),
     Field::collection('file-list', array('title' => 'Liste fichiers', 'info' => 'Une aide pour les utilisateurs.', 'type' => 'application')),
     Field::text('uh', array('class' => 'uh-custom-class', 'info' => 'Some help here.')),
     Field::text('doh'),
@@ -83,7 +85,7 @@ $metabox = Metabox::make('Link', 'post')->set(array(
         Field::password('key', array('default' => 'secret'))
     ))
 
-));
+]);
 
 $metabox->validate(array(
     'hero'      => array('required'),
