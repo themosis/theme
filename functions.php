@@ -24,7 +24,7 @@ if (!function_exists('themosis_theme_assets'))
      */
     function themosis_theme_assets()
     {
-        if (defined('THEMOSIS') && THEMOSIS)
+        if (is_multisite() && SUBDOMAIN_INSTALL)
         {
             $segments = explode('themes', get_template_directory_uri());
             $theme = (strpos($segments[1], DS) !== false) ? substr($segments[1], 1) : $segments[1];
