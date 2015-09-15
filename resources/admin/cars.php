@@ -6,9 +6,14 @@ $cars = PostType::make('jl_cars', 'Cars', 'Car')->set([
     ]
 ]);
 
-Metabox::make('Info', $cars->get('name'))->set(array(
-    Field::text('serial')
-));
+Metabox::make('Info', $cars->get('name'))->set([
+    Field::text('serial'),
+    Field::radio('material', 'leather'),
+    Field::radio('paint', ['red', 'blue', 'green']),
+    Field::checkbox('toggle', 'activer'),
+    Field::checkbox('enable', ['on' => 'enable']),
+    Field::checkbox('features', ['cuir', 'carbone', 'sans-fil'])
+]);
 
 // Post statuses
 //$cars->status(['rent', 'sold']);
