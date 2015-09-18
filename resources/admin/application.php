@@ -42,7 +42,7 @@ $metabox = Metabox::make('Link', 'post')->set([
     Field::radio('size', array('small', 'medium', 'large'), array('default' => 'large')),
     Field::radio('length', array('tiny', 'normal', 'huge'), array('default' => array('tiny'))),
     Field::radio('gender', array('woman', 'man')),
-    Field::select('related', array($posts), false, array('title' => 'Related post', 'default' => 115)),
+    Field::select('related', array($posts), array('title' => 'Related post', 'default' => 115)),
     Field::select('country', [
         [
             [
@@ -52,7 +52,7 @@ $metabox = Metabox::make('Link', 'post')->set([
             'france',
             'portugal'
         ]
-    ], false, ['default' => 2]),
+    ], ['default' => 2]),
     Field::select('countries', array(
         array(
             [
@@ -62,7 +62,7 @@ $metabox = Metabox::make('Link', 'post')->set([
             'france',
             'portugal'
         )
-    ), true, array('class' => 'custom-select-class', 'default' => array(1,2))),
+    ), ['info' => 'Choose multiple countries'], ['class' => 'custom-select-class', 'multiple' => 'multiple']),
     Field::select('area', array(
         array(
             'be' => [
@@ -72,7 +72,7 @@ $metabox = Metabox::make('Link', 'post')->set([
             'fr' => 'France',
             'pt' => 'Portugal'
         )
-    ), false, array('default' => 'pt')),
+    ), array('default' => 'pt')),
     Field::text('actor', array('default' => 'Marcel')),
     Field::password('secret', array('title' => 'Mot secret', 'default' => 'passworddd', 'class' => 'passme')),
     Field::infinite('things', array(

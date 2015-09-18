@@ -7,12 +7,16 @@ $cars = PostType::make('jl_cars', 'Cars', 'Car')->set([
 ]);
 
 Metabox::make('Info', $cars->get('name'))->set([
-    Field::text('serial'),
+    Field::text('serial', [], ['required']),
+    Field::password('code', ['title' => 'Car password'], ['data-transition' => 0.5]),
+    Field::number('amount', ['info' => 'How many cars do you have?']),
+    Field::date('purchase_date', ['title' => 'Date of purchase'], ['required']),
+    Field::textarea('details', ['title' => 'Car description'], ['class' => 'my-textarea-class', 'id' => 'special-id']),
     Field::radio('material', 'leather'),
     Field::radio('paint', ['red', 'blue', 'green']),
     Field::checkbox('toggle', 'activer'),
-    Field::checkbox('enable', ['on' => 'enable']),
-    Field::checkbox('features', ['cuir', 'carbone', 'sans-fil'])
+    Field::checkbox('enable', ['on' => 'enable'], ['title' => 'Accept conditions'], ['required']),
+    Field::checkbox('features', ['cuir', 'carbone', 'sans-fil'], ['title' => 'Options'])
 ]);
 
 // Post statuses

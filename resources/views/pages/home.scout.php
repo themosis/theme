@@ -6,6 +6,11 @@
             <p>{{ __('The Themosis framework is running.', THEMOSIS_TEXTDOMAIN) }}</p>
             <a id="ajax-button" href="#">Click me!</a>
         </div>
+        <div class="form">
+            {{ Form::open() }}
+            {{ Form::checkbox('colors', ['r' => 'Choose this red color', 'b' => 'Blue', 'g' => 'Green'], [], ['class' => 'checkbox-class', 'label' => ['class' => 'custom-class']]) }}
+            {{ Form::close() }}
+        </div>
         <div class="frame clearfix">
             <div id="get-started">
                 <div class="container">
