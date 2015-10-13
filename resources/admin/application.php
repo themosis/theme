@@ -34,7 +34,7 @@ $metabox = Metabox::make('Link', 'post')->set([
     Field::text('douh', array('title' => 'Weird Title')),
     Field::textarea('story', array('class' => 'textarea-class', 'default' => 'A long time ago..........')),
     Field::media('cover', array('default' => '166')),
-    //Field::editor('biography', array(), array('default' => 'Some default text for your biography.')),
+    Field::editor('biography'),
     Field::checkbox('toggle', 'show'),
     Field::checkbox('colors', array('red', 'green', 'blue'), array('default' => 'green')),
     Field::checkbox('couleurs', array('rouge', 'vert', 'bleu'), array('default' => array('vert', 'bleu'))),
@@ -76,13 +76,14 @@ $metabox = Metabox::make('Link', 'post')->set([
     Field::text('actor', array('default' => 'Marcel')),
     Field::password('secret', array('title' => 'Mot secret', 'default' => 'passworddd', 'class' => 'passme')),
     Field::infinite('things', array(
-        Field::text('sock', array('default' => 'Super chaussette')),
+        Field::text('sock'),
         Field::collection('sock-gallery')
     )),
     Field::infinite('stuffs', array(
-        Field::text('stuff', array('default' => 'Un truc')),
-        Field::media('image', array('default' => 166)),
-        Field::password('key', array('default' => 'secret'))
+        Field::text('stuff'),
+        Field::media('image'),
+        Field::password('key'),
+        Field::text('name')
     ))
 
 ]);

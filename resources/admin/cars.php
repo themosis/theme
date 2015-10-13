@@ -16,7 +16,61 @@ Metabox::make('Info', $cars->get('name'))->set([
     Field::radio('paint', ['red', 'blue', 'green']),
     Field::checkbox('toggle', 'activer'),
     Field::checkbox('enable', ['on' => 'enable'], ['title' => 'Accept conditions'], ['required']),
-    Field::checkbox('features', ['cuir', 'carbone', 'sans-fil'], ['title' => 'Options'])
+    Field::checkbox('features', ['cuir', 'carbone', 'sans-fil'], ['title' => 'Options']),
+    Field::select('manufacturer', [
+        'Europe' => [
+            'Audi',
+            'BMW',
+            'VW'
+        ],
+        'Asia' => [
+            'Honda',
+            'Mazda',
+            'Toyota'
+        ]
+    ]),
+    Field::select('manus', [
+        'Europe' => [
+            'audi'  => 'Audi',
+            'bm'    => 'BMW',
+            'volks' => 'VW'
+        ],
+        'Asia' => [
+            'jane'  => 'Honda',
+            'kyle'  => 'Mazda',
+            'nipon' => 'Toyota'
+        ]
+    ]),
+    Field::select('manufacturers', [
+        'Europe' => [
+            'audi'  => [
+                'text'  => 'Audi',
+                'atts'  => [
+                    'class' => 'prout'
+                ]
+            ],
+            'bm'    => 'BMW',
+            'volks' => 'VW'
+        ],
+        'Asia' => [
+            'jane'  => 'Honda',
+            'kyle'  => 'Mazda',
+            'nipon' => 'Toyota'
+        ]
+    ], ['title' => 'Fabricants'], ['multiple']),
+    Field::media('pic', ['title' => 'Car cover']),
+    Field::editor('full_desc', ['title' => 'Description', 'info' => 'Write the car description.']),
+    Field::collection('gallery', ['limit' => 3]),
+    Field::color('paint_picker', [], ['class' => 'prout', 'required', 'data-view' => 'something']),
+    Field::infinite('collection', [
+        Field::text('author'),
+        Field::textarea('desc'),
+        Field::media('avatar', ['info' => 'Insert a picture']),
+        Field::checkbox('activate', 'Toggle'),
+        Field::select('style', [
+            ['berline', 'coupe', '4-wheel']
+        ])
+    ])
 ]);
 
 // Post statuses

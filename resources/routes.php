@@ -9,12 +9,12 @@
  *
  */
 
-View::share('prout', 'some data');
+//View::share('prout', 'some data');
 
-View::composer('pages.sample', function($view)
+/*View::composer('pages.sample', function($view)
 {
     $view->with('someData', 'A data value');
-});
+});*/
 
 /*Route::get('home', function(){
 
@@ -24,7 +24,7 @@ Route::get('home', function(){
 
 });*/
 
-Route::get('home', 'PagesController@home');
+//Route::get('home', 'PagesController@home');
 
 /*Route::any('page', array('sample-page', function()
 {
@@ -38,11 +38,11 @@ Route::get('home', 'PagesController@home');
     return View::make('pages.sample', array('inputs' => $values));
 }));*/
 
-Route::get('page', ['sample-page', 'uses' => 'PagesController@sample']);
+//Route::get('page', ['sample-page', 'uses' => 'PagesController@sample']);
 
-Route::get('page', [['about', 295], 'uses' => 'PagesController@about']);
+//Route::get('page', [['about', 295], 'uses' => 'PagesController@about']);
 
-Route::get('page', [['vision'], 'uses' => 'PagesController@vision']);
+//Route::get('page', [['vision'], 'uses' => 'PagesController@vision']);
 
 /*Route::get('shop', function()
 {
@@ -55,7 +55,7 @@ Route::get('product', function()
 });
 */
 
-Route::get('category', [function($post, $query)
+/*Route::get('category', [function($post, $query)
 {
     $queries  = $query->tax_query->queries;
     if ($queries[0]['include_children'])
@@ -64,4 +64,4 @@ Route::get('category', [function($post, $query)
     }
 
     return View::make('childView');
-}]);
+}]);*/

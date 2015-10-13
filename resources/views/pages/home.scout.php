@@ -8,6 +8,7 @@
         </div>
         <div class="form">
             {{ Form::open() }}
+            {{ Form::text('nombg') }}
             {{ Form::checkbox('colors', ['r' => 'Choose this red color', 'b' => 'Blue', 'g' => 'Green'], [], ['class' => 'checkbox-class', 'label' => ['class' => 'custom-class']]) }}
             {{ Form::close() }}
         </div>

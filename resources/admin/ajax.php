@@ -15,4 +15,4 @@
     wp_die();
 });*/
 
-Ajax::run('my-custom-action', 'both', 'PagesController@ajax');
+//Ajax::run('my-custom-action', 'both', 'PagesController@ajax');

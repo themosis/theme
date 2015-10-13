@@ -7,9 +7,9 @@
  * https://developer.wordpress.org/reference/hooks/
  *
  */
-Action::add('init', function()
+/*Action::add('init', function()
 {
     //echo('Init hook called by anonymous function.');
-});
+/*});
 
-Action::add('init', 'PagesController');
+//Action::add('init', 'PagesController');
