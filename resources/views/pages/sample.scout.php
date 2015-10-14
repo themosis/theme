@@ -25,9 +25,9 @@
     <h2>Basic form</h2>
     {{ Form::open() }}
 
-    <p>{{ Form::label('acteur', 'Acteur:') }}</p>
+    <p>{{ Form::label('Acteur:', ['for' => 'acteur']) }}</p>
     <p>{{ Form::text('acteur', '', array('id' => 'acteur')) }}</p>
-    <p>{{ Form::label('director', 'Director email:') }}</p>
+    <p>{{ Form::label('Director email:', ['for' => 'director']) }}</p>
     <p>{{ Form::text('director', '', array('id' => 'director')) }}</p>
 
     <p>{{ Form::submit('submit', 'Submit') }}</p>

@@ -1,6 +1,6 @@
 <?php
 
-/*Ajax::run('my-custom-action', 'both', function()
+Ajax::run('my-custom-action', 'both', function()
 {
     // Check nonce value
     if (false === check_ajax_referer(Session::nonceName, 'security')) die();
@@ -13,6 +13,6 @@
 
     // Close
     wp_die();
-});*/
+});
 
 //Ajax::run('my-custom-action', 'both', 'PagesController@ajax');

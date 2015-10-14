@@ -9,24 +9,27 @@
  *
  */
 
-//View::share('prout', 'some data');
-
-/*View::composer('pages.sample', function($view)
+/*Route::get('home', function()
 {
-    $view->with('someData', 'A data value');
+    return 'Hello World';
 });*/
 
-/*Route::get('home', function(){
+View::share('prout', 'some data');
 
-Route::get('home', function(){
+View::composer('pages.sample', function($view)
+{
+    $view->with('someData', 'A data value');
+});
+
+/*Route::get('home', function(){
 
     return View::make('welcome');
 
 });*/
 
-//Route::get('home', 'PagesController@home');
+Route::get('home', 'PagesController@home');
 
-/*Route::any('page', array('sample-page', function()
+Route::any('page', array('sample-page', function()
 {
     $inputs = Input::all();
 
@@ -36,7 +39,7 @@ Route::get('home', function(){
     ));
 
     return View::make('pages.sample', array('inputs' => $values));
-}));*/
+}));
 
 //Route::get('page', ['sample-page', 'uses' => 'PagesController@sample']);
 

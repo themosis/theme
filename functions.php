@@ -146,29 +146,6 @@ THFWK_ThemosisTheme::getInstance();
 /*----------------------------------------------------*/
 // Set theme's paths.
 /*----------------------------------------------------*/
-//add_filter('themosis_framework_paths', 'themosis_setApplicationPaths', 1, 1);
-//add_filter('themosis_application_paths', 'themosis_setApplicationPaths');
-
-if (!function_exists('themosis_setApplicationPaths'))
-{
-    function themosis_setApplicationPaths($paths)
-    {
-        // Theme base path.
-        $paths['base'] = __DIR__.DS;
-
-        // Application path.
-        $paths['theme'] = __DIR__.DS.'resources'.DS;
-
-        // Application admin directory.
-        $paths['admin'] = __DIR__.DS.'resources'.DS.'admin'.DS;
-
-        // Application storage directory.
-        $paths['storage'] = __DIR__.DS.'storage'.DS;
-
-        return $paths;
-    }
-}
-
 // Theme base path.
 $paths['base'] = __DIR__.DS;
 

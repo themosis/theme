@@ -10,7 +10,7 @@ class PagesController extends BaseController
             return $args;
         });
 
-        //Asset::add('ajax', 'js/ajax.js', array('jquery'), '1.0.0', true);
+        Asset::add('ajax', 'js/ajax.js', array('jquery'), '1.0.0', true);
 
         $q = new WP_Query([
             'post_type' => 'post',

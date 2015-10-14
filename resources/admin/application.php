@@ -3,6 +3,8 @@
 /**
  * application.php - Write your custom code below.
  */
+//Asset::add('ajax', 'js/ajax.js', array('jquery'), '1.0.0', true);
+
 $posts = [];
 foreach(PostModel::all() as $post)
 {
