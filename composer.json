@@ -18,7 +18,8 @@
     "type": "wordpress-theme",
     "require": {
         "php": ">=5.4",
-        "composer/installers" : "~1.0"
+        "composer/installers" : "~1.0",
+        "symfony/class-loader": "~2.7.5"
     },
     "require-dev":{
         "php": ">=5.4"

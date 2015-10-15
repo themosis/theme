@@ -80,7 +80,6 @@ if (!class_exists('THFWK_ThemosisTheme'))
             }
 
         	// Check if framework is loaded.
-        	//add_action('after_setup_theme', [$this, 'check']);
             $this->check();
         }
         

@@ -108,9 +108,6 @@ Metabox::make('Details', 'jl_books', array('id' => 'details-ID'))->set(array(
     ))
 ));
 
-//Action::add('themosis_'.$books->get('name').'_BeforeSave', 'BooksController@before');
-//Action::add('themosis_'.$books->get('name').'_AfterSave', 'BooksController@after', 2, 3);
-
 Taxonomy::make('publisher', 'jl_books', 'Publishers', 'Publisher')->set()->bind();
 Taxonomy::make('author', array('jl_books', 'post'), 'Authors', 'Author')->set()->bind();
 
