@@ -10,12 +10,15 @@ class PagesController extends BaseController
             return $args;
         });
 
-        Asset::add('ajax', 'js/ajax.js', array('jquery'), '1.0.0', true);
+        $as = Asset::add('ajax', 'js/ajax.js', array('jquery'), '1.0.0', true)->localize('juju', ['pomme', 'poire', 'chocolat']);
+        $as->localize('jojo', 'A simple data');
 
         $q = new WP_Query([
             'post_type' => 'post',
             'posts_per_page'    => '5'
         ]);
+
+        //$as->localize('banana', ['minion 1', 'minion 2']);
 
         return View::make('pages.home')->with('query', $q);
     }

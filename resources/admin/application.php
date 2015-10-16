@@ -3,7 +3,11 @@
 /**
  * application.php - Write your custom code below.
  */
-//Asset::add('ajax', 'js/ajax.js', array('jquery'), '1.0.0', true);
+Asset::add('th-screen', 'css/screen.css', false, '1.0', 'all');
+$as = Asset::add('th-admin', 'js/admin.js', array('jquery'), '1.0.0', true)->localize('data', ['red', '1', 'green'])->to('admin');
+$as->localize('xxx', ['sass', 'less', 'stylus']);
+
+$al = Asset::add('th-log', 'js/log.js', false, '1.0.1', true)->to('login')->localize('logs', ['404', '503']);
 
 $posts = [];
 foreach(PostModel::all() as $post)
