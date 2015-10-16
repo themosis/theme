@@ -3,15 +3,20 @@
 /*----------------------------------------------------*/
 // Set theme's configurations.
 /*----------------------------------------------------*/
-add_action('themosis_configuration', function()
+// Load the theme configuration files.
+add_filter('themosisConfigPaths', function($paths)
 {
-    // Load the theme configuration files.
-    add_filter('themosisConfigPaths', function($paths)
-    {
-        $paths[] = themosis_path('theme').'config'.DS;
-        return $paths;
-    });
+    $paths[] = themosis_path('theme').'config'.DS;
+    return $paths;
 });
+
+/*----------------------------------------------------*/
+// Autoload theme classes.
+/*----------------------------------------------------*/
+$loader = new Symfony\Component\ClassLoader\ClassLoader();
+$classes = \Themosis\Facades\Config::get('loading');
+$loader->addPrefixes($classes);
+$loader->register();
 
 /*----------------------------------------------------*/
 // Register theme view paths.
@@ -27,7 +32,6 @@ add_filter('themosisViewPaths', function($paths)
 /*----------------------------------------------------*/
 add_filter('themosisAssetPaths', function($paths)
 {
-    // @TODO check assets URL issue #137
     $paths[THEMOSIS_ASSETS] = themosis_path('theme').'assets';
     return $paths;
 });
@@ -46,91 +50,85 @@ add_filter('themosisClassAliases', function($aliases)
 });
 
 /*----------------------------------------------------*/
-// Bootstrap the theme.
+// Theme textdomain.
 /*----------------------------------------------------*/
-add_action('themosis_bootstrap_theme', function($app)
+defined('THEMOSIS_TEXTDOMAIN') ? THEMOSIS_TEXTDOMAIN : define('THEMOSIS_TEXTDOMAIN', Themosis\Facades\Config::get('application.textdomain'));
+
+/*----------------------------------------------------*/
+// Theme cleanup.
+/*----------------------------------------------------*/
+if (Themosis\Facades\Config::get('application.cleanup'))
 {
-    /*----------------------------------------------------*/
-    // Theme textdomain.
-    /*----------------------------------------------------*/
-    defined('THEMOSIS_TEXTDOMAIN') ? THEMOSIS_TEXTDOMAIN : define('THEMOSIS_TEXTDOMAIN', Themosis\Facades\Config::get('application.textdomain'));
+    add_action('init', 'themosisThemeCleanup');
+}
 
-    /*----------------------------------------------------*/
-    // Theme cleanup.
-    /*----------------------------------------------------*/
-    if (Themosis\Facades\Config::get('application.cleanup'))
-    {
-        add_action('init', 'themosisThemeCleanup');
-    }
+/*----------------------------------------------------*/
+// Theme restriction. Block wp-admin access.
+/*----------------------------------------------------*/
+$access = Themosis\Facades\Config::get('application.access');
 
-    /*----------------------------------------------------*/
-    // Theme restriction. Block wp-admin access.
-    /*----------------------------------------------------*/
-    $access = Themosis\Facades\Config::get('application.access');
+if (!empty($access) && is_array($access))
+{
+    add_action('init', 'themosisThemeRestrict');
+}
 
-    if (!empty($access) && is_array($access))
-    {
-        add_action('init', 'themosisThemeRestrict');
-    }
+/*----------------------------------------------------*/
+// Theme constants.
+/*----------------------------------------------------*/
+$constants = Themosis\Facades\Config::get('constants');
+$constant = new Themosis\Configuration\Constant($constants);
+$constant->make();
 
-    /*----------------------------------------------------*/
-    // Theme constants.
-    /*----------------------------------------------------*/
-    $constants = Themosis\Facades\Config::get('constants');
-    $constant = new Themosis\Configuration\Constant($constants);
-    $constant->make();
+/*----------------------------------------------------*/
+// Theme page templates.
+/*----------------------------------------------------*/
+$templates = Themosis\Facades\Config::get('templates');
+$tpl = new Themosis\Configuration\Template($templates);
+$tpl->make();
 
-    /*----------------------------------------------------*/
-    // Theme page templates.
-    /*----------------------------------------------------*/
-    $templates = Themosis\Facades\Config::get('templates');
-    $tpl = new Themosis\Configuration\Template($templates);
-    $tpl->make();
+/*----------------------------------------------------*/
+// Theme image sizes.
+/*----------------------------------------------------*/
+$sizes = Themosis\Facades\Config::get('images');
+$images = new Themosis\Configuration\Images($sizes);
+$images->make();
 
-    /*----------------------------------------------------*/
-    // Theme image sizes.
-    /*----------------------------------------------------*/
-    $sizes = Themosis\Facades\Config::get('images');
-    $images = new Themosis\Configuration\Images($sizes);
-    $images->make();
+/*----------------------------------------------------*/
+// Theme menus.
+/*----------------------------------------------------*/
+$menus = Themosis\Facades\Config::get('menus');
+new Themosis\Configuration\Menu($menus);
 
-    /*----------------------------------------------------*/
-    // Theme menus.
-    /*----------------------------------------------------*/
-    $menus = Themosis\Facades\Config::get('menus');
-    new Themosis\Configuration\Menu($menus);
+/*----------------------------------------------------*/
+// Theme sidebars.
+/*----------------------------------------------------*/
+$bars = Themosis\Facades\Config::get('sidebars');
+new Themosis\Configuration\Sidebar($bars);
 
-    /*----------------------------------------------------*/
-    // Theme sidebars.
-    /*----------------------------------------------------*/
-    $bars = Themosis\Facades\Config::get('sidebars');
-    new Themosis\Configuration\Sidebar($bars);
+/*----------------------------------------------------*/
+// Theme supports.
+/*----------------------------------------------------*/
+$supports = Themosis\Facades\Config::get('supports');
+new Themosis\Configuration\Support($supports);
 
-    /*----------------------------------------------------*/
-    // Theme supports.
-    /*----------------------------------------------------*/
-    $supports = Themosis\Facades\Config::get('supports');
-    new Themosis\Configuration\Support($supports);
+/*----------------------------------------------------*/
+// Parse application files and include them.
+// Extends the 'functions.php' file by loading
+// files located under the 'admin' folder.
+/*----------------------------------------------------*/
+$adminPath = themosis_path('admin');
+new Themosis\Core\AdminLoader($adminPath);
 
-    /*----------------------------------------------------*/
-    // Parse application files and include them.
-    // Extends the 'functions.php' file by loading
-    // files located under the 'admin' folder.
-    /*----------------------------------------------------*/
-    $adminPath = themosis_path('admin');
-    new Themosis\Core\AdminLoader($adminPath);
+/*----------------------------------------------------*/
+// Theme widgets.
+/*----------------------------------------------------*/
+$widgetPath = themosis_path('theme').'widgets'.DS;
+new Themosis\Core\WidgetLoader($widgetPath);
 
-    /*----------------------------------------------------*/
-    // Theme widgets.
-    /*----------------------------------------------------*/
-    $widgetPath = themosis_path('theme').'widgets'.DS;
-    new Themosis\Core\WidgetLoader($widgetPath);
-
-    /*----------------------------------------------------*/
-    // Theme global JS object.
-    /*----------------------------------------------------*/
-    add_action('wp_head', 'themosisInstallThemeGlobalObject');
-});
+/*----------------------------------------------------*/
+// Theme global JS object.
+/*----------------------------------------------------*/
+add_action('wp_head', 'themosisInstallThemeGlobalObject');
 
 /*----------------------------------------------------*/
 // Theme cleanup.

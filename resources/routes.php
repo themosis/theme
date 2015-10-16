@@ -8,6 +8,7 @@
  * http://codex.wordpress.org/Conditional_Tags
  *
  */
+
 Route::get('home', function()
 {
     return View::make('welcome');

@@ -9,6 +9,6 @@ return [
 	* http://codex.wordpress.org/Function_Reference/register_nav_menus
 	* 
 	*/
-	'header-nav'	=> __('Header navigation', THEMOSIS_THEME_TEXTDOMAIN)
+	'header-nav'	=> __('Header navigation', THEMOSIS_TEXTDOMAIN)
 
 ];

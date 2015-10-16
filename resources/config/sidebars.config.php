@@ -8,9 +8,9 @@ return [
 	* Add as many as you want, watch-out your commas!
 	*/
 	[
-		'name'			=> __('First sidebar', THEMOSIS_THEME_TEXTDOMAIN),
+		'name'			=> __('First sidebar', THEMOSIS_TEXTDOMAIN),
 		'id'			=> 'first-sidebar',
-		'description'	=> __('Area of first sidebar', THEMOSIS_THEME_TEXTDOMAIN),
+		'description'	=> __('Area of first sidebar', THEMOSIS_TEXTDOMAIN),
 		'before_widget'	=> '<div>',
 		'after_widget'	=> '</div>',
 		'before_title'	=> '<h2>',

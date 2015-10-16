@@ -12,10 +12,33 @@
 /*----------------------------------------------------*/
 defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 
+/**
+ * Helper function to setup assets URL
+ */
+if (!function_exists('themosis_theme_assets'))
+{
+    /**
+     * Return the application theme assets directory URL.
+     *
+     * @return string
+     */
+    function themosis_theme_assets()
+    {
+        if (is_multisite() && SUBDOMAIN_INSTALL)
+        {
+            $segments = explode('themes', get_template_directory_uri());
+            $theme = (strpos($segments[1], DS) !== false) ? substr($segments[1], 1) : $segments[1];
+            return get_site_url().'/'.CONTENT_DIR.'/themes/'.$theme.'/resources/assets';
+        }
+
+        return get_template_directory_uri().'/resources/assets';
+    }
+}
+
 /*----------------------------------------------------*/
 // Asset directory URL.
 /*----------------------------------------------------*/
-defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', get_template_directory_uri().'/resources/assets');
+defined('THEMOSIS_ASSETS') ? THEMOSIS_ASSETS : define('THEMOSIS_ASSETS', themosis_theme_assets());
 
 /*----------------------------------------------------*/
 // Theme Textdomain.
@@ -57,7 +80,7 @@ if (!class_exists('THFWK_ThemosisTheme'))
             }
 
         	// Check if framework is loaded.
-        	add_action('after_setup_theme', [$this, 'check']);
+            $this->check();
         }
         
         /**
@@ -122,28 +145,16 @@ THFWK_ThemosisTheme::getInstance();
 /*----------------------------------------------------*/
 // Set theme's paths.
 /*----------------------------------------------------*/
-add_filter('themosis_framework_paths', 'themosis_setApplicationPaths');
-add_filter('themosis_application_paths', 'themosis_setApplicationPaths');
+// Theme base path.
+$paths['base'] = __DIR__.DS;
 
-if (!function_exists('themosis_setApplicationPaths'))
-{
-    function themosis_setApplicationPaths($paths)
-    {
-        // Theme base path.
-        $paths['base'] = __DIR__.DS;
+// Application path.
+$paths['theme'] = __DIR__.DS.'resources'.DS;
 
-        // Application path.
-        $paths['theme'] = __DIR__.DS.'resources'.DS;
+// Application admin directory.
+$paths['admin'] = __DIR__.DS.'resources'.DS.'admin'.DS;
 
-        // Application admin directory.
-        $paths['admin'] = __DIR__.DS.'resources'.DS.'admin'.DS;
-
-        // Application storage directory.
-        $paths['storage'] = __DIR__.DS.'storage'.DS;
-
-        return $paths;
-    }
-}
+themosis_set_paths($paths);
 
 /*----------------------------------------------------*/
 // Start the theme.
