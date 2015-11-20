@@ -13,7 +13,7 @@ add_filter('themosisConfigPaths', function($paths)
 /*----------------------------------------------------*/
 // Autoload theme classes.
 /*----------------------------------------------------*/
-$loader = new Composer\Autoload\ClassLoader();
+$loader = new \Composer\Autoload\ClassLoader();
 $classes = \Themosis\Facades\Config::get('loading');
 
 foreach ($classes as $prefix => $path)
