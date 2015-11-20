@@ -13,11 +13,14 @@ add_filter('themosisConfigPaths', function($paths)
 /*----------------------------------------------------*/
 // Autoload theme classes.
 /*----------------------------------------------------*/
-$loader = new Symfony\Component\ClassLoader\ClassLoader();
+$loader = new Composer\Autoload\ClassLoader();
 $classes = \Themosis\Facades\Config::get('loading');
-$loader->addPrefixes($classes);
-$loader->register();
+foreach ($classes as $prefix => $path)
+{
+    $loader->addPsr4($prefix, $path);
+}
 
+$loader->register();
 /*----------------------------------------------------*/
 // Register theme view paths.
 /*----------------------------------------------------*/
