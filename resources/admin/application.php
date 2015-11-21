@@ -83,7 +83,8 @@ $metabox = Metabox::make('Link', 'post')->set([
     Field::password('secret', array('title' => 'Mot secret', 'default' => 'passworddd', 'class' => 'passme')),
     Field::infinite('things', array(
         Field::text('sock'),
-        Field::collection('sock-gallery')
+        Field::collection('sock-gallery'),
+        Field::checkbox('registration', 'Enable')
     )),
     Field::infinite('stuffs', array(
         Field::text('stuff'),

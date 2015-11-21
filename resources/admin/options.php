@@ -11,6 +11,14 @@ $page->addSections([
 
 $page->addSettings([
     'newsletter-hebdo-posts'    => [
-        Field::text('hebdo-title')
+        Field::text('hebdo-title'),
+        Field::checkbox('enable-registration', ['enable' => 'Enable'], ['title' => 'Enable Registration']),
+        Field::checkbox('enable-notification', 'activate', ['title' => 'Activate notification']),
+        Field::radio('report', ['short', 'full']),
+        Field::select('country', [[
+            'Belgium',
+            'Portugal',
+            'Usa'
+        ]])
     ]
 ]);

@@ -6,6 +6,11 @@
             <p>{{ __('The Themosis framework is running.', THEMOSIS_TEXTDOMAIN) }}</p>
             <a id="ajax-button" href="#">Click me!</a>
         </div>
+        <p><?php var_dump(Option::get('newsletter-hebdo-posts', 'enable-registration')); ?></p>
+        <p><?php var_dump(Option::get('newsletter-hebdo-posts', 'enable-notification')); ?></p>
+        <p><?php var_dump(option::get('newsletter-hebdo-posts', 'report')); ?></p>
+        <p><?php var_dump(option::get('newsletter-hebdo-posts', 'xyz')); ?></p>
+        <p><?php var_dump(option::get('newsletter-hebdo-posts')); ?></p>
         <div class="form">
             {{ Form::open() }}
             {{ Form::text('nombg') }}
