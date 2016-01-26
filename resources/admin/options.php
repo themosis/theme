@@ -2,7 +2,8 @@
 
 $page = Page::make('newsletter-hebdo', 'Newsletter Hebdo')->set([
     'icon'          => 'dashicons-admin-site',
-    'tabs'          => true
+    'tabs'          => true,
+    'menu'          => 'Newsletter'
 ]);
 
 $page->addSections([
@@ -26,4 +27,8 @@ $page->addSettings([
             Field::collection('gallery')
         ])
     ]
+]);
+
+Page::make('newsletter-settings', 'Newsletter settings', $page->get('slug'))->set([
+    'menu'  => 'Setup'
 ]);
