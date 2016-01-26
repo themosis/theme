@@ -7,3 +7,8 @@
  * https://developer.wordpress.org/reference/hooks/
  *
  */
+Action::add('init', function()
+{
+    PostType::make('th-toys', 'Toys', 'Toy')->set();
+});
+//Action::add('init', 'PagesController');
