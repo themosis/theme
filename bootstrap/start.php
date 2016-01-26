@@ -13,11 +13,14 @@ add_filter('themosisConfigPaths', function($paths)
 /*----------------------------------------------------*/
 // Autoload theme classes.
 /*----------------------------------------------------*/
-$loader = new Symfony\Component\ClassLoader\ClassLoader();
+$loader = new \Composer\Autoload\ClassLoader();
 $classes = \Themosis\Facades\Config::get('loading');
-$loader->addPrefixes($classes);
-$loader->register();
+foreach ($classes as $prefix => $path)
+{
+    $loader->addPsr4($prefix, $path);
+}
 
+$loader->register();
 /*----------------------------------------------------*/
 // Register theme view paths.
 /*----------------------------------------------------*/
@@ -34,19 +37,6 @@ add_filter('themosisAssetPaths', function($paths)
 {
     $paths[THEMOSIS_ASSETS] = themosis_path('theme').'assets';
     return $paths;
-});
-
-/*----------------------------------------------------*/
-// Theme class aliases.
-/*----------------------------------------------------*/
-add_filter('themosisClassAliases', function($aliases)
-{
-    // application.config.php aliases
-    $themeAliases = Themosis\Facades\Config::get('application.aliases');
-
-    // Allow developer to overwrite an existing alias
-    $aliases = array_merge($aliases, $themeAliases);
-    return $aliases;
 });
 
 /*----------------------------------------------------*/
@@ -112,15 +102,28 @@ $supports = Themosis\Facades\Config::get('supports');
 new Themosis\Configuration\Support($supports);
 
 /*----------------------------------------------------*/
+// Load theme custom class aliases.
+/*----------------------------------------------------*/
+add_filter('themosisClassAliases', function($aliases)
+{
+    $as = Themosis\Facades\Config::get('application.aliases');
+    $aliases = array_merge($aliases, $as);
+    return $aliases;
+}, 1);
+
+/*----------------------------------------------------*/
 // Parse application files and include them.
 // Extends the 'functions.php' file by loading
 // files located under the 'admin' folder.
 /*----------------------------------------------------*/
-$adminPath = themosis_path('admin');
-new Themosis\Core\AdminLoader($adminPath);
+add_action('after_setup_theme', function()
+{
+    $adminPath = themosis_path('admin');
+    new Themosis\Core\AdminLoader($adminPath);
+});
 
 /*----------------------------------------------------*/
-// Theme widgets.
+// Theme widgets - Autoloaded at 'widgets-init' hook (before many 'init' hooks).
 /*----------------------------------------------------*/
 $widgetPath = themosis_path('theme').'widgets'.DS;
 new Themosis\Core\WidgetLoader($widgetPath);
