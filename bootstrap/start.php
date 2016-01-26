@@ -165,13 +165,13 @@ function themosisThemeRestrict()
     {
         $user = wp_get_current_user();
         $role = $user->roles;
-        $role = (count($role) > 0) ? $role[0] : '';
+        $valid_role = (bool) array_intersect($access, $role);
 
-        if (!in_array($role, $access) && !(defined('DOING_AJAX') && DOING_AJAX)  && !(defined('WP_CLI') && WP_CLI))
-        {
+        if (!$valid_role && !(defined('DOING_AJAX') && DOING_AJAX)  && !(defined('WP_CLI') && WP_CLI)) {
             wp_redirect(home_url());
             exit;
         }
+
     }
 }
 
