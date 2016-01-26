@@ -109,7 +109,7 @@ add_filter('themosisClassAliases', function($aliases)
     $as = Themosis\Facades\Config::get('application.aliases');
     $aliases = array_merge($aliases, $as);
     return $aliases;
-}, 1);
+});
 
 /*----------------------------------------------------*/
 // Parse application files and include them.
