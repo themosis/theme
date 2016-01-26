@@ -17,6 +17,16 @@
             {{ Form::checkbox('colors', ['r' => 'Choose this red color', 'b' => 'Blue', 'g' => 'Green'], [], ['class' => 'checkbox-class', 'label' => ['class' => 'custom-class']]) }}
             {{ Form::close() }}
         </div>
+        <div class="form2">
+            <h2>Form 2</h2>
+            {{ Form::open(home_url()) }}
+            {{ Form::close() }}
+        </div>
+        <div class="form3">
+            <h2>Form 3</h2>
+            {{ Form::open(wp_lostpassword_url()) }}
+            {{ Form::close() }}
+        </div>
         <div class="frame clearfix">
             <div id="get-started">
                 <div class="container">

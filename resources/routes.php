@@ -14,16 +14,16 @@
     return 'Hello World';
 });*/
 
-View::share('prout', 'some data');
+Pronto::share('prout', 'some data');
 
-View::composer('pages.sample', function($view)
+Pronto::composer('pages.sample', function($view)
 {
     $view->with('someData', 'A data value');
 });
 
 /*Route::get('home', function(){
 
-    return View::make('welcome');
+    return Pronto::make('welcome');
 
 });*/
 
@@ -38,7 +38,7 @@ Route::any('page', array('sample-page', function()
         'director'  => array('email')
     ));
 
-    return View::make('pages.sample', array('inputs' => $values));
+    return Pronto::make('pages.sample', array('inputs' => $values));
 }));
 
 //Route::get('page', ['sample-page', 'uses' => 'PagesController@sample']);
@@ -63,8 +63,8 @@ Route::get('product', function()
     $queries  = $query->tax_query->queries;
     if ($queries[0]['include_children'])
     {
-        return View::make('parentView');
+        return Pronto::make('parentView');
     }
 
-    return View::make('childView');
+    return Pronto::make('childView');
 }]);*/

@@ -20,12 +20,12 @@ class PagesController extends BaseController
 
         //$as->localize('banana', ['minion 1', 'minion 2']);
 
-        return View::make('pages.home')->with('query', $q);
+        return Pronto::make('pages.home')->with('query', $q);
     }
 
     public function sample()
     {
-        return View::make('pages.sample', array(
+        return Pronto::make('pages.sample', array(
             'inputs' => Input::all()
         ));
     }

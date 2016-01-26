@@ -19,6 +19,11 @@ $page->addSettings([
             'Belgium',
             'Portugal',
             'Usa'
-        ]])
+        ]]),
+        Field::infinite('stuff', [
+            Field::text('name'),
+            Field::media('profile'),
+            Field::collection('gallery')
+        ])
     ]
 ]);

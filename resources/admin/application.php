@@ -3,6 +3,7 @@
 /**
  * application.php - Write your custom code below.
  */
+
 Asset::add('th-screen', 'css/screen.css', false, '1.0', 'all');
 $as = Asset::add('th-admin', 'js/admin.js', array('jquery'), '1.0.0', true)->localize('data', ['red', '1', 'green'])->to('admin');
 $as->localize('xxx', ['sass', 'less', 'stylus']);
@@ -113,7 +114,24 @@ Metabox::make('Details', 'jl_books', array('id' => 'details-ID'))->set(array(
     ))
 ));
 
+Metabox::make('More information', $books->get('name'), ['context' => 'side'])->set([
+    Field::text('isbn', ['info' => 'Insert ISBN code.']),
+    Field::textarea('details'),
+    Field::checkbox('available', ['Show in the shop']),
+    Field::checkbox('payment', ['paypal', 'stripe', 'visa'], ['info' => 'Choose a payment solution.']),
+    Field::radio('shipping', ['allow', 'disallow']),
+    Field::select('area', [['Belgium', 'Luxembourg', 'England']]),
+    Field::media('backcover'),
+    Field::collection('images'),
+    Field::infinite('chapters', [
+        Field::text('title'),
+        Field::textarea('resume'),
+        Field::media('pic'),
+        Field::collection('covers')
+    ])
+]);
+
 Taxonomy::make('publisher', 'jl_books', 'Publishers', 'Publisher')->set()->bind();
 Taxonomy::make('author', array('jl_books', 'post'), 'Authors', 'Author')->set()->bind();
 
-View::share('shared', array('a', 'b', 'c'));
+Pronto::share('shared', array('a', 'b', 'c'));
