@@ -29,6 +29,16 @@ $page->addSettings([
     ]
 ]);
 
-Page::make('newsletter-settings', 'Newsletter settings', $page->get('slug'))->set([
+$settings = Page::make('newsletter-settings', 'Newsletter settings', 'options-general.php')->set([
     'menu'  => 'Setup'
+]);
+
+$settings->addSections([
+    Section::make('news-general', 'General settings')
+]);
+
+$settings->addSettings([
+    'news-general'   => [
+        Field::text('news-name', ['title' => 'Name'])
+    ]
 ]);

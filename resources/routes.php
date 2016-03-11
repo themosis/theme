@@ -27,7 +27,9 @@ Pronto::composer('pages.sample', function($view)
 
 });*/
 
-Route::get('home', 'PagesController@home');
+Route::match('get', 'home', 'PagesController@home');
+
+//Route::get('home', 'PagesController@home');
 
 Route::any('page', array('sample-page', function()
 {

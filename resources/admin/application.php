@@ -135,3 +135,8 @@ Taxonomy::make('publisher', 'jl_books', 'Publishers', 'Publisher')->set()->bind(
 Taxonomy::make('author', array('jl_books', 'post'), 'Authors', 'Author')->set()->bind();
 
 Pronto::share('shared', array('a', 'b', 'c'));
+
+Metabox::make('Informations', 'page', ['template' => 'custom-template'])->set([
+    Field::text('page_subtitle', ['title' => 'Subtitle']),
+    Field::color('page_bg', ['title' => 'Page color'])
+]);

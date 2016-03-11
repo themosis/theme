@@ -61,7 +61,7 @@ Metabox::make('Info', $cars->get('name'))->set([
     Field::media('pic', ['title' => 'Car cover']),
     Field::editor('full_desc', ['title' => 'Description', 'info' => 'Write the car description.']),
     Field::collection('gallery', ['limit' => 3]),
-    Field::color('paint_picker', [], ['class' => 'prout', 'required', 'data-view' => 'something']),
+    Field::color('paint_picker', ['title' => 'Paint color'], ['class' => 'prout', 'required', 'data-view' => 'something']),
     Field::infinite('collection', [
         Field::text('author'),
         Field::textarea('desc'),
@@ -69,7 +69,8 @@ Metabox::make('Info', $cars->get('name'))->set([
         Field::checkbox('activate', 'Toggle'),
         Field::select('style', [
             ['berline', 'coupe', '4-wheel']
-        ])
+        ]),
+        Field::color('lights')
     ])
 ]);
 

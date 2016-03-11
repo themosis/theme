@@ -104,12 +104,15 @@ new Themosis\Configuration\Support($supports);
 /*----------------------------------------------------*/
 // Load theme custom class aliases.
 /*----------------------------------------------------*/
-add_filter('themosisClassAliases', function($aliases)
+$aliases = Themosis\Facades\Config::get('application.aliases');
+
+if (!empty($aliases) && is_array($aliases))
 {
-    $as = Themosis\Facades\Config::get('application.aliases');
-    $aliases = array_merge($aliases, $as);
-    return $aliases;
-});
+    foreach ($aliases as $alias => $fullname)
+    {
+        class_alias($fullname, $alias);
+    }
+}
 
 /*----------------------------------------------------*/
 // Parse application files and include them.
