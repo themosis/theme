@@ -119,11 +119,8 @@ if (!empty($aliases) && is_array($aliases))
 // Extends the 'functions.php' file by loading
 // files located under the 'admin' folder.
 /*----------------------------------------------------*/
-add_action('after_setup_theme', function()
-{
-    $adminPath = themosis_path('admin');
-    new Themosis\Core\AdminLoader($adminPath);
-});
+$adminPath = themosis_path('admin');
+new Themosis\Core\AdminLoader($adminPath);
 
 /*----------------------------------------------------*/
 // Theme widgets - Autoloaded at 'widgets-init' hook (before many 'init' hooks).

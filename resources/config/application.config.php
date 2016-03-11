@@ -7,7 +7,6 @@ return [
 	* settings or preferences.
 	* 
 	*/
-
 	/* --------------------------------------------------------------- */
 	// Application textdomain
 	/* --------------------------------------------------------------- */
@@ -43,7 +42,7 @@ return [
 		'author',
 		'contributor',
 		'subscriber'
-    ],
+	],
 
 	/* --------------------------------------------------------------- */
 	// Theme class aliases
@@ -72,7 +71,7 @@ return [
 		'User'          => 'Themosis\\Facades\\User',
 		'Validator'     => 'Themosis\\Facades\\Validator',
 		'Loop'          => 'Themosis\\Facades\\Loop',
-		'Pronto'        => 'Themosis\\Facades\\View'
+		'View'	        => 'Themosis\\Facades\\View'
 	]
 
 ];
