@@ -17,6 +17,8 @@
         }).success(function(data){
             // This should print "4" in the console.
             console.log(data);
+        }).error(function(data){
+            console.log(data);
         });
     });
 })(jQuery);

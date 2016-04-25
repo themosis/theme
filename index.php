@@ -1,12 +1,11 @@
-<?php
-/*
- * Make WordPress redirect every request to index.php
- * Use 'routes.php' inside the 'resources' folder to control your views.
- */
-/*----------------------------------------------------*/
-// Run application.
-/*----------------------------------------------------*/
-//themosis_start_app();
-wp_head();
+<html>
+<head>
+    <?php wp_head(); ?>
+</head>
+<body>
 
-wp_footer();
+    <a id="ajax-button" href="#">Click me!</a>
+
+<?php wp_footer(); ?>
+</body>
+</html>

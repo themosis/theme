@@ -59,10 +59,70 @@ $paths['admin'] = __DIR__.DS.'resources'.DS.'admin'.DS;
 
 themosis_set_paths($paths);
 
-add_filter('themosis_assets', function($paths)
+// THEMOSIS
+$themosis = $GLOBALS['themosis'];
+$app = $themosis->app;
+
+/*///////////////////////////////////////////////////////*/
+$configFinder = $app->get('config.finder');
+$configFinder->addPaths([themosis_path('theme').'config'.DS]);
+
+/*----------------------------------------------------*/
+// Theme global JS object.
+/*----------------------------------------------------*/
+add_action('wp_head', 'themosisInstallThemeGlobalObject');
+
+/*----------------------------------------------------*/
+// Theme JS global object.
+/*----------------------------------------------------*/
+function themosisInstallThemeGlobalObject()
 {
-    $paths[THEMOSIS_ASSETS] = themosis_path('theme').'assets';
-    return $paths;
-});
+    $namespace = Themosis\Facades\Config::get('application.namespace');
+    $url = admin_url().Themosis\Facades\Config::get('application.ajaxurl').'.php';
+
+    $datas = apply_filters('themosisGlobalObject', []);
+
+    $output = "<script type=\"text/javascript\">\n\r";
+    $output.= "//<![CDATA[\n\r";
+    $output.= "var ".$namespace." = {\n\r";
+    $output.= "ajaxurl: '".$url."',\n\r";
+
+    if (!empty($datas))
+    {
+        foreach ($datas as $key => $value)
+        {
+            $output.= $key.": ".json_encode($value).",\n\r";
+        }
+    }
+
+    $output.= "};\n\r";
+    $output.= "//]]>\n\r";
+    $output.= "</script>";
+
+    // Output the datas.
+    echo($output);
+}
+
+
+$assetFinder = $app->get('asset.finder');
+$assetFinder->addPaths([THEMOSIS_ASSETS => themosis_path('theme').'assets']);
 
 \Themosis\Facades\Asset::add('test-css', 'css/screen.css');
+\Themosis\Facades\Asset::add('test-ajax', 'js/ajax.js', ['jquery'], '1.0', true);
+
+\Themosis\Facades\Action::add('init', function()
+{
+    //echo('Init from action.');
+});
+
+\Themosis\Facades\Ajax::run('my-custom-action', 'both', function()
+{
+    // Run custom code - Make sure to sanitize and check values before
+    $result = 4 + $_POST['number'];
+
+    // "Return" the result
+    echo(json_encode($result));
+
+    // Close
+    wp_die();
+});
