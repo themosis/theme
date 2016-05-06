@@ -1,5 +1,7 @@
 (function($)
 {
+    console.log('Ajax JS file.');
+
     // Simple ajax call for testing...
     $('#ajax-button').on('click', function(e)
     {

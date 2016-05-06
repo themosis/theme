@@ -67,6 +67,9 @@ $app = $themosis->app;
 $configFinder = $app->get('config.finder');
 $configFinder->addPaths([themosis_path('theme').'config'.DS]);
 
+$coreCssAsset = $app->get('asset.themosis-core-styles');
+$coreCssAsset->getType();
+
 /*----------------------------------------------------*/
 // Theme global JS object.
 /*----------------------------------------------------*/
@@ -107,15 +110,20 @@ function themosisInstallThemeGlobalObject()
 $assetFinder = $app->get('asset.finder');
 $assetFinder->addPaths([THEMOSIS_ASSETS => themosis_path('theme').'assets']);
 
-\Themosis\Facades\Asset::add('test-css', 'css/screen.css');
-\Themosis\Facades\Asset::add('test-ajax', 'js/ajax.js', ['jquery'], '1.0', true);
+$css = \Themosis\Facades\Asset::add('test-css', 'css/screen.css');
+$css->addAttributes(['data-loaded' => 'loadTemplate']);
+$asset = \Themosis\Facades\Asset::add('test-ajax', 'js/ajax.js', false, '')->to('customizer');
+$asset->addAttributes(['data-open' => 'contact']);
 
-\Themosis\Facades\Action::add('init', function()
-{
-    //echo('Init from action.');
-});
+$template = new \Themosis\Config\Template([
+    'about',
+    'contact'   => 'Contact Us'
+], new \Themosis\Hook\FilterBuilder($app));
 
-\Themosis\Facades\Ajax::run('my-custom-action', 'both', function()
+$template->make();
+
+
+\Themosis\Facades\Ajax::listen('my-custom-action', function()
 {
     // Run custom code - Make sure to sanitize and check values before
     $result = 4 + $_POST['number'];
