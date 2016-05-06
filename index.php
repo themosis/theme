@@ -1,16 +1,8 @@
-<html>
-<head>
-    <?php wp_head(); ?>
-</head>
-<body>
+<?php
 
-    <a id="ajax-button" href="#">Click me!</a>
-
-    <?php
-        $c = \Themosis\Facades\Form::checkbox('colors', ['red', 'green', 'blue'], 'green');
-        echo $c;
-    ?>
-
-<?php wp_footer(); ?>
-</body>
-</html>
+/**
+ * Default WordPress template.
+ *
+ * In order to work on your templates, please use the `routes.php` file
+ * located into the `resources` folder.
+ */

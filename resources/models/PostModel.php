@@ -1,7 +1,7 @@
 <?php
 
-class PostModel {
-
+class PostModel
+{
     /**
      * Return a list of all published posts.
      *
@@ -10,12 +10,11 @@ class PostModel {
     public static function all()
     {
         $query = new WP_Query([
-            'post_type'         => 'post',
-            'posts_per_page'    => -1,
-            'post_status'       => 'publish'
+            'post_type' => 'post',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
         ]);
 
         return $query->get_posts();
     }
-
-} 
+}
