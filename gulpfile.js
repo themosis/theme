@@ -17,9 +17,11 @@ var dirs = {
     dest: './dist'
 };
 
+/*-------*/
 /* Tasks */
+/*-------*/
 // Stylus
-gulp.task('stylus', function()
+gulp.task('stylus:dev', function()
 {
     return gulp.src(dirs.src + '/stylus/*.styl')
         .pipe(sourcemaps.init())
@@ -36,6 +38,22 @@ gulp.task('stylus', function()
         .pipe(bs.stream());
 });
 
+gulp.task('stylus', function()
+{
+    return gulp.src(dirs.src + '/stylus/*.styl')
+        .pipe(stylus({
+            compress: true
+        }))
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions', 'ie >= 10']
+        }))
+        .pipe(cleancss())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest(dirs.dest + '/css'));
+});
+
 /*-------------*/
 /* Watch Tasks */
 /*-------------*/
@@ -43,9 +61,14 @@ gulp.task('watch:stylus', function()
 {
     bs.init();
 
-    var watcher = gulp.watch(dirs.src + '/stylus/**/*.styl', gulp.series('stylus'));
-    watcher.on('change', bs.reload);
+    gulp.watch(dirs.src + '/stylus/**/*.styl', gulp.series('stylus:dev')).on('change', bs.reload);
 });
 
-// Main watch task.
+///////////////////
+// Main watch task
 gulp.task('watch', gulp.series('watch:stylus'));
+
+/*------------*/
+/* Build task */
+/*------------*/
+gulp.task('build', gulp.series('stylus'));
