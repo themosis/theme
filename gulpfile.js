@@ -36,23 +36,15 @@ gulp.task('stylus', function()
         .pipe(bs.stream());
 });
 
-// Browser sync
-gulp.task('bs:init', function()
-{
-    bs.init();
-});
-
-gulp.task('bs:reload', function()
-{
-    bs.reload();
-});
-
 /*-------------*/
 /* Watch Tasks */
 /*-------------*/
 gulp.task('watch:stylus', function()
 {
-   gulp.watch(dirs.src + '/stylus/**/*.styl', gulp.series('stylus'));
+    bs.init();
+
+    var watcher = gulp.watch(dirs.src + '/stylus/**/*.styl', gulp.series('stylus'));
+    watcher.on('change', bs.reload);
 });
 
 // Main watch task.
