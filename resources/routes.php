@@ -11,6 +11,6 @@
 
 Route::match(['get', 'post'], 'home', function () {
 
-    return View::make('child', ['name' => 'Julien']);
+    return View::make('pages.index', ['name' => 'Julien']);
 
 });
