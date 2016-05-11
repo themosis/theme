@@ -9,8 +9,8 @@
  *
  */
 
+Route::match(['get', 'post'], 'home', function () {
 
-
-Route::match(['get', 'post'],'home', function () {
     return View::make('child', ['name' => 'Julien']);
+
 });

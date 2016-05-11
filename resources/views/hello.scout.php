@@ -1,0 +1,1 @@
+<h1>Hello.scout.php</h1>
