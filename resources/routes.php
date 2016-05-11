@@ -9,6 +9,8 @@
  *
  */
 
+
+
 Route::match(['get', 'post'],'home', function () {
-    return View::make('welcome');
+    return View::make('child', ['name' => 'Julien']);
 });
