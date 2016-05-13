@@ -59,8 +59,7 @@ if (!isset($GLOBALS['themosis'])) {
 /*
  * Retrieve the service container.
  */
-$themosis = $GLOBALS['themosis'];
-$theme = $themosis->app;
+$theme = container();
 
 /*
  * Setup the theme paths.
@@ -71,7 +70,7 @@ $paths['theme.admin'] = __DIR__.DS.'resources'.DS.'admin'.DS;
 
 themosis_set_paths($paths);
 
-/**
+/*
  * Register all paths into the service container.
  */
 $theme->registerAllPaths(themosis_path());
