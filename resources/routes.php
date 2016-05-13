@@ -9,8 +9,12 @@
  *
  */
 
-Route::match(['get', 'post'], 'home', function () {
+Route::match(['get', 'post'], 'home', function ($post, $query) {
 
-    return View::make('pages.index', ['name' => 'Julien']);
+    return view('pages.index', ['posts' => $query->get_posts()]);
 
+});
+
+Route::any('404', function () {
+    return 'Nothing yet';
 });
