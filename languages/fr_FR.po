@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Themosis Theme\n"
-"POT-Creation-Date: 2016-05-09 19:54+0100\n"
-"PO-Revision-Date: 2016-05-09 20:01+0100\n"
+"POT-Creation-Date: 2016-05-13 08:51+0100\n"
+"PO-Revision-Date: 2016-05-13 11:17+0100\n"
 "Last-Translator: Julien Lambé <julien@themosis.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -29,32 +29,32 @@ msgstr ""
 msgid "Area of first sidebar"
 msgstr ""
 
-#: resources/views/welcome.scout.php:174
+#: resources/views/welcome.php:174
 msgid "Congratulations!"
 msgstr "Félicitations!"
 
-#: resources/views/welcome.scout.php:175
+#: resources/views/welcome.php:175
 msgid "The Themosis framework is running."
 msgstr "Le framework Themosis est installé correctement."
 
-#: resources/views/welcome.scout.php:180
+#: resources/views/welcome.php:180
 msgid "Get started:"
 msgstr "Démarrer:"
 
-#: resources/views/welcome.scout.php:181
+#: resources/views/welcome.php:181
 msgid ""
 "Check the documentation and build your next WordPress website/application."
 msgstr ""
 "Parcourez la documentation et développez votre prochain projet WordPress."
 
-#: resources/views/welcome.scout.php:182
+#: resources/views/welcome.php:182
 msgid "Themosis framework documentation"
 msgstr "Documentation du framework Themosis"
 
-#: resources/views/welcome.scout.php:182
+#: resources/views/welcome.php:182
 msgid "View documentation"
 msgstr "Voir la documentation"
 
-#: resources/views/welcome.scout.php:187
+#: resources/views/welcome.php:187
 msgid "Links:"
 msgstr "Liens"
