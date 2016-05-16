@@ -55,6 +55,7 @@ return [
         'Config' => 'Themosis\\Facades\\Config',
         'Controller' => 'Themosis\\Route\\BaseController',
         'Field' => 'Themosis\\Facades\\Field',
+        'Filter' => 'Themosis\\Facades\\Filter',
         'Form' => 'Themosis\\Facades\\Form',
         'Html' => 'Themosis\\Facades\\Html',
         'Input' => 'Themosis\\Facades\\Input',
