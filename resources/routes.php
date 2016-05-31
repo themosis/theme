@@ -9,7 +9,23 @@
  *
  */
 
-Route::match(['get', 'post'], 'home', function ($post, $query) {
+Route::map('GET', '/', function ($request, $response) {
+    global $wp_query;
+    return view('pages.index', ['posts' => $wp_query->get_posts()]);
+});
+
+Route::get('login', function(){
+
+    return 'Login page';
+
+});
+
+Route::get('/people/{name}/{lastname}', function($request, $response, $params)
+{
+    return 'Hello '.$params['name'].' '.$params['lastname'];
+});
+
+/*Route::match(['get', 'post'], 'home', function ($post, $query) {
 
     return view('pages.index', ['posts' => $query->get_posts()]);
 
@@ -17,4 +33,4 @@ Route::match(['get', 'post'], 'home', function ($post, $query) {
 
 Route::any('404', function () {
     return 'Nothing yet';
-});
+});*/
