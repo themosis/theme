@@ -14,7 +14,7 @@ return [
     'textdomain' => 'themosis',
 
     /* --------------------------------------------------------------- */
-    // Global Javascript namespace of your application
+    // Global Javascript namespace of your theme
     /* --------------------------------------------------------------- */
     'namespace' => 'themosis',
 
@@ -49,30 +49,31 @@ return [
     // Theme class aliases
     /* --------------------------------------------------------------- */
     'aliases' => [
-        'Action' => 'Themosis\\Facades\\Action',
-        'Ajax' => 'Themosis\\Facades\\Ajax',
-        'Asset' => 'Themosis\\Facades\\Asset',
-        'Config' => 'Themosis\\Facades\\Config',
-        'Controller' => 'Themosis\\Route\\BaseController',
-        'Field' => 'Themosis\\Facades\\Field',
-        'Filter' => 'Themosis\\Facades\\Filter',
-        'Form' => 'Themosis\\Facades\\Form',
-        'Html' => 'Themosis\\Facades\\Html',
-        'Input' => 'Themosis\\Facades\\Input',
-        'Loop' => 'Themosis\\Facades\\Loop',
-        'Meta' => 'Themosis\\Metabox\\Meta',
-        'Metabox' => 'Themosis\\Facades\\Metabox',
-        'Option' => 'Themosis\\Page\\Option',
-        'Page' => 'Themosis\\Facades\\Page',
-        'PostType' => 'Themosis\\Facades\\PostType',
-        'Route' => 'Themosis\\Facades\\Route',
-        'Section' => 'Themosis\\Facades\\Section',
-        'TaxField' => 'Themosis\\Taxonomy\\TaxField',
-        'TaxMeta' => 'Themosis\\Taxonomy\\TaxMeta',
-        'Taxonomy' => 'Themosis\\Facades\\Taxonomy',
-        'User' => 'Themosis\\Facades\\User',
-        'Validator' => 'Themosis\\Facades\\Validator',
-        'View' => 'Themosis\\Facades\\View',
+        'Action' => Themosis\Facades\Action::class,
+        'Ajax' => Themosis\Facades\Ajax::class,
+        'Asset' => Themosis\Facades\Asset::class,
+        'Blade' => Themosis\Facades\Blade::class,
+        'Config' => Themosis\Facades\Config::class,
+        'Controller' => Themosis\Route\BaseController::class,
+        'Field' => Themosis\Facades\Field::class,
+        'Filter' => Themosis\Facades\Filter::class,
+        'Form' => Themosis\Facades\Form::class,
+        'Html' => Themosis\Facades\Html::class,
+        'Input' => Themosis\Facades\Input::class,
+        'Loop' => Themosis\Facades\Loop::class,
+        'Meta' => Themosis\Metabox\Meta::class,
+        'Metabox' => Themosis\Facades\Metabox::class,
+        'Option' => Themosis\Page\Option::class,
+        'Page' => Themosis\Facades\Page::class,
+        'PostType' => Themosis\Facades\PostType::class,
+        'Route' => Themosis\Facades\Route::class,
+        'Section' => Themosis\Facades\Section::class,
+        'TaxField' => Themosis\Taxonomy\TaxField::class,
+        'TaxMeta' => Themosis\Taxonomy\TaxMeta::class,
+        'Taxonomy' => Themosis\Facades\Taxonomy::class,
+        'User' => Themosis\Facades\User::class,
+        'Validator' => Themosis\Facades\Validator::class,
+        'View' => Themosis\Facades\View::class,
     ],
 
 ];
