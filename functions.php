@@ -38,7 +38,7 @@ if (!isset($GLOBALS['themosis'])) {
     /*
      * Those strings are not translated.
      * We want to load only one textdomain for the theme with the domain
-     * defined inside the application.config.php file.
+     * defined inside the theme.config.php file.
      */
     $text = 'The theme is only compatible with the Themosis framework. Please install the Themosis framework.';
     $title = 'WordPress - Missing framework';
