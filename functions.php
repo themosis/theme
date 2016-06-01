@@ -95,9 +95,7 @@ $loader->register();
 /*
  * Register theme views folder path.
  */
-$theme['view.finder']->addPaths([
-    themosis_path('theme.resources').'views'.DS,
-]);
+$theme['view.finder']->addLocation(themosis_path('theme.resources').'views');
 
 /*
  * Register theme public assets folder [dist directory].

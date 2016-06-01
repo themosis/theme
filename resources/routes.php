@@ -26,6 +26,10 @@ Route::get('user/{name}', function($name){
     return 'Hi user '.$name;
 });
 
+Route::any('singular', ['jl_cars', function() {
+    return view('cars.single');
+}]);
+
 Route::any('404', function () {
     return 'Nothing yet';
 });
