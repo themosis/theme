@@ -8,7 +8,10 @@ $parent->addSections([
 
 $parent->addSettings([
     'p-general' => [
-        Field::text('theme')
+        Field::text('theme'),
+        Field::infinite('master', [
+            Field::text('label')
+        ])
     ]
 ]);
 
