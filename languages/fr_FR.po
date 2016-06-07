@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Themosis Theme\n"
-"POT-Creation-Date: 2016-05-13 08:51+0100\n"
-"PO-Revision-Date: 2016-05-13 11:17+0100\n"
+"POT-Creation-Date: 2016-06-02 10:29+0100\n"
+"PO-Revision-Date: 2016-06-02 10:36+0100\n"
 "Last-Translator: Julien Lambé <julien@themosis.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -58,3 +58,19 @@ msgstr "Voir la documentation"
 #: resources/views/welcome.php:187
 msgid "Links:"
 msgstr "Liens"
+
+#: resources/views/pages/index.twig:11
+msgid "Title"
+msgstr ""
+
+#: resources/views/pages/index.twig:12
+msgid "Post"
+msgstr ""
+
+#: resources/views/hello.scout.php:6
+msgid "Hello"
+msgstr "Bonjour"
+
+#: resources/views/hellob.blade.php:6
+msgid "Hello from Blade"
+msgstr "Bonjour depuis Blade"

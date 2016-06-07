@@ -55,6 +55,7 @@ return [
         'Blade' => Themosis\Facades\Blade::class,
         'Config' => Themosis\Facades\Config::class,
         'Controller' => Themosis\Route\BaseController::class,
+        'DB' => Themosis\Facades\DB::class,
         'Field' => Themosis\Facades\Field::class,
         'Filter' => Themosis\Facades\Filter::class,
         'Form' => Themosis\Facades\Form::class,
