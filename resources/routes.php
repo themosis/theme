@@ -8,15 +8,12 @@
  * http://codex.wordpress.org/Conditional_Tags
  *
  */
-
-/*Route::match(['get', 'post'], 'home', function ($post, $query) {
-
-    return view('hello', ['posts' => $query->get_posts()]);
-
-});*/
-
 Route::match(['get', 'post'], 'front', function () {
-    return 'Front view page';
+    $all = Themosis\Theme\Facades\Post::all();
+
+    $users = DB::table('users')->get();
+
+    return view('hello', ['articles' => $all, 'users' => $users]);
 });
 
 Route::match(['get', 'post'], 'page', function () {
@@ -27,7 +24,7 @@ Route::get('user/{name}', function($name){
     return 'Hi user '.$name;
 });
 
-Route::match(['get', 'post'], 'home', ['uses' => 'ExampleController@index']);
+Route::match(['get', 'post'], 'home', ['uses' => 'Themosis\Theme\Controllers\Example@index']);
 
 Route::get('something', function()
 {

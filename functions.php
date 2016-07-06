@@ -92,6 +92,15 @@ foreach ($classes as $prefix => $path) {
 }
 $loader->register();
 
+/**
+ * Register theme providers.
+ */
+$providers = $theme['config']->get('providers');
+
+foreach ($providers as $provider) {
+    $theme->register($provider);
+}
+
 /*
  * Register theme views folder path.
  */
