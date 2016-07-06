@@ -15,15 +15,23 @@
 
 });*/
 
+Route::match(['get', 'post'], 'front', function () {
+    return 'Front view page';
+});
+
+Route::match(['get', 'post'], 'page', function () {
+    return 'Generic page';
+});
+
+Route::get('user/{name}', function($name){
+    return 'Hi user '.$name;
+});
+
 Route::match(['get', 'post'], 'home', ['uses' => 'ExampleController@index']);
 
 Route::get('something', function()
 {
     return 'Hello something';
-});
-
-Route::get('user/{name}', function($name){
-    return 'Hi user '.$name;
 });
 
 Route::any('singular', ['jl_cars', function() {

@@ -1,21 +1,18 @@
 {
-    "name": "themosis/theme",
-    "description": "The Themosis framework theme.",
-    "keywords": ["themosis", "framework", "WordPress", "theme"],
-    "license": "GPL-2.0+",
-    "authors":[
-        {
-            "name": "Julien Lambé",
-            "email": "julien@themosis.com",
-            "homepage": "http://www.themosis.com/"
-        }
-    ],
-    "type": "wordpress-theme",
-    "require": {
-        "php": ">=5.4",
-        "composer/installers" : "~1.0"
-    },
-    "require-dev":{
-        "php": ">=5.4"
+  "name": "themosis/theme",
+  "description": "The Themosis framework theme.",
+  "keywords": ["themosis", "framework", "WordPress", "theme"],
+  "license": "GPL-2.0+",
+  "authors":[
+    {
+      "name": "Julien Lambé",
+      "email": "julien@themosis.com",
+      "homepage": "http://www.themosis.com/"
     }
+  ],
+  "type": "wordpress-theme",
+  "require": {
+    "php": ">=5.5.9",
+    "composer/installers" : "~1.0"
+  }
 }
