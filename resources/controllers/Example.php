@@ -10,4 +10,19 @@ class Example extends BaseController
     {
         return view('pages.index');
     }
+
+    public function books()
+    {
+        return "Books single from controller";
+    }
+
+    public function singular()
+    {
+        return "All singular from controller";
+    }
+
+    public function notfound()
+    {
+        return "Not found from controller";
+    }
 }

@@ -9,5 +9,7 @@ Metabox::make('Divers', 'post')->set([
             Field::text('name'),
             Field::checkbox('toogle', ['enable'])
         ])
-    ])
+    ]),
+    Field::media('profile'),
+    Field::collection('media_list')
 ]);

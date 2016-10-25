@@ -11,10 +11,30 @@
 Route::match(['get', 'post'], 'front', function () {
     $all = Themosis\Theme\Facades\Post::all();
 
-    $users = DB::table('users')->get();
+    $users = [];//DB::table('users')->get();
 
     return view('hello', ['articles' => $all, 'users' => $users]);
 });
+
+Route::get('singular', [[CARS, BOOKS], 'uses' => 'Themosis\Theme\Controllers\Example@books']);
+
+Route::match(['get', 'post'], 'singular', ['post', function () {
+    return 'Single post content';
+}]);
+
+Route::get('singular', 'Themosis\Theme\Controllers\Example@singular');
+
+/*Route::match(['get', 'post'], 'singular', ['jl_books', function () {
+    return 'Single book content';
+}]);*/
+
+/*Route::match(['get', 'post'], 'singular', ['jl_cars', function () {
+    return 'Single car content';
+}]);*/
+
+Route::match(['get', 'post'], 'page', ['sample-page', function () {
+    return "Sample page content";
+}]);
 
 Route::match(['get', 'post'], 'page', function () {
     return 'Generic page';
@@ -24,6 +44,10 @@ Route::get('user/{name}', function($name){
     return 'Hi user '.$name;
 });
 
+Route::get('profile/{name}', function ($name) {
+    return "Hello {$name}";
+});
+
 Route::match(['get', 'post'], 'home', ['uses' => 'Themosis\Theme\Controllers\Example@index']);
 
 Route::get('something', function()
@@ -31,10 +55,12 @@ Route::get('something', function()
     return 'Hello something';
 });
 
-Route::any('singular', ['jl_cars', function() {
+/*Route::any('singular', ['jl_cars', function() {
     return view('cars.single');
-}]);
+}]);*/
 
-Route::any('404', function () {
-    return 'Nothing yet';
-});
+/*Route::any('singular', ['jl_books', function () {
+    return 'The book';
+}]);*/
+
+Route::any('404', 'Themosis\Theme\Controllers\Example@notfound');

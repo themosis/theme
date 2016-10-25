@@ -10,5 +10,7 @@ return [
     * and key's value is the constant VALUE.
     */
     'THEMEVERSION' => '1.0',
+    'CARS' => 'jl_cars',
+    'BOOKS' => 'jl_books'
 
 ];
