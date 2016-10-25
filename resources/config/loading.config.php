@@ -8,6 +8,8 @@ return [
     *
     * The key is the namespace and key's value contains one or more paths to your classes.
     */
-    ''  => [themosis_path('theme').'controllers', themosis_path('theme').'models']
+    'Theme\\Controllers\\' => themosis_path('theme.resources').'controllers',
+    'Theme\\Models\\' => themosis_path('theme.resources').'models',
+    'Theme\\Providers\\' => themosis_path('theme.resources').'providers'
 
 ];

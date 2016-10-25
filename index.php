@@ -1,9 +1,8 @@
 <?php
-/*
- * Make WordPress redirect every request to index.php
- * Use 'routes.php' inside the 'resources' folder to control your views.
+
+/**
+ * Default WordPress template.
+ *
+ * In order to work on your templates, please use the `routes.php` file
+ * located into the `resources` folder.
  */
-/*----------------------------------------------------*/
-// Run application.
-/*----------------------------------------------------*/
-themosis_start_app();
