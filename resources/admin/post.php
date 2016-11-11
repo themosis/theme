@@ -10,6 +10,6 @@ Metabox::make('Divers', 'post')->set([
             Field::checkbox('toogle', ['enable'])
         ])
     ]),
-    Field::media('profile'),
+    Field::media('profile', ['info' => 'Some information for this field.']),
     Field::collection('media_list')
 ]);
