@@ -16,11 +16,19 @@ Route::match(['get', 'post'], 'front', function () {
     return view('hello', ['articles' => $all, 'users' => $users]);
 });
 
-Route::get('singular', [[CARS, BOOKS], 'uses' => 'Themosis\Theme\Controllers\Example@books']);
+//Route::get('singular', [[CARS, BOOKS], 'uses' => 'Themosis\Theme\Controllers\Example@books']);
 
 Route::match(['get', 'post'], 'singular', ['post', function () {
     return 'Single post content';
 }]);
+
+Route::match(['get', 'post'], 'template', ['two-columns', function ($post) {
+    return "Any post with the two-columns template associated. Post: {$post->post_title}";
+}]);
+
+Route::match(['get', 'post'], 'page', function () {
+    return 'Generic page';
+});
 
 Route::get('singular', 'Themosis\Theme\Controllers\Example@singular');
 
@@ -35,10 +43,6 @@ Route::get('singular', 'Themosis\Theme\Controllers\Example@singular');
 Route::match(['get', 'post'], 'page', ['sample-page', function () {
     return "Sample page content";
 }]);
-
-Route::match(['get', 'post'], 'page', function () {
-    return 'Generic page';
-});
 
 Route::get('user/{name}', function($name){
     return 'Hi user '.$name;
