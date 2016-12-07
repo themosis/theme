@@ -3,12 +3,13 @@
 return [
 
     /**
-     * Edit this file in order to configure your page
-     * templates.
+     * Edit this file in order to configure your theme templates.
      *
-     * Simply define a template slug. You can also define a custom display
-     * name by setting a value to your template slug.
+     * Simply define a template slug.
+     *
+     * Since WordPress 4.7, templates can be defined for pages but
+     * also on custom post types.
      */
-    'custom-template' => 'Custom template',
+    'custom-template' => ['Custom template', ['page']],
 
 ];
