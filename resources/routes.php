@@ -8,13 +8,17 @@
  * http://codex.wordpress.org/Conditional_Tags
  *
  */
-Route::match(['get', 'post'], 'front', function () {
+Route::any('front', function () {
+    return view('select');
+});
+
+/*Route::match(['get', 'post'], 'front', function () {
     $all = Themosis\Theme\Facades\Post::all();
 
     $users = [];//DB::table('users')->get();
 
     return view('hello', ['articles' => $all, 'users' => $users]);
-});
+});*/
 
 //Route::get('singular', [[CARS, BOOKS], 'uses' => 'Themosis\Theme\Controllers\Example@books']);
 
