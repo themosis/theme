@@ -107,13 +107,13 @@ $theme['asset.finder']->addPaths([
 /*
  * Theme constants.
  */
-$constants = new Themosis\Config\Constant($theme['config']->get('constants'));
+$constants = new Themosis\Config\Constant($theme['config.factory']->get('constants'));
 $constants->make();
 
 /*
  * Register theme textdomain.
  */
-defined('THEME_TEXTDOMAIN') ? THEME_TEXTDOMAIN : define('THEME_TEXTDOMAIN', $theme['config']->get('theme.textdomain'));
+defined('THEME_TEXTDOMAIN') ? THEME_TEXTDOMAIN : define('THEME_TEXTDOMAIN', $theme['config.factory']->get('theme.textdomain'));
 
 $theme['action']->add('after_setup_theme', function () {
     load_theme_textdomain(THEME_TEXTDOMAIN, get_template_directory().'/languages');
@@ -122,7 +122,7 @@ $theme['action']->add('after_setup_theme', function () {
 /*
  * Theme aliases.
  */
-$aliases = $theme['config']->get('theme.aliases');
+$aliases = $theme['config.factory']->get('theme.aliases');
 
 if (!empty($aliases) && is_array($aliases)) {
     foreach ($aliases as $alias => $fullname) {
@@ -133,7 +133,7 @@ if (!empty($aliases) && is_array($aliases)) {
 /**
  * Register theme providers.
  */
-$providers = $theme['config']->get('providers');
+$providers = $theme['config.factory']->get('providers');
 
 foreach ($providers as $provider) {
     $theme->register($provider);
@@ -142,14 +142,14 @@ foreach ($providers as $provider) {
 /*
  * Theme cleanup.
  */
-if ($theme['config']->get('theme.cleanup')) {
+if ($theme['config.factory']->get('theme.cleanup')) {
     $theme['action']->add('init', 'themosis_theme_cleanup');
 }
 
 /*
  * Theme restriction.
  */
-$access = $theme['config']->get('theme.access');
+$access = $theme['config.factory']->get('theme.access');
 
 if (!empty($access) && is_array($access)) {
     $theme['action']->add('init', 'themosis_theme_restrict');
@@ -158,31 +158,31 @@ if (!empty($access) && is_array($access)) {
 /*
  * Theme templates.
  */
-$templates = new Themosis\Config\Template($theme['config']->get('templates'), $theme['filter']);
+$templates = new Themosis\Config\Template($theme['config.factory']->get('templates'), $theme['filter']);
 $templates->make();
 
 /*
  * Theme image sizes.
  */
-$images = new Themosis\Config\Images($theme['config']->get('images'), $theme['filter']);
+$images = new Themosis\Config\Images($theme['config.factory']->get('images'), $theme['filter']);
 $images->make();
 
 /*
  * Theme menus.
  */
-$menus = new Themosis\Config\Menu($theme['config']->get('menus'));
+$menus = new Themosis\Config\Menu($theme['config.factory']->get('menus'));
 $menus->make();
 
 /*
  * Theme sidebars.
  */
-$sidebars = new Themosis\Config\Sidebar($theme['config']->get('sidebars'));
+$sidebars = new Themosis\Config\Sidebar($theme['config.factory']->get('sidebars'));
 $sidebars->make();
 
 /*
  * Theme supports.
  */
-$supports = new Themosis\Config\Support($theme['config']->get('supports'));
+$supports = new Themosis\Config\Support($theme['config.factory']->get('supports'));
 $supports->make();
 
 /*
