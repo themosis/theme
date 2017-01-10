@@ -179,14 +179,14 @@
 				<div class="container">
 					<h2><?php _e('Get started:', THEME_TEXTDOMAIN); ?></h2>
 					<p><?php _e('Check the documentation and build your next WordPress website/application.', THEME_TEXTDOMAIN); ?></p>
-					<a href="https://framework.themosis.com/docs/" target="_blank" title="<?php _e('Themosis framework documentation', THEME_TEXTDOMAIN); ?>"><?php _e('View documentation', THEME_TEXTDOMAIN); ?></a>
+					<a href="http://framework.themosis.com/docs/" target="_blank" title="<?php _e('Themosis framework documentation', THEME_TEXTDOMAIN); ?>"><?php _e('View documentation', THEME_TEXTDOMAIN); ?></a>
 				</div>
 			</div>
 			<div id="links">
 				<div class="container">
 					<h3><?php _e('Links:', THEME_TEXTDOMAIN); ?></h3>
 					<ul>
-						<li><a href="https://framework.themosis.com" target="_blank" title="Themosis framework">Themosis framework</a></li>
+						<li><a href="http://framework.themosis.com" target="_blank" title="Themosis framework">Themosis framework</a></li>
 						<li><a href="https://github.com/themosis" target="_blank" title="GitHub - Themosis">GitHub</a></li>
 						<li><a href="https://twitter.com/Themosis" target="_blank" title="Twitter - Themosis">Twitter</a></li>
 					</ul>
