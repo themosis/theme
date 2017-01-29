@@ -9,7 +9,12 @@
  *
  */
 Route::any('front', function () {
-    return view('select');
+
+    /*foreach (Route::getRoutes() as $route) {
+        tp($route);
+    }*/
+
+    return "Home";
 });
 
 /*Route::match(['get', 'post'], 'front', function () {

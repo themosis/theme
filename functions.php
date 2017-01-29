@@ -92,15 +92,6 @@ foreach ($classes as $prefix => $path) {
 }
 $loader->register();
 
-/**
- * Register theme providers.
- */
-$providers = $theme['config']->get('providers');
-
-foreach ($providers as $provider) {
-    $theme->register($provider);
-}
-
 /*
  * Register theme views folder path.
  */
@@ -114,76 +105,85 @@ $theme['asset.finder']->addPaths([
 ]);
 
 /*
+ * Theme constants.
+ */
+$constants = new Themosis\Config\Constant($theme['config.factory']->get('constants'));
+$constants->make();
+
+/*
  * Register theme textdomain.
  */
-defined('THEME_TEXTDOMAIN') ? THEME_TEXTDOMAIN : define('THEME_TEXTDOMAIN', $theme['config']->get('theme.textdomain'));
+defined('THEME_TEXTDOMAIN') ? THEME_TEXTDOMAIN : define('THEME_TEXTDOMAIN', $theme['config.factory']->get('theme.textdomain'));
 
 $theme['action']->add('after_setup_theme', function () {
     load_theme_textdomain(THEME_TEXTDOMAIN, get_template_directory().'/languages');
 });
 
 /*
- * Theme cleanup.
- */
-if ($theme['config']->get('theme.cleanup')) {
-    $theme['action']->add('init', 'themosis_theme_cleanup');
-}
-
-/*
- * Theme restriction.
- */
-$access = $theme['config']->get('theme.access');
-
-if (!empty($access) && is_array($access)) {
-    $theme['action']->add('init', 'themosis_theme_restrict');
-}
-
-/*
- * Theme constants.
- */
-$constants = new Themosis\Config\Constant($theme['config']->get('constants'));
-$constants->make();
-
-/*
- * Theme templates.
- */
-$templates = new Themosis\Config\Template($theme['config']->get('templates'), $theme['filter']);
-$templates->make();
-
-/*
- * Theme image sizes.
- */
-$images = new Themosis\Config\Images($theme['config']->get('images'), $theme['filter']);
-$images->make();
-
-/*
- * Theme menus.
- */
-$menus = new Themosis\Config\Menu($theme['config']->get('menus'));
-$menus->make();
-
-/*
- * Theme sidebars.
- */
-$sidebars = new Themosis\Config\Sidebar($theme['config']->get('sidebars'));
-$sidebars->make();
-
-/*
- * Theme supports.
- */
-$supports = new Themosis\Config\Support($theme['config']->get('supports'));
-$supports->make();
-
-/*
  * Theme aliases.
  */
-$aliases = $theme['config']->get('theme.aliases');
+$aliases = $theme['config.factory']->get('theme.aliases');
 
 if (!empty($aliases) && is_array($aliases)) {
     foreach ($aliases as $alias => $fullname) {
         class_alias($fullname, $alias);
     }
 }
+
+/**
+ * Register theme providers.
+ */
+$providers = $theme['config.factory']->get('providers');
+
+foreach ($providers as $provider) {
+    $theme->register($provider);
+}
+
+/*
+ * Theme cleanup.
+ */
+if ($theme['config.factory']->get('theme.cleanup')) {
+    $theme['action']->add('init', 'themosis_theme_cleanup');
+}
+
+/*
+ * Theme restriction.
+ */
+$access = $theme['config.factory']->get('theme.access');
+
+if (!empty($access) && is_array($access)) {
+    $theme['action']->add('init', 'themosis_theme_restrict');
+}
+
+/*
+ * Theme templates.
+ */
+$templates = new Themosis\Config\Template($theme['config.factory']->get('templates'), $theme['filter']);
+$templates->make();
+
+/*
+ * Theme image sizes.
+ */
+$images = new Themosis\Config\Images($theme['config.factory']->get('images'), $theme['filter']);
+$images->make();
+
+/*
+ * Theme menus.
+ */
+$menus = new Themosis\Config\Menu($theme['config.factory']->get('menus'));
+$menus->make();
+
+/*
+ * Theme sidebars.
+ */
+$sidebars = new Themosis\Config\Sidebar($theme['config.factory']->get('sidebars'));
+$sidebars->make();
+
+/*
+ * Theme supports.
+ */
+$supports = new Themosis\Config\Support($theme['config.factory']->get('supports'));
+$supports->make();
 
 /*
  * Theme admin files.
@@ -229,6 +229,11 @@ function themosis_theme_cleanup()
     add_filter('use_default_gallery_style', '__return_null');
 }
 
+/**
+ * Callback used to restrict wp-admin access to
+ * logged-in users only. Non authenticated users will
+ * be redirected to the home page.
+ */
 function themosis_theme_restrict()
 {
     $access = Themosis\Facades\Config::get('theme.access');
@@ -245,6 +250,10 @@ function themosis_theme_restrict()
     }
 }
 
+/**
+ * Callback used to implement a JS global object
+ * for your scripts. Complement the asset localize API.
+ */
 function themosis_theme_global_object()
 {
     $namespace = Themosis\Facades\Config::get('theme.namespace');
@@ -270,8 +279,3 @@ function themosis_theme_global_object()
     // Output the datas.
     echo $output;
 }
-
-/**
- * Include routes.
- */
-include themosis_path('theme.resources').'routes.php';
