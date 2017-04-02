@@ -66,6 +66,7 @@ return [
         'Option' => Themosis\Page\Option::class,
         'Page' => Themosis\Facades\Page::class,
         'PostType' => Themosis\Facades\PostType::class,
+        'Request' => Themosis\Facades\Request::class,
         'Route' => Themosis\Facades\Route::class,
         'Section' => Themosis\Facades\Section::class,
         'TaxField' => Themosis\Taxonomy\TaxField::class,
