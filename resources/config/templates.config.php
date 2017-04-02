@@ -15,5 +15,4 @@ return [
     'two-columns' => ['Two Columns', ['page', 'jl_cars']],
     'large-header' => ['Large Header', 'jl_cars'],
     'list' => ['List', ['page']]
-
 ];

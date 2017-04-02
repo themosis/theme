@@ -1,11 +1,11 @@
 <?php
 
-$posts = new \Themosis\Theme\Models\Post(new WP_Query());
+$posts = new \Theme\Models\Post();
 $articles = [];
 
-foreach ($posts->all() as $post) {
+/*foreach ($posts->all() as $post) {
     $articles[$post->ID] = $post->post_title;
-}
+}*/
 
 $options = [
     [
@@ -42,7 +42,7 @@ $options = [
     ]
 ];
 
-$metabox = Metabox::make('Informations', 'post')->set([
+/*$metabox = Metabox::make('Informations', 'post')->set([
     Field::text('author'),
     Field::select('related', [$articles]),
     Field::select('countries', [
@@ -63,7 +63,7 @@ $metabox = Metabox::make('Informations', 'post')->set([
     Field::select('services', $options)
 ]);
 
-$metabox->map(['author' => 'post_parent']);
+$metabox->map(['author' => 'post_parent']);*/
 
 /**
  * Metabox should display only on pages with a 'custom-template'
@@ -71,7 +71,7 @@ $metabox->map(['author' => 'post_parent']);
  * Test: in display = ok
  * Test: custom fields on display = ok
  */
-Metabox::make('Test', 'page', ['template' => 'custom-template'])->set([
-    Field::text('page-test'),
-    Field::checkbox('page-colors', ['Pink', 'Magenta'])
-]);
+//Metabox::make('Test', 'page', ['template' => 'custom-template'])->set([
+//    Field::text('page-test'),
+//    Field::checkbox('page-colors', ['Pink', 'Magenta'])
+//]);

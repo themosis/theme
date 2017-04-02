@@ -98,6 +98,11 @@ $loader->register();
 $theme['view.finder']->addLocation(themosis_path('theme.resources').'views');
 
 /*
+ * Update Twig Loaded registered paths.
+ */
+$theme['twig.loader']->setPaths($theme['view.finder']->getPaths());
+
+/*
  * Register theme public assets folder [dist directory].
  */
 $theme['asset.finder']->addPaths([

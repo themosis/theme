@@ -2,11 +2,11 @@
 
 return [
 
-    /*
-    * Edit this file in order to configure your theme
-    * settings or preferences.
-    * 
-    */
+    /**
+     * Edit this file in order to configure your theme
+     * settings or preferences.
+     *
+     */
 
     /* --------------------------------------------------------------- */
     // Theme textdomain
@@ -75,6 +75,6 @@ return [
         'User' => Themosis\Facades\User::class,
         'Validator' => Themosis\Facades\Validator::class,
         'View' => Themosis\Facades\View::class,
-    ],
+    ]
 
 ];

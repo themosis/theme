@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+    /**
      * Edit this file in order to configure the additional
      * image sizes your theme's needs.
      * @link http://codex.wordpress.org/Function_Reference/add_image_size

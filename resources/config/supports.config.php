@@ -2,11 +2,12 @@
 
 return [
 
-    /*
-    * Edit this file to add features to your theme.
-    * Un-comment each feature to add it.
-    * http://codex.wordpress.org/Function_Reference/add_theme_support
-    */
+    /**
+     * Edit this file to add features to your theme.
+     * Un-comment each feature to add it.
+     *
+     * http://codex.wordpress.org/Function_Reference/add_theme_support
+     */
 
     /* --------------------------------------------------------------- */
     // Enable post thumbnails
