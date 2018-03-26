@@ -1,16 +1,15 @@
 <?php
 
-/**
- * Default WordPress template.
- *
- * In order to work on your templates, please use the `routes.php` file
- * located into the `resources` folder.
- */
-
 use App\Http\Kernel;
 use Themosis\Core\Application;
 
+/**
+ * Default WordPress template.
+ *
+ * By default, routes should be defined at application
+ * root into the routes/web.php file.
+ *
+ * Routes can be overwritten using theme routes.php file.
+ */
 $app = Application::getInstance();
-$kernel = $app->make(Kernel::class);
-$response = $kernel->handle($app['request']);
-$response->send();
+$app->manage(Kernel::class, $app['request']);
