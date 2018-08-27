@@ -25,7 +25,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $themeName = ltrim(
-            str_replace($this->app->themesPath(), '', realpath(__DIR__.'/../../')),
+            str_replace(themes_path(), '', realpath(__DIR__.'/../../')),
             '\/'
         );
 

@@ -2,13 +2,7 @@
 
 /**
  * Theme routes.
+ *
+ * The routes defined inside your theme override any similar routes
+ * defined on the application global scope.
  */
-/*Route::get('home', [
-    'uses' => function ($post, $query) {
-        return 'WordPress home (blog archive). If not, fallback to a home page route anyway.';
-    }
-]);*/
-
-Route::get('page', function () {
-    return 'WordPress Page';
-});
