@@ -7,9 +7,9 @@
  */
 return [
     [
-        'name' => __('First sidebar', THEME_TEXTDOMAIN),
+        'name' => __('First sidebar', THEME_TD),
         'id' => 'first-sidebar',
-        'description' => __('Area of first sidebar', THEME_TEXTDOMAIN),
+        'description' => __('Area of first sidebar', THEME_TD),
         'class' => 'custom',
         'before_widget' => '<div>',
         'after_widget' => '</div>',
