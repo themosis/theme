@@ -1,0 +1,58 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Themosis\n"
+"POT-Creation-Date: 2018-08-28 17:31+0200\n"
+"PO-Revision-Date: 2018-08-28 17:29+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.9\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: config/menus.php:10
+msgid "Header Navigation"
+msgstr ""
+
+#: config/sidebars.php:10
+msgid "First sidebar"
+msgstr ""
+
+#: config/sidebars.php:12
+msgid "Area of first sidebar"
+msgstr ""
+
+#: config/templates.php:12
+msgid "Custom Template"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Themosis"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://framework.themosis.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "The Themosis framework base theme."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Themosis Team"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.themosis.com/"
+msgstr ""
