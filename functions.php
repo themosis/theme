@@ -1,6 +1,7 @@
 <?php
 
 use Themosis\Core\Application;
+use Themosis\Support\Facades\Asset;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +12,20 @@ use Themosis\Core\Application;
 | configuration files and register theme images sizes, menus, sidebars,
 | theme support features and templates.
 */
-(Application::getInstance())->loadTheme(__DIR__, 'config');
+$theme = (Application::getInstance())->loadTheme(__DIR__, 'config');
+
+/*
+|--------------------------------------------------------------------------
+| Theme assets locations
+|--------------------------------------------------------------------------
+|
+| You can define your theme assets paths and URLs. You can add as many
+| locations as you want. The key is your asset directory path and
+| the value is its public URL.
+*/
+$theme->assets([
+    $theme->getPath('dist') => $theme->getUrl('dist')
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +40,22 @@ use Themosis\Core\Application;
 */
 load_theme_textdomain(
     THEME_TD,
-    get_template_directory().'/languages'
+    $theme->getPath('languages')
 );
+
+/*
+|--------------------------------------------------------------------------
+| Theme Assets
+|--------------------------------------------------------------------------
+|
+| Here we define the loaded assets from our previously defined
+| "dist" directory. Assets sources are located under the root "assets"
+| directory and are then compiled, thanks to Laravel Mix, to the "dist"
+| folder.
+|
+| @see https://laravel-mix.com/
+|
+*/
+Asset::add('theme_styles', 'css/theme.css', false, $theme->getHeader('version'))->to('front');
+Asset::add('theme_woo', 'css/woocommerce.css', 'theme_styles', $theme->getHeader('version'))->to('front');
+Asset::add('theme_js', 'js/theme.min.js', false, $theme->getHeader('version'))->to('front');
