@@ -169,3 +169,18 @@ if (! function_exists('comments_title')) {
         );
     }
 }
+
+if (! function_exists('archive_content_message')) {
+    /**
+     * Return an archive content message.
+     *
+     * @return string
+     */
+    function archive_content_message()
+    {
+        return sprintf(
+            '<p>'.esc_html__('Try looking in the monthly archives. %1$s', THEME_TD).'</p>',
+            convert_smilies(':)')
+        );
+    }
+}
