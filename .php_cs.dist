@@ -9,6 +9,7 @@ use PhpCsFixer\Finder;
 $finder = Finder::create()
     ->in([
         'config',
+        'inc',
         'resources'
     ])
     ->exclude([

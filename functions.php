@@ -45,6 +45,20 @@ load_theme_textdomain(
 
 /*
 |--------------------------------------------------------------------------
+| Theme includes
+|--------------------------------------------------------------------------
+|
+| Auto includes files by providing one or more paths. By default, we setup
+| an "inc" directory within the theme. Use that "inc" directory to extend
+| your theme features. Nested files are also included.
+|
+*/
+$theme->includes([
+    $theme->getPath('inc')
+]);
+
+/*
+|--------------------------------------------------------------------------
 | Theme Assets
 |--------------------------------------------------------------------------
 |
