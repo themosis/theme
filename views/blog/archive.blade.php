@@ -2,11 +2,10 @@
 
 @section('content')
     @if(have_posts())
-        @if(is_home() && ! is_front_page())
-            <header>
-                <h1 class="page-title screen-reader-text">{{ single_post_title('', false) }}</h1>
-            </header>
-        @endif
+        <header class="page-header">
+            <h1 class="page-title">{{ get_the_archive_title() }}</h1>
+            <div class="archive-description">{{ get_the_archive_description() }}</div>
+        </header>
         @while(have_posts())
             @php(the_post())
             @template('parts.content', get_post_type())
