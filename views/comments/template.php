@@ -8,4 +8,4 @@ if (post_password_required()) {
     return;
 }
 
-echo view('blog.components.comments');
+echo view('comments.list');
