@@ -144,3 +144,28 @@ if (! function_exists('entry_footer')) {
         );
     }
 }
+
+if (! function_exists('comments_title')) {
+    /**
+     * Return the comments title.
+     *
+     * @param int $count The number of comments.
+     *
+     * @return string
+     */
+    function comments_title($count)
+    {
+        if (1 === $count) {
+            return sprintf(
+                esc_html__('One thought on &ldquo;%1$s&rdquo;', THEME_TD),
+                '<span>'.get_the_title().'</span>'
+            );
+        }
+
+        return sprintf(
+            esc_html(_nx('%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $count, 'comments title', THEME_TD)),
+            number_format_i18n($count),
+            '<span>'.get_the_title().'</span>'
+        );
+    }
+}
