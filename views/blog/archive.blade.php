@@ -3,8 +3,8 @@
 @section('content')
     @if(have_posts())
         <header class="page-header">
-            <h1 class="page-title">{{ get_the_archive_title() }}</h1>
-            <div class="archive-description">{{ get_the_archive_description() }}</div>
+            <h1 class="page-title">{!!  get_the_archive_title() !!}</h1>
+            <div class="archive-description">{!! get_the_archive_description() !!}</div>
         </header>
         @while(have_posts())
             @php(the_post())
