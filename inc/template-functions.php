@@ -32,3 +32,10 @@ Action::add('wp_head', function () {
         echo '<link rel="pingback" href="'.esc_url(get_bloginfo('pingback_url')).'">';
     }
 });
+
+/**
+ * Set the content width in pixels, based on the theme's design and stylesheet.
+ */
+Action::add('after_setup_theme', function () {
+    $GLOBALS['content_width'] = 640;
+}, 0);
