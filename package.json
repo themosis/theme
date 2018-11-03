@@ -1,6 +1,6 @@
 {
   "name": "themosis-theme",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Themosis framework boilerplate theme.",
   "scripts": {
     "dev": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",

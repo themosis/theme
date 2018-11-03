@@ -1,27 +1,18 @@
 {
   "name": "themosis/theme",
-  "description": "A Themosis framework theme.",
+  "description": "The Themosis framework boilerplate theme.",
   "keywords": ["themosis", "framework", "WordPress", "theme"],
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "authors":[
     {
       "name": "Julien Lambé",
       "email": "julien@themosis.com",
-      "homepage": "http://www.themosis.com/"
+      "homepage": "https://www.themosis.com/"
     }
   ],
   "type": "wordpress-theme",
   "require": {
-    "php": ">=5.6.4",
-    "composer/installers" : "~1.2",
-    "filp/whoops": "^2.1",
-    "twig/twig": "~1.0",
-    "illuminate/routing": "^5.4",
-    "illuminate/container": "^5.4",
-    "illuminate/http": "^5.4",
-    "illuminate/events": "^5.4",
-    "illuminate/view": "^5.4",
-    "illuminate/filesystem": "^5.4",
-    "illuminate/database": "^5.4"
+    "php": ">=7.1.0",
+    "composer/installers" : "~1.2"
   }
 }
