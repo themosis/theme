@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    <button id="ajaxtest" type="button">Test Me</button>
     @loop
         @template('parts.content', get_post_type())
 

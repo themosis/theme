@@ -70,6 +70,6 @@ $theme->includes([
 | @see https://laravel-mix.com/
 |
 */
-Asset::add('theme_styles', 'css/theme.css', false, $theme->getHeader('version'))->to('front');
-Asset::add('theme_woo', 'css/woocommerce.css', 'theme_styles', $theme->getHeader('version'))->to('front');
-Asset::add('theme_js', 'js/theme.min.js', false, $theme->getHeader('version'))->to('front');
+Asset::add('theme_styles', 'css/theme.css', [], $theme->getHeader('version'))->to('front');
+Asset::add('theme_woo', 'css/woocommerce.css', ['theme_styles'], $theme->getHeader('version'))->to('front');
+Asset::add('theme_js', 'js/theme.min.js', [], $theme->getHeader('version'))->to('front');
