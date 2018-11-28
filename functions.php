@@ -1,7 +1,6 @@
 <?php
 
 use Themosis\Core\Application;
-use Themosis\Support\Facades\Asset;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +12,6 @@ use Themosis\Support\Facades\Asset;
 | theme support features and templates.
 */
 $theme = (Application::getInstance())->loadTheme(__DIR__, 'config');
-
-/*
-|--------------------------------------------------------------------------
-| Theme assets locations
-|--------------------------------------------------------------------------
-|
-| You can define your theme assets paths and URLs. You can add as many
-| locations as you want. The key is your asset directory path and
-| the value is its public URL.
-*/
-$theme->assets([
-    $theme->getPath('dist') => $theme->getUrl('dist')
-]);
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +31,41 @@ load_theme_textdomain(
 
 /*
 |--------------------------------------------------------------------------
+| Theme assets locations
+|--------------------------------------------------------------------------
+|
+| You can define your theme assets paths and URLs. You can add as many
+| locations as you want. The key is your asset directory path and
+| the value is its public URL.
+*/
+$theme->assets([
+    $theme->getPath('dist') => $theme->getUrl('dist')
+]);
+
+/*
+|--------------------------------------------------------------------------
+| Theme Views
+|--------------------------------------------------------------------------
+|
+| Register theme view paths. By default, the theme is registering
+| the "views" directory but you can add as many directories as you want
+| from the theme.php configuration file.
+|
+*/
+$theme->views($theme->config()->get('theme.views', []));
+
+/*
+|--------------------------------------------------------------------------
+| Theme Service Providers
+|--------------------------------------------------------------------------
+|
+| Register theme service providers. You can manage the list of
+| services providers through the theme.php configuration file.
+*/
+$theme->providers($theme->config()->get('theme.providers', []));
+
+/*
+|--------------------------------------------------------------------------
 | Theme includes
 |--------------------------------------------------------------------------
 |
@@ -59,17 +80,55 @@ $theme->includes([
 
 /*
 |--------------------------------------------------------------------------
-| Theme Assets
+| Theme Image Sizes
 |--------------------------------------------------------------------------
 |
-| Here we define the loaded assets from our previously defined
-| "dist" directory. Assets sources are located under the root "assets"
-| directory and are then compiled, thanks to Laravel Mix, to the "dist"
-| folder.
-|
-| @see https://laravel-mix.com/
+| Register theme image sizes. Image sizes are configured in your theme
+| images.php configuration file.
 |
 */
-Asset::add('theme_styles', 'css/theme.css', [], $theme->getHeader('version'))->to('front');
-Asset::add('theme_woo', 'css/woocommerce.css', ['theme_styles'], $theme->getHeader('version'))->to('front');
-Asset::add('theme_js', 'js/theme.min.js', [], $theme->getHeader('version'))->to('front');
+$theme->images($theme->config()->get('images'));
+
+/*
+|--------------------------------------------------------------------------
+| Theme Menu Locations
+|--------------------------------------------------------------------------
+|
+| Register theme menu locations. Menu locations are configured in your theme
+| menus.php configuration file.
+|
+*/
+$theme->menus($theme->config()->get('menus'));
+
+/*
+|--------------------------------------------------------------------------
+| Theme Sidebars
+|--------------------------------------------------------------------------
+|
+| Register theme sidebars. Sidebars are configured in your theme
+| sidebars.php configuration file.
+|
+*/
+$theme->sidebars($theme->config()->get('sidebars'));
+
+/*
+|--------------------------------------------------------------------------
+| Theme Support
+|--------------------------------------------------------------------------
+|
+| Register theme support. Support features are configured in your theme
+| support.php configuration file.
+|
+*/
+$theme->support($theme->config()->get('support', []));
+
+/*
+|--------------------------------------------------------------------------
+| Theme Templates
+|--------------------------------------------------------------------------
+|
+| Register theme templates. Templates are configured in your theme
+| templates.php configuration file.
+|
+*/
+$theme->templates($theme->config()->get('templates', []));
