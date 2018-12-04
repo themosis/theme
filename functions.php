@@ -52,7 +52,7 @@ $theme->assets([
 | from the theme.php configuration file.
 |
 */
-$theme->views($theme->config()->get('theme.views', []));
+$theme->views($theme->config('theme.views', []));
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +62,7 @@ $theme->views($theme->config()->get('theme.views', []));
 | Register theme service providers. You can manage the list of
 | services providers through the theme.php configuration file.
 */
-$theme->providers($theme->config()->get('theme.providers', []));
+$theme->providers($theme->config('theme.providers', []));
 
 /*
 |--------------------------------------------------------------------------
@@ -87,7 +87,7 @@ $theme->includes([
 | images.php configuration file.
 |
 */
-$theme->images($theme->config()->get('images'));
+$theme->images($theme->config('images'));
 
 /*
 |--------------------------------------------------------------------------
@@ -98,7 +98,7 @@ $theme->images($theme->config()->get('images'));
 | menus.php configuration file.
 |
 */
-$theme->menus($theme->config()->get('menus'));
+$theme->menus($theme->config('menus'));
 
 /*
 |--------------------------------------------------------------------------
@@ -109,7 +109,7 @@ $theme->menus($theme->config()->get('menus'));
 | sidebars.php configuration file.
 |
 */
-$theme->sidebars($theme->config()->get('sidebars'));
+$theme->sidebars($theme->config('sidebars'));
 
 /*
 |--------------------------------------------------------------------------
@@ -120,7 +120,7 @@ $theme->sidebars($theme->config()->get('sidebars'));
 | support.php configuration file.
 |
 */
-$theme->support($theme->config()->get('support', []));
+$theme->support($theme->config('support', []));
 
 /*
 |--------------------------------------------------------------------------
@@ -131,4 +131,4 @@ $theme->support($theme->config()->get('support', []));
 | templates.php configuration file.
 |
 */
-$theme->templates($theme->config()->get('templates', []));
+$theme->templates($theme->config('templates', []));
