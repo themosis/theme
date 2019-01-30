@@ -16,6 +16,6 @@
   "homepage": "https://github.com/themosis/theme#readme",
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "laravel-mix": "^3.0.0"
+    "laravel-mix": "^4.0.0"
   }
 }
