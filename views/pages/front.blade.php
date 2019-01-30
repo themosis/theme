@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    <a id="ajaxtest" href="#">Ajax Test</a>
     @if(have_posts())
         @if(is_home() && ! is_front_page())
             <header>
