@@ -19,8 +19,13 @@ $theme = (Application::getInstance())->loadTheme(__DIR__, 'config');
 |--------------------------------------------------------------------------
 |
 | Registers the "languages" directory for storing the theme translations.
+|
 | The "THEME_TD" constant is defined during bootstrap and its value is
 | set based on the "style.css" [Text Domain] property located into
+| the file header.
+|
+| The "THEME_DP" constant is defined during bootstrap and its value is
+| set based on the "style.css" [Domain Path] property located into
 | the file header.
 |
 */
