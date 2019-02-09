@@ -24,10 +24,7 @@ $theme = (Application::getInstance())->loadTheme(__DIR__, 'config');
 | the file header.
 |
 */
-load_theme_textdomain(
-    THEME_TD,
-    $theme->getPath('languages')
-);
+load_theme_textdomain(THEME_TD, $theme->getPath(THEME_DP));
 
 /*
 |--------------------------------------------------------------------------
