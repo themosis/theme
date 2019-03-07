@@ -10,6 +10,7 @@ use Themosis\Core\Application;
 | We bootstrap the theme. The following code is loading your theme
 | configuration files and register theme images sizes, menus, sidebars,
 | theme support features and templates.
+|
 */
 $theme = (Application::getInstance())->loadTheme(__DIR__, 'config');
 
@@ -19,6 +20,7 @@ $theme = (Application::getInstance())->loadTheme(__DIR__, 'config');
 |--------------------------------------------------------------------------
 |
 | Registers the "languages" directory for storing the theme translations.
+|
 | The "THEME_TD" constant is defined during bootstrap and its value is
 | set based on the "style.css" [Text Domain] property located into
 | the file header.
@@ -26,7 +28,7 @@ $theme = (Application::getInstance())->loadTheme(__DIR__, 'config');
 */
 load_theme_textdomain(
     THEME_TD,
-    $theme->getPath('languages')
+    $theme->getPath($theme->getHeader('domain_path'))
 );
 
 /*
@@ -37,6 +39,7 @@ load_theme_textdomain(
 | You can define your theme assets paths and URLs. You can add as many
 | locations as you want. The key is your asset directory path and
 | the value is its public URL.
+|
 */
 $theme->assets([
     $theme->getPath('dist') => $theme->getUrl('dist')
@@ -61,6 +64,7 @@ $theme->views($theme->config('theme.views', []));
 |
 | Register theme service providers. You can manage the list of
 | services providers through the theme.php configuration file.
+|
 */
 $theme->providers($theme->config('theme.providers', []));
 
