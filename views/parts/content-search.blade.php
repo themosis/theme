@@ -1,7 +1,7 @@
 <article id="post-{{ Loop::id() }}" {!! post_class() !!}>
     <header class="entry-header">
         <h2 class="entry-title">
-            <a href="{{ esc_url(get_permalink()) }}" rel="bookmark">{{ Loop::title() }}</a>
+            <a href="{{ esc_url(get_permalink()) }}" rel="bookmark">{!! Loop::title() !!}</a>
         </h2>
         @if('post' === get_post_type())
             <div class="entry-meta">
