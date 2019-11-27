@@ -1,6 +1,6 @@
 <article id="post-{{ Loop::id() }}" {!! post_class() !!}>
     <header class="entry-header">
-        <h1 class="entry-title">{{ Loop::title() }}</h1>
+        <h1 class="entry-title">{!! Loop::title() !!}</h1>
     </header><!-- .entry-header -->
 
     {!! post_thumbnail() !!}
