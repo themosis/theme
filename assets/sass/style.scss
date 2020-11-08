@@ -27,15 +27,16 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Media
 	## Captions
 	## Galleries
---------------------------------------------------------------*/
-@import "variables-site/variables-site";
-@import "mixins/mixins-master";
-
 
 /*--------------------------------------------------------------
 # Tailwind CSS
 --------------------------------------------------------------*/
 @import "tailwind.css";
+
+/* purgecss start ignore */
+/*--------------------------------------------------------------*/
+@import "variables-site/variables-site";
+@import "mixins/mixins-master";
 
 /*--------------------------------------------------------------
 # Typography
@@ -91,3 +92,4 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Media
 --------------------------------------------------------------*/
 @import "media/media";
+/* purgecss end ignore */
