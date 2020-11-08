@@ -9,7 +9,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-# Normalize
+# Tailwind CSS
 # Typography
 # Elements
 # Forms
@@ -31,10 +31,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "variables-site/variables-site";
 @import "mixins/mixins-master";
 
+
 /*--------------------------------------------------------------
-# Normalize
+# Tailwind CSS
 --------------------------------------------------------------*/
-@import "normalize";
+@import "tailwind.css";
 
 /*--------------------------------------------------------------
 # Typography
