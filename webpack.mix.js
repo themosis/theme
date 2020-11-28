@@ -5,7 +5,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     './views/**/*.+(html|twig|php)',
   ],
 
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+  defaultExtractor: content => content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []
 })
 
 /*
@@ -20,9 +20,8 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
  */
 mix.setPublicPath('dist');
 
-mix.js('assets/js/theme.js', 'dist/js/theme.min.js')
-    .sass('assets/sass/style.scss', 'dist/css/theme.css')
-    .sass('assets/sass/woocommerce.scss', 'dist/css')
+mix.js('assets/js/app.js', 'dist/js/app.min.js')
+    .sass('assets/sass/style.scss', 'dist/css/app.css')
     .options({
         processCssUrls: false,
         postCss: [

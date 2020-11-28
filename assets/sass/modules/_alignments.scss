@@ -11,6 +11,9 @@
 }
 
 .aligncenter {
-	clear: both;
-	@include center-block;
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
 }

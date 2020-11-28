@@ -1,5 +1,4 @@
 {
-    "/js/theme.min.js": "/js/theme.min.js",
-    "/css/theme.css": "/css/theme.css",
-    "/css/woocommerce.css": "/css/woocommerce.css"
+    "/js/app.min.js": "/js/app.min.js",
+    "/css/app.css": "/css/app.css"
 }
