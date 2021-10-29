@@ -32,6 +32,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Theme hooks
+    |--------------------------------------------------------------------------
+    |
+    | This array of hookable classes will be triggered when the WordPress
+    | hook API is loaded. Feel free to register as many hookable classes
+    | as you wish in order to organize your code.
+    |
+    */
+    'hooks' => [],
+
+    /*
+    |--------------------------------------------------------------------------
     | Theme views directories path.
     |--------------------------------------------------------------------------
     |
