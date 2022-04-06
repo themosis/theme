@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Contracts\Http\Kernel;
-use Themosis\Core\Application;
+use Themosis\Foundation\Http\HttpHandler;
 
 /**
  * Default WordPress template.
@@ -11,5 +10,4 @@ use Themosis\Core\Application;
  *
  * Routes can be overwritten using theme routes.php file.
  */
-$app = Application::getInstance();
-$app->manage(Kernel::class, $app['request']);
+HttpHandler::make();
