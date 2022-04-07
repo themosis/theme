@@ -1,7 +1,5 @@
 <?php
 
-use Themosis\Core\Application;
-
 /*
 |--------------------------------------------------------------------------
 | Bootstrap Theme
@@ -12,7 +10,7 @@ use Themosis\Core\Application;
 | theme support features and templates.
 |
 */
-$theme = (Application::getInstance())->loadTheme(__DIR__, 'config');
+$theme = (app('themosis.theme'))->load(__DIR__, 'config');
 
 /*
 |--------------------------------------------------------------------------

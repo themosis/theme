@@ -10,4 +10,4 @@ use Themosis\Foundation\Http\HttpHandler;
  *
  * Routes can be overwritten using theme routes.php file.
  */
-HttpHandler::make();
+HttpHandler::front();

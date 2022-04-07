@@ -3,7 +3,7 @@
 namespace Theme\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Themosis\Core\ThemeManager;
+use Themosis\Foundation\Theme\Manager;
 use Themosis\Support\Facades\Asset;
 
 class AssetServiceProvider extends ServiceProvider
@@ -20,8 +20,8 @@ class AssetServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        /** @var ThemeManager $theme */
-        $theme = $this->app->make('wp.theme');
+        /** @var Manager $theme */
+        $theme = $this->app->make('themosis.theme');
 
         Asset::add('theme_styles', 'css/theme.css', [], $theme->getHeader('version'))->to('front');
         Asset::add('theme_woo', 'css/woocommerce.css', ['theme_styles'], $theme->getHeader('version'))->to('front');
